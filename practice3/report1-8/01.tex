@@ -1,0 +1,80 @@
+\subsection*{(1)}
+まず1次元の周期境界条件
+\begin{align}
+  \label{equ:1Dboundary}
+  \psi(x+L)=\psi(x)
+\end{align}
+を考える.一次元のSchr\"{o}dinger方程式はポテンシャル$V(x)=0$のとき(\ref{equ:1DSchrodinger})式である.
+\begin{align}
+  \label{equ:1DSchrodinger}
+  -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\psi(x)=\varepsilon\psi(x)
+\end{align}
+この解は定数$A$, $B$を用いて以下のようになる.
+\begin{align}
+  \psi(x)&=A\ {\rm e}^{ikx}+B\ {\rm e}^{-ikx}\\
+  k&=\sqrt{\frac{2m\varepsilon}{\hbar^2}}
+\end{align}
+(\ref{equ:1Dboundary})式から
+\begin{align}
+  A{\rm e}^{ik(x+L)}+B{\rm e}^{-ik(x+L)}&=A{\rm e}^{ikx}+B{\rm e}^{-ikx}\\
+  A{\rm e}^{ikx}(1-{\rm e}^{ikL})&=B{\rm e}^{-ikx}({\rm e}^{-ikL}-1)
+\end{align}
+これが任意の$A$, $B$について成立するため
+\begin{align}
+  {\rm e}^{\pm ikL}&=1\\
+  \therefore\ k_nL&=2\pi n\qquad(n\in\mathbb{Z})
+\end{align}
+を満たす.したがって解$\psi(x)$は離散的な値を取るのでそれを$\psi_n(x)$とすると
+\begin{align}
+  \psi_n(x)=C\ {\rm e}^{ik_nx}
+\end{align}
+となる.ここで$n\in\mathbb{Z}$としたことから$A$, $B$を$C$と置き直した.またエネルギー固有値$\varepsilon_n$は
+\begin{align}
+  \label{equ:1Deigenvalue}
+  \varepsilon_n&=\frac{\hbar^2k_n^2}{2m}\\
+  &=\frac{2\pi^2\hbar^2n^2}{mL^2}
+\end{align}
+となる.
+
+次に3次元での周期境界条件
+\begin{align}
+  \begin{cases}
+    \psi(x+L,y,z)=\psi(x,y,z)\\
+    \psi(x,y+L,z)=\psi(x,y,z)\\
+    \psi(x,y,z+L)=\psi(x,y,z)
+  \end{cases}
+\end{align}
+を考える.
+波動関数に変数分離形,すなわち
+\begin{align}
+  \psi(x,y,z)=X(x)Y(y)Z(z)
+\end{align}
+を仮定すると各方向について1次元と全く同様の議論を行えばいいので波動関数は
+\begin{align}
+  \psi(x,y,z)&=C\ {\rm e}^{i(k_xx+k_yy+k_zz)}\\
+  &=C\ {\rm e}^{i{\bm k}\cdot\bm{r}}
+\end{align}
+ただし
+\begin{align}
+  \begin{dcases}
+    k_x=\cfrac{2\pi}{L}n_x\\
+    k_y=\cfrac{2\pi}{L}n_y\\
+    k_z=\cfrac{2\pi}{L}n_z\\
+  \end{dcases}
+\end{align}
+\begin{align}
+  \bm{k}=(k_x,k_y,k_z)
+\end{align}
+である.また各方向でのエネルギー固有値$\varepsilon_x$, $\varepsilon_y$, $\varepsilon_z$は(\ref{equ:1Deigenvalue})と同様に
+\begin{align}
+  \begin{dcases}
+    \varepsilon_x=\cfrac{2\pi^2\hbar^2n_x^2}{mL^2}\\
+    \varepsilon_y=\cfrac{2\pi^2\hbar^2n_y^2}{mL^2}\\
+    \varepsilon_z=\cfrac{2\pi^2\hbar^2n_z^2}{mL^2}\\
+  \end{dcases}
+\end{align}
+となるので,エネルギー固有値$\varepsilon$は
+\begin{align}
+  \varepsilon=\cfrac{2\pi^2\hbar^2}{mL^2}(n_x^2+x_y^2+n_z^2)
+\end{align}
+となる.
