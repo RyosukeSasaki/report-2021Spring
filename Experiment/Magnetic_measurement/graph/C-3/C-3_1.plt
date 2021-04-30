@@ -7,5 +7,7 @@ set yrange [-21:21]
 
 set xlabel '角度$\theta$ / $\si{\degree}$'
 set ylabel '相殺電流$i$ / $\si{\milli\ampere}$'
+set xzeroaxis lw 1.5
+#set yzeroaxis lw 1.5
 
 plot "comp_current.dat" notitle  pt 6 lc 8

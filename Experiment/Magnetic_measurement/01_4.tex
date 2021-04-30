@@ -1,0 +1,27 @@
+\subsection{有効磁場,反磁場について}
+図\ref{fig:fig/def_HextI}のように磁性体に外部磁場$\bm{H}_{ext}$を掛けると表面に磁荷が誘起し,磁化$\bm{I}$を発生させる.
+この磁化による磁場$\bm{H}_d$は外部磁場と逆向きに生じるため,磁性体内部では外部磁場の一部が打ち消されて
+磁場が弱くなる.これを有効磁場$\bm{H}_{eff}$という. $\bm{H}_d$は$\bm{I}$と以下のような関係になる.
+\begin{align}
+  \label{equ:Hd}
+  \bm{H}_d=-\frac{N}{\mu_0}\bm{I}
+\end{align}
+ここで$N$は反磁場係数であり,磁性体の形状にのみに依存する.これはある大きさの磁化からどれだけの効率で反磁場が生成されるかを表す係数と言える.
+(\ref{equ:Hd})から磁性体内部の有効磁場$\bm{H}_{eff}$は
+\begin{align}
+  \bm{H}_{eff}&=\bm{H}_{ext}+\bm{H}_d\nonumber\\
+  &=\bm{H}_{ext}-\frac{N}{\mu_0}\bm{I}
+\end{align}
+となる.ここで磁性体の磁化$\bm{I}$は有効磁場$\bm{H}_{eff}$が起源なので磁化率を$\chi$とすると
+\begin{align}
+  \label{equ:IchiHeff}
+  I&=\chi H_{eff}\nonumber\\
+  &=\chi(H_{ext}-\frac{N}{\mu_0}I)\nonumber\\
+  \therefore \frac{I}{H_{ext}}&=\left(\frac{1}{\chi}+\frac{N}{\mu_0}\right)^{-1}
+\end{align}
+となる.強磁性体は外部磁場が$0$の時でも磁化を持つことから磁化率$\chi\rightarrow\infty$とみなせるので
+\begin{align}
+  \frac{I}{H_{ext}}&=\frac{\mu_0}{N}
+\end{align}
+となる.したがって磁気ヒステリシス曲線の傾きから反磁場係数を求めることができる.
+\mfig[width=10cm]{fig/def_HextI}{反磁場}

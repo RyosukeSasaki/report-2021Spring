@@ -1,5 +1,5 @@
 set terminal tikz
-set output "deMagComp_torque.tex"
+set output "deMagComp_shape.tex"
 #set terminal wxt
 set size square
 
@@ -22,8 +22,10 @@ set key height 1
 set key width -1
 set key spacing 1.5
 
-Nx=0.1316
-Ny=0.7368
+Nx=0.1943
+Ny=0.6114
 mu=1.257*10**(-6)
+set xzeroaxis lw 1.5
+set yzeroaxis lw 1.5
 
 plot "C-1_vertical.dat" using ($1-Ny/mu*($2)):2 title "面直磁場" pt 6 lc 8, "C-1_horizontal.dat" using ($1-Nx/mu*($2)):2 title "面内磁場" pt 22 lc 8

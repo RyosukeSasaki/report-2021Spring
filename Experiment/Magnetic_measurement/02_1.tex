@@ -1,0 +1,45 @@
+\subsection{測定原理}
+\subsubsection{磁化測定の原理}
+磁化測定では試料振動型磁力計(VSM)を用いる.
+VSMは図\ref{fig:fig/def_VSM.jpg}に示したようにピックアップコイル$C$,ホール素子を用いて試料の磁気モーメントと外部磁場を同時に測定できる.
+また電磁石を用いて外部磁場を制御できる.
+簡単のため試料は磁気双極子$M$とする.図\ref{fig:fig/def_VSM.jpg}のように$M$, $C$は$x$軸に平行に配置される.
+このとき$M$が$C$の位置につくる磁気ポテンシャル$\phi(r)$は
+\begin{align}
+  \phi(r)=\frac{1}{4\pi\mu_0}\frac{Mx}{r^3}
+\end{align}
+さらに$M$が$z=a\cos\omega t$で単振動するとき
+\begin{align}
+  \phi(t)=\phi(0)+a\cos\omega t\frac{\partial\phi(0)}{\partial z}=\phi(0)+\frac{3aMxz}{4\pi\mu_0r^5}\cos\omega t
+\end{align}
+となるので$C$を通過する磁場の振動項$H_x(t)$は
+\begin{align}
+  H_x(t)&=-\frac{\partial}{\partial x}\frac{3aMxz}{4\pi\mu_0r^5}\cos\omega t\nonumber\\
+  &=\frac{3aMz}{4\pi\mu_0r^5}\cos\omega t
+\end{align}
+以上からピックアップコイルの断面積を$S$,巻数を$N$とすると,起電力$V$は
+\begin{align}
+  V=-N\mu_0S\frac{\partial H_x}{\partial t}=-\frac{3NSa\omega Mz}{4\pi r^5}\sin\omega t
+\end{align}
+となり磁気モーメント$M$に比例するので, $V$をから磁気モーメントを測定できる.
+実験で用いるVSMは事前に校正されておりcgs単位系での磁場と磁気モーメントを電圧値によって得られるようになっている.
+また試料を取り付ける試料棒には通常のものと,温度センサー(熱電対)が付いた低温用のものがある.
+\mfig[width=8cm]{fig/def_VSM.jpg}{VSM装置の構成}
+\subsubsection{磁気トルク測定の原理}
+磁気トルク測定ではトルク磁力計(torque magnetometer)を用いる.
+図\ref{fig:fig/def_torque.jpg}にトルク磁力計の構成を示す.
+試料とコイル$C$,ミラーが自由に回転できる同軸の試料棒に取り付けられている.
+またレーザーダイオード(LD)からの光はミラーで反射して検出器に入り,試料棒の回転を検出する.
+さらにコイル$C$に電流を流すと永久磁石による磁場との作用によりトルクが発生する.
+
+試料に外部磁場$H_{ext}$を掛けると\ref{subsec:torque}節で示した磁気異方性によるトルクが発生する.
+これにより試料棒が回転するとフィードバック回路はこれを打ち消すようにコイル$C$に電流を流す,
+すなわちコイル$C$によるトルクと試料の磁気異方性によるトルクが釣り合っている.
+ここでコイル$C$によるトルクは,コイル$C$の断面積を$S$,巻数を$n$,流れている電流を$i$とすると
+\begin{align}
+  \label{equ:def_alpha}
+  L=\mu_0nSH_Bi=:\alpha i
+\end{align}
+となる.したがって校正によって$\alpha$が既知であれば電流$i$から磁気異方性によるトルクを測定できる.
+校正手順は\ref{subsec:torque_adjust}節に示す.
+\mfig[width=8cm]{fig/def_torque.jpg}{トルク磁力計の構成}

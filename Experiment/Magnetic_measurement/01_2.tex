@@ -1,0 +1,168 @@
+\subsection{キュリー温度と分子磁場の関係式}
+キュリー温度と分子磁場の関係式である(\ref{equ:bunshijiba-kyuriondo})を導出する.
+\begin{align}
+  \label{equ:bunshijiba-kyuriondo}
+  \Theta=\frac{2zS(S+1)}{3k}J_e
+\end{align}
+\subsubsection{常磁性の場合}
+スピンによる磁気モーメント${\bm M}$が${\bm H}$中に存在するときそのエネルギー$U$は
+\begin{align}
+  \label{equ:U}
+  U=-\bm{M\cdot H}=-MH\cos\theta
+\end{align}
+ただし図\ref{fig:fig/def_MH.jpg}のように原点から単位球面表面に向かって引いたベクトルを用いて角度分布を表す.
+このときスピンが熱雑音に抗って磁場方向を向く確率は以下のボルツマン係数に比例することが知られている\cite{alma990008542450204034}.
+\begin{align}
+  \exp\left(-\frac{U}{kT}\right)=\exp\left(\frac{MH}{kT}\cos\theta\right)
+\end{align}
+図\ref{fig:fig/def_MH.jpg}の網掛け部分の表面積は$2\pi\sin\theta{\rm d}\theta$なので,スピンが$\theta$と$\theta+{\rm d}\theta$方向を向く確率$p(\theta){\rm d}\theta$は.
+\begin{align}
+  p(\theta){\rm d}\theta=\frac{\displaystyle \exp\left(\frac{MH}{kT}\cos\theta\right)\sin\theta{\rm d}\theta}{\displaystyle \int_0^\pi\exp\left(\frac{MH}{kT}\cos\theta\right)\sin\theta{\rm d}\theta}
+\end{align}
+と表される.ここで単位体積中の磁性原子の数を$N$とすると,スピンによる磁化$\bm{I}$の大きさは$\cos\theta$の期待値$\overline{\cos\theta}$を用いて
+\begin{align}
+  \label{equ:I_keisan1}
+  I&=NM\overline{\cos\theta}
+  =NM\int_0^\pi \cos\theta\ p(\theta){\rm d}\theta\nonumber\\
+  &=NM\frac{\displaystyle \int_0^\pi\exp\left(\frac{MH}{kT}\cos\theta\right)\cos\theta\sin\theta{\rm d}\theta}{\displaystyle \int_0^\pi\exp\left(\frac{MH}{kT}\cos\theta\right)\sin\theta{\rm d}\theta}\nonumber\\
+  &=NM\frac{\displaystyle \int_{-1}^1{\rm e}^{\alpha x}x{\rm d}x}{\displaystyle \int_{-1}^{1}{\rm e}^{\alpha x}{\rm d}x}
+\end{align}
+となる,ただし$\alpha=MH/kT$, $x=\cos\theta$とした.ここで(\ref{equ:I_keisan1})の分母を計算する.
+\begin{align}
+  \label{equ:I_keisan2}
+  \int_{-1}^1{\rm e}^{\alpha x}{\rm d}x=\frac{1}{\alpha}\left[{\rm e}^{\alpha x}\right]_{-1}^1=\frac{1}{\alpha}\left({\rm e}^\alpha-{\rm e}^{-\alpha}\right)
+\end{align}
+また(\ref{equ:I_keisan2})の両辺を$\alpha$で微分すれば分子を計算できる.
+\begin{align}
+  \int_{-1}^1{\rm e}^{\alpha x}x{\rm d}x=\frac{1}{\alpha}\left({\rm e}^\alpha+{\rm e}^{-\alpha}\right)-\frac{1}{\alpha^2}\left({\rm e}^\alpha-{\rm e}^{-\alpha}\right)
+\end{align}
+以上から(\ref{equ:I_keisan1})は
+\begin{align}
+  I&=NM\left(\frac{{\rm e}^\alpha+{\rm e}^{-\alpha}}{{\rm e}^\alpha-{\rm e}^{-\alpha}}-\frac{1}{\alpha}\right)\nonumber\\
+  &=NM\left(\coth\alpha-\frac{1}{\alpha}\right)=:NML(\alpha)
+\end{align}
+ここで$L(\alpha)$はランジュバン関数と呼ばれる.
+%ランジュバン関数は$\alpha\ll 1$のとき(\ref{equ:L_tenkai})のように展開される.
+%\begin{align}
+%  \label{equ:L_tenkai}
+%  L(\alpha)=\frac{\alpha}{3}-\frac{\alpha^3}{45}-\cdots
+%\end{align}
+%ここで第1項のみを拾うと以下が成り立つ.
+%\begin{align}
+%  \label{equ:Curie_law}
+%  I&=\frac{NM}{3}\alpha=\frac{NM^2}{3kT}H\nonumber\\
+%  \therefore \chi&=\frac{I}{H}=\frac{NM^2}{3kT}
+%\end{align}
+%(\ref{equ:Curie_law})はキュリーの法則と呼ばれる.実験室系では温度$T$の影響は磁場$H$に比べて大きく\cite{alma990008542450204034}, $\alpha\ll 1$と言えるので,この近似は実用的なものである.
+\mfig[width=6cm]{fig/def_MH.jpg}{座標の定義}
+これまでの計算ではスピンは空間のどの方向にも向きうる古典的なモデルを用いたが,実際にはスピンの向く方向は量子化されている.
+$H$の方向を$z$方向に取ると, $M$の$H$成分は
+\begin{align}
+  M_z=g\mu_BM_J
+\end{align}
+と表される.ここで$M_J=-J,\ -(J-1),\ ...,\ J$は磁気量子数, $g$は$g$因子, $\mu_B$はボーア磁子である.
+このとき$H$方向の磁化の期待値は
+\begin{align}
+  I&=Ng\mu_B\frac{\sum_{M_J}\exp\left(\displaystyle\frac{g\mu_B}{kT}HM_J\right)}{\sum_{M_J}\exp\left(\displaystyle\frac{g\mu_B}{kT}HM_J\right)}\nonumber\\
+  &=Ng\mu_B\frac{\sum_{b}b{\rm e}^{by}}{\sum_{b}{\rm e}^{by}}
+\end{align}
+ここで$y=g\mu_BH/kT$, $b=M_J$とした.また分母は等比級数の和を用いて
+\begin{align}
+  \sum_{b}{\rm e}^{by}&={\rm e}^{-Jy}+{\rm e}^{-Jy}{\rm e}^{y}+{\rm e}^{-Jy}{\rm e}^{2y}+\cdots+{\rm e}^{Jy}\nonumber\\
+  &=\frac{{\rm e}^{-Jy}-{\rm e}^{Jy}{\rm e}^y}{1-{\rm e}^y}\nonumber\\
+  &=\frac{{\rm e}^{(J+\frac{1}{2})y}-{\rm e}^{-(J+\frac{1}{2})y}}{{\rm e}^{\frac{y}{2}}-{\rm e}^{-\frac{y}{2}}}\nonumber\\
+  &=\frac{\sinh\left(J+\frac{1}{2}\right)y}{\sinh\frac{y}{2}}
+\end{align}
+となる.また
+\begin{align}
+  \frac{\rm d}{{\rm d}y}\left(\ln\sum_b{\rm e}^{by}\right)=\frac{\sum_bb{\rm e}^{by}}{\sum_b{\rm e}^{by}}
+\end{align}
+の関係を用いると以下のように表される.
+\begin{align}
+  \frac{\sum_bb{\rm e}^{by}}{\sum_b{\rm e}^{by}}&=\frac{\rm d}{{\rm d}y}\left(\ln\frac{\sinh\left(J+\frac{1}{2}\right)y}{\sinh\frac{y}{2}}\right)\nonumber\\
+  &=\frac{\rm d}{{\rm d}y}\left(\ln\sinh\left(J+\frac{1}{2}\right)y-\ln\sinh\frac{y}{2}\right)\nonumber\\
+  &=\left(J+\frac{1}{2}\right)\frac{\cosh\left(J+\frac{1}{2}\right)y}{\sinh\left(J+\frac{1}{2}\right)y}-\frac{1}{2}\frac{\cosh\frac{y}{2}}{\sinh\frac{y}{2}}\nonumber\\
+  &=\left(\frac{2J+1}{2}\right)\coth\left(\frac{2J+1}{2J}\right)a-\frac{1}{2}\coth\frac{a}{2J}
+\end{align}
+最後に$a=g\mu_BJH/kT$とした.したがって$I$は
+\begin{align}
+  \label{equ:Brillouin}
+  I&=Ng\mu_BJ\left(\left(\frac{2J+1}{2J}\right)\coth\left(\frac{2J+1}{2J}\right)a-\frac{1}{2J}\coth\frac{a}{2J}\right)\nonumber\\
+  &=:Ng\mu_BJB_J(a)
+\end{align}
+ここで$B_J(a)$はブリュアン関数と呼ばれる.
+\subsubsection{強磁性の場合}
+強磁性体は原子の磁気モーメントがある方向に揃っている磁性体であり,
+ワイスはその原因が分子内に存在する磁場である分子磁場$\bm{H}_m$であると仮定した.
+さらに分子磁場の大きさ$H_m$はその磁性体の磁化の大きさ$I$に比例すると考え,以下の式を仮定した.
+\begin{align}
+  H_m&=\omega I
+\end{align}
+常磁性での磁化は(\ref{equ:Brillouin})で与えられたが,強磁性においては$H\rightarrow H+\omega I$であると考え
+\begin{align}
+  \label{equ:I_strong}
+  I=Ng\mu_BJB_J(x)
+\end{align}
+とする.ここで$x=g\mu_BJ(H+\omega I)/kT$である.
+
+自発磁化は外部磁場が$0$のときに発生している磁化であるので(\ref{equ:I_strong})において$H=0$とすると
+\begin{align}
+  I=\frac{kTx}{g\mu_BJ\omega}
+\end{align}
+さらに$I_0=Ng\mu_BJ$と置くと
+\begin{align}
+  \frac{I}{I_0}=\frac{kTx}{Ng^2\mu_B^2J^2\omega}=B_J(x)
+\end{align}
+となるので,中辺と最右辺の交点が$I/I_0$を与える.
+特に図\ref{equ:Brillouin}に示すようにある温度$T=\Theta$で$B_J(x)$と$kTx/Ng^2\mu_B^2J^2\omega$が接し,それ以上の温度では$B_J(x)=kTx/Ng^2\mu_B^2J^2\omega$は解を持たず自発磁化は消失する.
+この温度$\Theta$をキュリー温度と呼ぶ.
+
+図\ref{equ:Brillouin}のように$T=\Theta$において$B_J(x)$と$kTx/Ng^2\mu_B^2J^2\omega$は原点付近で接するため$x\ll 1$とする.
+ここで$B_J(x)$をマクローリン展開すると
+\begin{align}
+  B_J(x)=\frac{J+1}{3J}x+O(x^3)
+\end{align}
+となる.これが$kTx/Ng^2\mu_B^2J^2\omega$と一致するので
+\begin{align}
+  \label{equ:Theta}
+  \frac{J+1}{3J}x&=\frac{k\Theta x}{Ng^2\mu_B^2J^2\omega}\nonumber\\
+  \therefore \Theta&=\frac{Ng^2\mu_B^2J(J+1)\omega}{3k}=\frac{Nm^2}{3k}\omega
+\end{align}
+ここで$m=g\mu_B\sqrt{J(J+1)}$とした.
+
+また量子力学では分子磁場の起源はスピン間の交換相互作用であると考えられている.交換相互作用によるエネルギー$E_e$は
+\begin{align}
+  E_e=-2J_e\bm{S}_i\bm{S}_j
+\end{align}
+で与えられる.ただし$J_e$は交換積分, $\bm{S}_i$は$i$番目の原子が持つ全体のスピンである.今$\bm{S}_i$の周りに$z$個のスピンがあると
+仮定し,その平均を$\overline{\bm{S}}_j$とすると
+\begin{align}
+  E_e=-2J_e\bm{S}_iz\overline{\bm{S}}_j
+\end{align}
+となる.またスピン$\overline{\bm{S}}_j$による分子磁場は
+\begin{align}
+  \bm{H}_m=\omega Ng\mu_B\overline{{\bm{S}}}_j
+\end{align}
+であり,この分子磁場中にスピン$\bm{S}_i$が存在するときのエネルギー$E_m$は
+\begin{align}
+  E_m&=-(g\mu_B\bm{S}_i)\bm{H}_m\nonumber\\
+  &=-\omega Ng^2\mu_B^2\bm{S_i}\overline{\bm{S}}_j
+\end{align}
+となり,これと$E_e$が等しいはずなので
+\begin{align}
+  \omega Ng^2\mu_B^2\bm{S_i}\overline{\bm{S}}_j&=-2J_e\bm{S}_i\bm{S}_j\\
+  \therefore \omega=\frac{2zJ_e}{Ng^2\mu_B^2}
+\end{align}
+これを(\ref{equ:Theta})に代入し
+\begin{align}
+  \Theta=\frac{2zS(S+1)}{3k}J_e
+\end{align}
+を得る.
+
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/B_J/B_J.tex}
+    \caption{ブリュアン関数$B(x)$}
+    \label{fig:Brillouin}
+  \end{center}
+\end{figure}

@@ -1,0 +1,31 @@
+\subsection{磁気トルク計の校正}
+\label{subsec:torque_adjust}
+\subsubsection{準備}
+\label{subsubsec:torque_junbi}
+電磁石に冷却水を循環させ,トルク計,デジタルマルチメーター(DM:磁気トルク相殺電流測定用),電磁石用電源装置の電源を入れた.
+次にトルク計の(Short$\leftrightarrow$Open$\leftrightarrow$Reverse)の切り替えスイッチをReverse側に何度か倒し,
+中央の電流計が0を示すようにした.
+\subsubsection{測定1: Ni棒の磁気トルク測定}
+\label{subsubsec:torque_adjust}
+試料ホルダーに試料No.2のNi棒をアクリルネジで固定し,これを試料棒に取り付けた.このとき角度が$0\si{\degree}$のときNi棒の長さ方向に磁場が加わるようにした.
+次に電磁石電流を$3\si{\ampere}$とした,このとき外部磁場は$5.4\si{kOe}$となる.
+次に外部磁場と試料の長さ方向の成す角度を$0\si{\degree}\rightarrow180\si{\degree}$まで$3\si{\degree}$刻みで変化させながらDMの値を記録した.
+
+以上で記録した電圧値から以下の式を用いて(\ref{equ:def_alpha})の比例係数$\alpha$を求めた.
+\begin{align}
+  \alpha&=\frac{1}{2i_{max}\mu_0}(N_{\perp}-N_{\parallel})I_s^2V\\
+  N_{\parallel}&=\frac{1}{m^2-1}\left(\frac{m}{\sqrt{m^2-1}}\ln(m+\sqrt{m^2-1}-1)\right)\\
+  N_{\perp}&=\frac{1}{2}(1-N_{\parallel})
+\end{align}
+ここで$N_{\parallel}$, $N_{\perp}$は葉巻型楕円体近似を用いたNi棒の反磁場係数, $m=7/2$は楕円体の長軸と短軸の比, 
+$I_s=0.616$はNiのMKSA単位系での飽和磁化, $V$はNi棒の体積, $i_{max}$は磁気トルク相殺電流の最大値である.
+上で求めた$\alpha$から(\ref{equ:def_alpha})で磁気トルク相殺電流を磁気トルクに換算した.
+\subsection{Fe-Si円盤の磁気トルク測定}
+\subsubsection{測定1: Fe-Si円盤の磁気トルク測定}
+\label{subsubsec:Fe-Si}
+\ref{subsubsec:torque_adjust}の状態から実験を始めた.
+電磁石電流を$0\si{\ampere}$,角度を$0\si{\degree}$とした後,
+予めFe-Si円盤が接着された試料ホルダーを試料棒に取り付ける.
+次に電磁石電流を$3\si{\ampere}$とした.
+次に外部磁場と試料の長さ方向の成す角度を$0\si{\degree}\rightarrow360\si{\degree}$まで$3\si{\degree}$刻みで変化させながらDMの値を記録した.
+次に\ref{subsec:torque_adjust}で求めた$\alpha$を用いて磁気トルク曲線を作成した.

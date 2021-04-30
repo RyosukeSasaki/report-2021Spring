@@ -1,0 +1,23 @@
+\subsection{Ni円盤の磁化測定}
+\subsubsection{準備}
+\label{subsubsec:Ni_jika_junbi}
+試料棒に試料No.1のNi円盤を取り付けた.
+次に電磁石に冷却水を循環させ, VSM装置, デジタルマルチメーター(DM①:磁気モーメント測定用, DM②:磁場測定用), 電磁石用電源装置の電源を入れた.
+\subsubsection{測定1: 面内磁場}
+\label{subsubsec:Ni_jika_Mennai}
+試料棒をNi円盤の面内方向に外部磁場がかかるようVSM装置に取り付けた.
+次にVSM装置の(Measure$\leftrightarrow$Zero)切り替えスイッチをMeasureに入れた.また磁気モーメントの測定レンジは$20\ \si{emu.\volt^{-1}}$で固定とした.
+そして電磁石電流を($0\si{\ampere}\rightarrow+3\si{\ampere}\rightarrow-3\si{\ampere}\rightarrow+3\si{\ampere}\rightarrow 0\si{\ampere}$)
+と$0.3\si{\ampere}$刻みで変化させながらDM①, DM②の値を記録した.ここで電流の正負を入れ替える際は電源装置の出力電流が$0\si{\ampere}$であることを確認してから電流切り替えスイッチを反転した.
+\subsubsection{測定2: 面直磁場}
+次に電源装置の出力を$0\si{\ampere}$, VSM装置の(Measure$\leftrightarrow$Zero)切り替えスイッチをZeroに入れてから試料棒の向きをNi円盤の面直方向に外部磁場がかかるように調整した.
+その後面内方向の場合と同様にDMの値を記録した.
+
+以上で記録した電圧値は以下の式によってMKSA単位系での磁化,磁場に換算した.
+\begin{align}
+  磁気モーメント\ [\si{emu}]&=\rm{DM}①測定値\ [\si{\volt}]\times20\ [\si{emu.\volt^{-1}}]\\
+  磁場\ [\si{Oe}]&=\rm{DM}②測定値\ [\si{\volt}]\times4920\ [\si{Oe.\volt^{-1}}]\\
+  磁化\ [\si{\weber.\metre^{-2}}]&=\frac{磁気モーメント\ [\si{emu}]}{試料体積\ [\si{\centi\metre^3}]}\times4\pi\times10^{-4}\\
+  磁場\ [\si{\ampere.\metre^{-1}}]&=\frac{磁場\ [\si{Oe}]}{\mu_0}\times10^{-4}
+\end{align}
+\mfig[width=6cm]{fig/def_orient.jpg}{試料の方向}

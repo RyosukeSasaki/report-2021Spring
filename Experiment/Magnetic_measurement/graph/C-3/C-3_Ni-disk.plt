@@ -15,5 +15,7 @@ set xtics 0, 30, 180
 set mxtics 3
 set ytics -90000, 30000, 90000
 set mytics 3
+set xzeroaxis lw 1.5
+#set yzeroaxis lw 1.5
 
 plot "Ni-disk.dat" notitle  pt 6 lc 8

@@ -1,0 +1,58 @@
+\subsection{立方晶(110)面での磁気トルク曲線}
+\label{subsec:torque}
+磁気異方性エネルギー$E_a$は,結晶の各稜を$x$, $y$, $z$軸としたときその方向余弦の級数で表せる.
+今回用いるFe-Si結晶は立方晶を形成しているため対称性が高く,対称性を用いて級数を検討できる.
+ここでは6次までの級数を用いて近似する.まずベクトル$\bm{A}$の方向余弦$\bm{\alpha}=(\alpha_1,\alpha_2,\alpha_3)$は以下で表される.
+\begin{align}
+  \alpha_i=\frac{\bm{A}}{|A|}\bm{e}_i
+\end{align}
+したがって$2$次の項に関して以下の関係が成り立つ.
+\begin{align}
+  \alpha_1^2+\alpha_2^2+\alpha_3^2=|A|^2=1
+\end{align}
+また対称性からベクトルの反転に関して異方性エネルギーは等しくなるので,
+奇数次の項は$0$となる.すなわち$n\in\mathbb{N}$を用いて
+\begin{align}
+  \sum_{i=1,2,3}\alpha_i^{2n+1}=0
+\end{align}
+となる.また以下の恒等式が成り立つ.
+\begin{align}
+  &\alpha_1^6+\alpha_2^6+\alpha_3^6\nonumber\\
+  =&(\alpha_1^2+\alpha_2^2+\alpha_3^2)(\alpha_1^4+\alpha_2^4+\alpha_3^4-\alpha_1^2\alpha_2^2-\alpha_2^2\alpha_3^2-\alpha_3^2\alpha_1^2)+3\alpha_1^2\alpha_2^2\alpha_3^2\nonumber\\
+  =&\alpha_1^4+\alpha_2^4+\alpha_3^4-\alpha_1^2\alpha_2^2-\alpha_2^2\alpha_3^2-\alpha_3^2\alpha_1^2+3\alpha_1^2\alpha_2^2\alpha_3^2
+\end{align}
+\begin{align}
+  \alpha_1^4+\alpha_2^4+\alpha_3^4=1-2(\alpha_1^2\alpha_2^2-\alpha_2^2\alpha_3^2-\alpha_3^2\alpha_1^2)
+\end{align}
+したがって以上から$4$次, $6$次の項は定数, $\sum_{i>j}\alpha_i^2\alpha_j^2$, $\alpha_1^2\alpha_2^2\alpha_3^2$の項にまとめることができる.
+以上から磁気異方性エネルギー$E_a$は定数$K_0$, $K_1$, $K_2$を用いて
+\begin{align}
+  E_a=K_0+K_1(\alpha_1^2\alpha_2^2+\alpha_2^2\alpha_3^2+\alpha_3^2\alpha_1^2)+K_2(\alpha_1^2\alpha_2^2\alpha_3^2)
+\end{align}
+と表される.特に図\ref{fig:fig/def_110.jpg}のように$\bm{A}$が$(1\overline{1}0)$面内を回転するとき,その方向余弦は
+\begin{align}
+  \alpha_1&=\alpha_2=\frac{1}{\sqrt{2}}\sin\theta\\
+  \alpha_3&=\cos\theta
+\end{align}
+となるので$E_a$は
+\begin{align}
+  E_a=K_0+K_1\left(\frac{\sin^4\theta}{4}+\sin^2\theta\cos^2\theta\right)+K_2\frac{\sin^4\theta\cos^2\theta}{4}
+\end{align}
+となる.また各項の$\theta$微分は以下のようになる.
+\begin{align}
+  \label{equ:sin4}
+  &\frac{\partial}{\partial\theta}\sin^4\theta=\frac{1}{2}(2\sin2\theta-\sin4\theta)\\
+  \label{equ:sin2cos2}
+  &\frac{\partial}{\partial\theta}\sin^2\theta\cos^2\theta=\frac{1}{2}\sin4\theta
+\end{align}
+\begin{align}
+  \label{equ:sin4cos2}
+  \frac{\partial}{\partial\theta}\sin^4\theta\cos^2\theta&=\sin^3\theta\cos\theta(3\cos2\theta+1)\nonumber\\
+  &=\frac{1}{16}(\sin2\theta+4\sin4\theta-3\sin6\theta)
+\end{align}
+また磁気異方性エネルギーによるトルク$L$は$-\partial E_a/\partial \theta$なので(\ref{equ:sin4})から(\ref{equ:sin4cos2})式を用いて
+\begin{align}
+  L=-\frac{K_1}{8}(2\sin2\theta+3\sin4\theta)-\frac{K_2}{64}(\sin2\theta+4\sin4\theta-3\sin6\theta)
+\end{align}
+を得る.
+\mfig[width=8cm]{fig/def_110.jpg}{$(1\overline{1}0)$面}

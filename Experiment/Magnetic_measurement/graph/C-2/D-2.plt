@@ -21,6 +21,8 @@ set xtics 0, 50, 360
 set mxtics 2
 set ytics -30000, 10000, 30000
 set mytics 2
+set xzeroaxis lw 1.5
+#set yzeroaxis lw 1.5
 
 pi = 3.1415
 a=38652.70421
