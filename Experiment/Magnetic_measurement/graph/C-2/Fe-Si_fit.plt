@@ -1,5 +1,5 @@
 set terminal tikz
-set output "D-2.tex"
+set output "Fe-Si_fit.tex"
 #set terminal wxt
 set size square
 set angles degrees
@@ -25,8 +25,8 @@ set xzeroaxis lw 1.5
 #set yzeroaxis lw 1.5
 
 pi = 3.1415
-a=38652.70421
-b=444.779072
+a=36075.85726
+b=415.1271339
 #the = -0.86 * 180 / pi
 the = -40
 f(x) = -a/8*(2*sin(2*x)+3*sin(4*x))-b/64*(sin(2*x)+4*sin(4*x)-3*sin(6*x))

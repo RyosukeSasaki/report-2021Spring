@@ -13,9 +13,10 @@
 
 以上で記録した電圧値から以下の式を用いて(\ref{equ:def_alpha})の比例係数$\alpha$を求めた.
 \begin{align}
+  \label{equ:calc_alpha}
   \alpha&=\frac{1}{2i_{max}\mu_0}(N_{\perp}-N_{\parallel})I_s^2V\\
-  N_{\parallel}&=\frac{1}{m^2-1}\left(\frac{m}{\sqrt{m^2-1}}\ln(m+\sqrt{m^2-1}-1)\right)\\
-  N_{\perp}&=\frac{1}{2}(1-N_{\parallel})
+  N_{\parallel}&=\frac{1}{m^2-1}\left(\frac{m}{\sqrt{m^2-1}}\ln(m+\sqrt{m^2-1}-1)\right)\simeq0.0897\\
+  N_{\perp}&=\frac{1}{2}(1-N_{\parallel})\simeq0.455
 \end{align}
 ここで$N_{\parallel}$, $N_{\perp}$は葉巻型楕円体近似を用いたNi棒の反磁場係数, $m=7/2$は楕円体の長軸と短軸の比, 
 $I_s=0.616$はNiのMKSA単位系での飽和磁化, $V$はNi棒の体積, $i_{max}$は磁気トルク相殺電流の最大値である.

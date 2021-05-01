@@ -1,0 +1,70 @@
+\subsection{Ni円盤の反磁場補正}
+\subsubsection{円盤型楕円体近似による反磁場補正}
+\label{subsubsec:cons_hanjiba_daen}
+Ni円盤試料を円盤型楕円体とみなすと反磁場係数$N_{\parallel}$, $N_{\perp}$は$m=5.05/1.85$を用いて以下で与えられる.
+\begin{align}
+  N_{\parallel}&=\frac{1}{2(m^2-1)}\left(\frac{m^2}{\sqrt{m^2-1}}\cos^{-1}\left(\frac{1}{m}\right)-1\right)\simeq0.194\\
+  N_{\perp}&=1-2N_{\parallel}\simeq0.611
+\end{align}
+これと(\ref{equ:cons_Heff})を用いて外部磁場$H_{ext}$を$H_{eff}$に変換することで反磁場補正した磁気ヒステリシス曲線(図\ref{fig:cons_hanjiba_shape})を得る.
+\begin{align}
+  \label{equ:cons_Heff}
+  H_{eff}=H_{ext}-\frac{NI}{\mu_0}
+\end{align}
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/deMagComp/deMagComp_shape.tex}
+    \caption{楕円体近似から算出した反磁場係数による反磁場補正}
+    \label{fig:cons_hanjiba_shape}
+  \end{center}
+\end{figure}
+\subsubsection{磁気トルクによる反磁場補正}
+(\ref{equ:calc_alpha})から磁気トルクの最大値$L_{max}$は
+\begin{align}
+  L_{max}=\frac{1}{2\mu_0}\left(N_{\perp}-N_{\parallel}\right)I_s^2V
+\end{align}
+であり,さらに対称性から$N_{\perp}=1-2N_{\parallel}$の関係があるので
+\begin{align}
+  L_{max}=\frac{1}{2\mu_0}\left(1-3N_{\parallel}\right)I_s^2V\nonumber\\
+  \therefore N_{\parallel}=\frac{1}{3}\left(1-2\frac{L_{max}\mu_0}{I_s^2V}\right)
+\end{align}
+であえう.ここで$L_{max}/V$は単位体積あたりのトルクの最大値であり,これは$9.14\times10^4\ \si{\newton.\metre^{-2}}$であった.
+したがって反磁場係数$N_{\parallel}$, $N_{\perp}$は
+\begin{align}
+  N_{\parallel}\simeq0.132\\
+  N_{\perp}=1-2N_{\parallel}\simeq0.737
+\end{align}
+となる.よって\ref{subsubsec:cons_hanjiba_daen}と同様に反磁場補正をすることで図\ref{fig:cons_hanjiba_torque}を得る.
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/deMagComp/deMagComp_torque.tex}
+    \caption{磁気トルクから算出した反磁場係数による反磁場補正}
+    \label{fig:cons_hanjiba_torque}
+  \end{center}
+\end{figure}
+\subsubsection{磁気ヒステリシス曲線の傾きによる反磁場補正}
+(\ref{equ:hysteresis_hanjiba})から
+\begin{align}
+  N=\mu_0\frac{H_{ext}}{I}
+\end{align}
+である.ここで$I/H_{ext}$は磁気ヒステリシス曲線の傾きなので,これから反磁場係数を求めることができる.
+ここでは電磁石電流を$0\rightarrow0.3$にしたときの磁場の増加を${\rm d}x$,磁化の増加を${\rm d}y$とし${\rm d}y/{\rm d}x$を原点近傍での磁気ヒステリシス曲線の傾きとした.
+このとき反磁場係数$N_{\parallel}$, $N_{\perp}$は
+\begin{align}
+  N_{\parallel}=\mu_0\frac{{\rm d}x}{{\rm d}y}=\mu_0\frac{2.55\times10^{-1}}{2.76\times10^{4}}\simeq0.136\\
+  N_{\perp}=\mu_0\frac{{\rm d}x}{{\rm d}y}=\mu_0\frac{4.92\times10^{-2}}{2.95\times10^{4}}\simeq0.752
+\end{align}
+となる.よって\ref{subsubsec:cons_hanjiba_daen}と同様に反磁場補正をすることで図\ref{fig:cons_hanjiba_slope}を得る.
+また$N_{\parallel}\times2+N_{\perp}=1.02$である.これは相対誤差$2\ \%$のズレであり$N_x+N_y+N_z=1$の条件を満たしていると言える.
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/deMagComp/deMagComp_slope.tex}
+    \caption{磁気ヒステリシス曲線の傾きから算出した反磁場係数による反磁場補正}
+    \label{fig:cons_hanjiba_slope}
+  \end{center}
+\end{figure}
+\subsubsection{考察}
+Niのような強磁性体は外部磁場0でも磁化を持つため,反磁場補正を施すと磁気ヒステリシス曲線は直角に立ち上がった形状になることが考えられる.
+ここで3つの方法で行った反磁場補正を比較すると図\ref{fig:cons_hanjiba_torque},図\ref{fig:cons_hanjiba_slope}が予想通り直角に立ち上がった形状をしているのに対し,
+図\ref{fig:cons_hanjiba_shape}は面直方向に対して過剰に,面内方向に対して弱く反磁場補正がかかっていることがわかる.
+これは他の2つが実験値に基づく反磁場係数であるのに対して,図\ref{fig:cons_hanjiba_shape}は反磁場係数の計算に楕円体近似を用いており,実際の試料の反磁場係数と乖離が生じたためと考えられる.
