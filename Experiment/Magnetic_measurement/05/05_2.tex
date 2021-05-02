@@ -1,1 +1,62 @@
 \subsection{Fe-Si結晶の結晶磁気異方性定数$K_1$, $K_2$の決定}
+図\ref{fig:Fe-Si_torque}のデータに対して離散フーリエ変換を施した後,
+最小二乗法を用いて(\ref{equ:K_theory})の定数$K_1$, $K_2$を決定する.
+まず(\ref{equ:K_theory})を展開すると
+\begin{align}
+  \label{equ:cons_expand_L}
+  L(\theta)&=-(\frac{K_1}{4}+\frac{K_2}{64})\sin2(\theta-\theta_0)-(\frac{3K_1}{8}+\frac{K_2}{16})\sin4(\theta-\theta_0)+\frac{3K_2}{64}\sin6(\theta-\theta_0)\nonumber\\
+  &=A_1\sin2(\theta-\theta_0)+A_2\sin4(\theta-\theta_0)+A_3\sin6(\theta-\theta_0)\nonumber\\
+  &=a_1\sin2\theta+b_1\cos2\theta+a_2\sin4\theta+b_2\cos4\theta+a_3\sin6\theta+b_3\cos6\theta
+\end{align}
+となる. $a_i$, $b_i$は離散フーリエ変換のフーリエ係数であり以下で求まる.
+\begin{align}
+  a_i&=\frac{1}{60}\sum^{120}_j=L(\theta_j)\sin(k_i\theta_j)\\
+  b_i&=\frac{1}{60}\sum^{120}_j=L(\theta_j)\cos(k_i\theta_j)\\
+  k_1&=2,\ k_2=4,\ k_3=6
+\end{align}
+さらに$A_i$, $\theta_0$は
+\begin{align}
+  A_i=\pm\sqrt{a_i^2+b_i^2},\ \theta_{0,i}=\frac{1}{k_i}\tan^{-1}\left(\frac{b_i}{a_i}\right)+\frac{\pi}{k_i}n_i
+\end{align}
+である.ここまでを測定値から計算すると
+\begin{align}
+  A_1&=\pm9.14\times10^3,\ \theta_{0,1}=0.705+\frac{\pi}{2}n_1\\
+  A_2&=\pm1.23\times10^4,\ \theta_{0,2}=-0.0934+\frac{\pi}{4}n_2\\
+  A_3&=\pm5.65\times10^2,\ \theta_{0,3}=0.194+\frac{\pi}{6}n_3
+\end{align}
+さらに(\ref{equ:cons_expand_L})から
+\begin{align}
+  \begin{cases}
+    -64A_1=16K_1+K_2\\
+    -16A_2=6K_1+K_2\\
+    \cfrac{64}{3}A_3=K_2
+  \end{cases}
+\end{align}
+であり$y=K_1x+K_2$でフィットできるので,最小二乗法
+\begin{align}
+  \label{equ:saisyojijoho}
+  a&=\frac{n\sum_k x_ky_k-\sum_k x_k\sum_k y_k}{n\sum_k x_k^2-\left(\sum_k x_k\right)^2}\\
+  b&=\frac{\sum_k x_k^2\sum y_k-\sum_k x_ky_k\sum_k x_k}{n\sum_k x_k^2-\left(\sum_k x_k\right)^2}
+\end{align}
+により$K_1$, $K_2$を求める.実際に計算すると
+\begin{align}
+  K_1=\pm3.61\times10^4,\ K_2=\pm4.15\times10^2\ (復号同順)
+\end{align}
+となる.図示すると図\ref{fig:cons_FeSi_fit}のようになる.
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/cons/torque_fit.tex}
+    \caption{最小二乗法によるフィット}
+    \label{fig:cons_FeSi_fit}
+  \end{center}
+\end{figure}
+ここでは$K_1$, $K_2$を共に正とする.さらに$n_1=-1$, $n_2=-1$, $n_3=-2$とすると$\theta_0\simeq-0.86$となるので
+これを用いてFe-Si円盤の磁気トルク曲線に理論値を重ねると図\ref{fig:cons_FeSi_torque_fit}のようになる.
+図\ref{fig:cons_FeSi_torque_fit}のように以上の方法で測定値とよく一致する理論値を得られた.
+\begin{figure}[hptb]
+  \begin{center}
+    \input{graph/C-2/Fe-Si_fit.tex}
+    \caption{Fe-Si円盤の磁気トルク曲線の測定値と理論値}
+    \label{fig:cons_FeSi_torque_fit}
+  \end{center}
+\end{figure}
