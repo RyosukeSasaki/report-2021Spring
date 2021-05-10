@@ -1,0 +1,114 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+\begin{document}
+\title{アルゴリズム2A 第4回レポート}
+\author{61908697 佐々木良輔}
+\date{}
+\maketitle
+\section{結果}
+bubble sort, heap sort, counting sortについて比較した.
+また計算時間は他のプロセスのCPU使用率によって変化するため,コピー回数,比較回数で評価した.
+交換1回はコピー3回とした.
+\subsection{データ数による比較}
+rand10000.txtのデータの上から7500, 5000, 2500行を抽出しrand7500.txt, rand5000.txt, rand2500.txtを作成した.
+それぞれについてbubble sort, heap sort, counting sortを行い比較した.表\ref{tab:2}に結果を示す.
+\begin{table}[h]
+  \caption{データ数による比較}
+  \label{tab:2}
+  \centering
+  \begin{tabular}{c|cc|cc|cc}
+  \hline
+  &\multicolumn{2}{c|}{bubble sort}&\multicolumn{2}{c|}{heap sort}&\multicolumn{2}{c}{counting sort}\\
+  行数&copy&compare&copy&compare&copy&compare\\
+  \hline \hline
+  10000 & $1.50\times10^{8}$ & $2.49\times10^{7}$ & $1.74\times10^{5}$ & $2.35\times10^{5}$ & $2.00\times10^{4}$ & $0.00$\\
+  7500  & $8.43\times10^{7}$ & $1.39\times10^{7}$ & $1.28\times10^{5}$ & $1.70\times10^{5}$ & $1.50\times10^{4}$ & $0.00$\\
+  5000  & $3.74\times10^{7}$ & $6.34\times10^{6}$ & $8.21\times10^{4}$ & $1.08\times10^{5}$ & $1.00\times10^{4}$ & $0.00$\\
+  2500  & $9.35\times10^{6}$ & $1.56\times10^{6}$ & $3.86\times10^{4}$ & $4.89\times10^{4}$ & $5.00\times10^{3}$ & $0.00$\\
+  \hline
+  \end{tabular}
+  \end{table}
+\subsection{昇順,降順,ランダム入力の比較}
+表\ref{tab:1}に結果を示す.
+\begin{table}[h]
+\caption{昇順,降順,ランダム入力の比較}
+\label{tab:1}
+\centering
+\begin{tabular}{c|cc|cc|cc}
+\hline
+&\multicolumn{2}{c|}{bubble sort}&\multicolumn{2}{c|}{heap sort}&\multicolumn{2}{c}{counting sort}\\
+&copy&compare&copy&compare&copy&compare\\
+\hline \hline
+descend & $1.50\times10^{8}$ & $5.00\times10^{7}$ & $1.67\times10^{5}$ & $2.27\times10^{5}$ & $2.00\times10^{4}$ & $0.00$\\
+ascend  & $0.00$             & $1.00\times10^{4}$ & $1.79\times10^{5}$ & $2.40\times10^{5}$ & $2.00\times10^{4}$ & $0.00$\\
+random  & $1.50\times10^{8}$ & $2.49\times10^{7}$ & $1.74\times10^{5}$ & $2.35\times10^{5}$ & $2.00\times10^{4}$ & $0.00$\\
+\hline
+\end{tabular}
+\end{table}
+\clearpage
+\section{考察}
+\subsection{データ数による比較}
+図\ref{fig:col_b},図,図にbubble sort, heap sort, counting sortそれぞれの計算量のデータ数依存性を示す.
+またそれぞれの図に$y=ax^2$, $y=ax\log x$, $y=ax$でフィットした曲線を示している.
+これらからbubble sortの計算量は$y=ax^2$, heap sortの計算量は$y=ax\log x$, counting sortの計算量は$y=ax$でよくフィットしていることがわかる.
+\begin{figure}[hptb]
+  \begin{center}
+    \input{col_b.tex}
+    \caption{bubble sortのコピー,比較回数}
+    \label{fig:col_b}
+  \end{center}
+\end{figure}
+\begin{figure}[hptb]
+  \begin{center}
+    \input{col_h.tex}
+    \caption{heap sortのコピー,比較回数}
+    \label{fig:col_h}
+  \end{center}
+\end{figure}
+\begin{figure}[hptb]
+  \begin{center}
+    \input{col_c.tex}
+    \caption{counting sortのコピー,比較回数}
+    \label{fig:col_c}
+  \end{center}
+\end{figure}
+\clearpage
+\subsection{昇順,降順,ランダム入力の比較}
+\subsubsection{bubble sortについて}
+表\ref{tab:2}からdescend, randomの場合の計算量は$10^8$程度のオーダーになっているのに対し,
+ascendの場合は$10^4$程度のオーダーになっていることがわかる.
+これはascendが既にsortされており,交換が発生しなかった時点でループを抜けたためである.
+これはbubble sortの計算量が最悪で$O(n^2)\sim10^8$, 平均で$O(n^2)\sim10^8$, 最良で$O(n)\sim10^4$であることに整合する.
+\subsubsection{heap sortについて}
+表\ref{tab:2}からdescend, ascend, random全ての場合において計算量は$10^5$程度のオーダーである.
+これはheap sortが全ての場合において$O(n\log_2n)\sim10^5$となることに整合する.
+\subsubsection{counting sortについて}
+表\ref{tab:2}からdescend, ascend, random全ての場合において計算量は$10^4$程度のオーダーである.
+これはcounting sortが全ての場合において$O(n)\sim10^4$となることに整合する.
+\end{document}
