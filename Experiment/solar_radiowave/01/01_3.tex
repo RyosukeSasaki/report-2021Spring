@@ -1,1 +1,45 @@
 \subsection{輻射輸送方程式}
+\label{subsec:hukusyayuso}
+光線が物質に入射すると吸収,放射によってその輻射強度が変化する.
+物質が放射のみを行う場合を考える.単位時間あたりに単位体積の物質が放射する単位立体角,
+単位周波数あたりのエネルギーを放射係数$j_{\nu}$とすると,輻射強度の変化量${\rm d}I_{\nu}$は
+\begin{align}
+  {\rm d}I_{\nu}=j_{\nu}{\rm d}s
+\end{align}
+となる.ここで${\rm d}s$は物質の厚さである.
+また物質が吸収のみを行う場合を考える.輻射強度の変化量${\rm d}I_{\nu}$は$I_{\nu}$に比例し,
+その比例係数を$\alpha_{\nu}$とすると
+\begin{align}
+  {\rm d}I_{\nu}-\alpha_{\nu}I_{\nu}{\rm d}s
+\end{align}
+となる.以上から放射と吸収が同時に存在する場合を考えると
+\begin{align}
+  \frac{{\rm d}I_{\nu}}{\alpha_{\nu}{\rm d}s}=\frac{j_{\nu}}{\alpha_{\nu}}-I_{\nu}
+\end{align}
+ここで光学的厚み$\tau_{\nu}=:\int_0^L\alpha_{\nu}{\rm d}s$,源泉関数$S_{\nu}=j_{\nu}/\alpha_{\nu}$
+を用いると
+\begin{align}
+  \frac{{\rm d}I_{\nu}}{{\rm d}\tau_{\nu}}=S_{\nu}-I_{\nu}
+\end{align}
+となり,これを輻射輸送方程式と呼ぶ.この解は物質に入射した光線の輻射強度$I_{\nu}(0)$を用いて以下のようになる.
+\begin{align}
+  \label{equ:Inu=I(0)+S}
+  I_{\nu}=I_{\nu}(0){\rm e}^{-\tau_{\nu}}+S_{\nu}(1-{\rm e}^{-\tau_{\nu}})
+\end{align}
+これは入射した輻射強度$I_{\nu}(0)$は光学的厚みに従い減衰し,
+また放射による寄与は光学的厚みに応じて源泉関数に近づくことを表している.
+すなわち$\tau_{\nu}\rightarrow\infty$の極限においては$I_{\nu}=S_{\nu}$となる.
+また熱平衡状態においては(\ref{equ:I-B})より$I_\nu=B_\nu(T)$であるので,
+$\tau_{\nu}\rightarrow\infty$かつ熱平衡状態においては
+\begin{align}
+  S_\nu=B_\nu(T)
+\end{align}
+となり,これをKirchhoffの法則と呼ぶ.これを用いて(\ref{equ:Inu=I(0)+S})を書き換えると
+\begin{align}
+  I_\nu=I_\nu(0){\rm e}^{-\tau_{\nu}}+B_\nu(T)(1-{\rm e}^{-\tau_{\nu}})
+\end{align}
+さらに(\ref{equ:T_B})式から入射光の輝度温度を$T_B(0)$,物質の温度を$T$とすると
+\begin{align}
+  T_B=T_B(0){\rm e}^{-\tau_{\nu}}+T(1-{\rm e}^{-\tau_{\nu}})
+\end{align}
+となる.

@@ -1,0 +1,44 @@
+\subsection{受信機雑音温度}
+\subsubsection{原理}
+\ref{subsec:hukusyayuso}節で示したように,輻射強度は温度の次元を持った輝度温度で表されたので,
+望遠鏡の受信した電力を温度の次元で表示することを考える.
+ここで
+\begin{align}
+  T_A=\frac{W_\nu}{k}\ \left[\frac{\si{\joule.\second^{-1}.\hertz^{-1}}}{\si{\joule.\kelvin^{-1}}}\right]
+\end{align}
+はアンテナ温度と呼ばれ,温度の次元を持つ.ただし$W_\nu$は周波数$\nu$の電波の単位周波数あたりの受信電力である.
+これはある受信電力に相当する熱雑音を発生させるために必要な温度といえる.
+
+受信した微弱な信号はコンバーターからADCまでの信号処理系全体で発生する雑音に埋もれるため,受信機の感度はその雑音によって制限される.
+これらの雑音のアンテナ温度をまとめて受信機雑音温度$T_{RX}$で表す.
+ここで受信機を高温$T_{hot}$,低温$T_{cold}$の黒体で覆ったとき,受信機出力電圧は
+\begin{align}
+  V_{hot}=a(T_{hot}+T_{RX})\\
+  V_{cold=a(T_{cold}+T_{RX})}
+\end{align}
+と表される.ここで$a$は受信機の利得による比例定数である.上の2式と$Y=:V_{hot}/V_{cold}$を用いて$T_{RX}$を表すと
+\begin{align}
+  T_{RX}=\frac{T_{hot}-YT_{cold}}{Y-1}
+\end{align}
+となる.
+\subsubsection{方法}
+この実験では高温物体として室温の水,低温物体として液体窒素を用いた.
+まず電波吸収体で覆ったデュワー瓶に室温の水を入れ,その温度を測定した.
+次に室内機の集光部をデュワー瓶の水に浸し$V_{hot}$を測定した.
+続いて上と同様のデュワー瓶に液体窒素を入れ,同様の手順で$V_{cold}$を測定した.
+\subsubsection{結果}
+図\ref{fig:Thot_Tcold}に測定結果を示す.図\ref{fig:Thot_Tcold}の網掛け(青)部は$T_{hot}$,
+網掛け(赤)部は$T_{cold}$での測定である.それぞれの経過時間は$t=0$-$780$, $t=950$-$1230$である.
+この範囲の値を平均すると$V_{hot}=3.10\si{\volt}$, $V_{cold}=2.02\si{\volt}$となった.
+また$T_{hot}=298.15\si{\kelvin}$, $T_{cold}=77.0\si{\kelvin}$であった.以上から$T_{RX}$は
+\begin{align}
+  T_{RX}=3.37\times10^2\si{\kelvin}
+\end{align}
+となる.
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/rx_noise_temp.tex}
+\caption{$T_{hot}$と$T_{cold}$の測定}
+\label{fig:Thot_Tcold}
+\end{center}
+\end{figure}

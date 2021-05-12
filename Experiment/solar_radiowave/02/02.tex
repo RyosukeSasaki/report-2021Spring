@@ -1,0 +1,54 @@
+\section{実験装置}
+\subsection{装置の構成}
+電波望遠鏡は受信部, IF信号処理系,検波器,DC増幅器,A/D変換器,測定用計算機からなる.
+\mfig[width=12cm]{fig/05_text_Solar.eps}{実験装置のブロック図(実験テキストより引用)}
+\subsubsection{受信部}
+受信部はアンテナ,コンバーター,赤道儀,三脚からなる.
+
+アンテナはBS放送受信用のTDK BCS-45DHVを用いている.
+コンバーターはアンテナと一体になっており, $11.70$-$12.75\si{\giga\hertz}$帯の受信信号と
+オシレーターからの$10.678\si{\giga\hertz}$信号を加算合成し,
+LPFに通すことで$1022$-$2072\si{\mega\hertz}$の中間周波数信号を生成する.
+このコンバーターには$54\si{\deci\bel}$利得があり,電源はIF信号処理系から同軸ケーブルで供給される.
+室内機においてはパラボラアンテナは取り外され,集光部とコンバーターのみで運用する.
+
+赤道儀はVixen GP2-399000を用いている.極軸は天の北極方向に合わせる必要があり,
+今回は慶應義塾大学の緯度である北緯$35.5559\si{\degree}$に$\pm0.5\si{\degree}$の範囲で設定する.
+\subsubsection{IF信号処理系}
+IF信号処理系は主に信号増幅器から構成される.信号増幅器は一般的にBS・CS信号のブースターとして用いられる
+マスプロ電工 BCB20LSを用いている.
+このブースターは伝送周波数帯域$1000$-$2150\si{\mega\hertz}$において$18\si{\deci\bel}$以上の利得が保証されている.
+また$+15\si{\volt}$は同軸ケーブルで供給され,電源にはマスプロ電工 BPS5Bを用いている.
+\subsubsection{検波器}
+検波器は交流の入力信号の包絡線を取り出し直流に変化する素子である.
+今回は性能が補償された検波器としてKeysight 8472B Low-Barrier Schottky Diode Detectorと
+Herotek DZR124AA Zero-Bias Schottky Diode Detectorを用いる.
+それぞれの入力周波数範囲はDC-$18\si{\giga\hertz}$, $10$-$12.4\si{\giga\hertz}$であり,
+入力電力に比例した負電流を出力する.
+\subsubsection{DC増幅器}
+前段の検波器の出力電流から得られる電圧出力は数十-数百$\si{\milli\volt}$だが,
+後段のADCの測定レンジ$0$-$5\si{\milli\volt}$であることから更に増幅する必要がある.
+検波器の出力は負電流であるので,反転増幅器を通すことで測定に適した正の電圧を得ることができる.
+ここで増幅倍率は$(27\si{\kilo}\times51\si{\kilo})/(27\si{\kilo}+51\si{\kilo})/1\si{\kilo}=17.7$倍となる.
+\mfig[width=10cm]{fig/inverted_amp.png}{反転増幅器}
+\subsubsection{AD変換器,測定用計算機}
+AD変換器としてArduino Uno (AVR ATmega328P)内臓のADCを用いる.これは測定レンジ$0$-$5\si{\volt}$, 分解能$4.89\si{\milli\volt}$である.
+AD変換器で測定された電圧値は測定用計算機であるApple MacBook Air(室外機), Apple iMac(室内機)を用いて記録される.
+データの記録はProcessing IDEで開発されたmizutamaソフトウェアによって行われる.
+ADCのサンプルレートは$100\si{\hertz}$であり,これを$1\si{\second}$の時間間隔で積分したものを記録する.
+\subsection{予備実験}
+予備実験として室内機を用いてお湯の温度変化を電波望遠鏡を用いて測定した.
+\subsubsection{実験方法}
+アルミ缶に熱湯を入れ温度計を用いて初期温度を測定した.次に室内機の集光部をお湯に浸し,DC増幅器の出力電圧を記録した.
+\subsubsection{実験結果}
+図\ref{fig:hot_water}に測定結果を示す.
+集光部への入力電力と検波器の出力電圧に完全な線形性をを仮定すると,
+お湯の温度が低下するにしたがって黒体輻射の輻射強度が低下し,信号電圧も低下すると考えられる.
+図\ref{fig:hot_water}から実際に温度の低下に伴って信号電圧が低下していることがわかる.
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/hot_water.tex}
+\caption{お湯の温度変化に伴う信号電圧の変化}
+\label{fig:hot_water}
+\end{center}
+\end{figure}

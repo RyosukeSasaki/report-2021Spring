@@ -1,1 +1,23 @@
 \subsection{熱放射と輝度温度}
+光線に垂直な単位面積を単位時間あたりに通過する単位立体角,
+単位周波数あたりのエネルギーを輻射強度$I_{\nu}$と呼ぶ.
+輻射強度は自由空間で光線に沿って一定になる.
+濃密かつ輻射と熱平衡状態にある黒体放射のスペクトルは
+\begin{align}
+  \label{equ:I-B}
+  I_{\nu}=B_{\nu}(T)=\frac{2h\nu^3}{c^2}\frac{1}{\exp(h\nu/kT)-1}
+\end{align}
+と表される.ここで$B_{\nu}(T)$はPlanck分布である.ここで$h\sim10^{-34}$, $k\sim10^{-23}$,
+$\nu\sim10^9$, $T\sim10^3$程度とすると$h\nu/kT\sim10^{-5}\ll1$なので1次まで展開すると
+\begin{align}
+  \label{equ:rayleigh-jeans}
+  B_\nu(T)&\simeq\frac{2h\nu^3}{c^2}\frac{1}{1+h\nu/kT-1}\nonumber\\
+  &=\frac{h\nu^2k}{c^2}T
+\end{align}
+となる.これはRayleigh-Jeans近似と呼ばれる.以上から
+\begin{align}
+  \label{equ:T_B}
+  T_B=\frac{c^2}{2\nu^2k}I_\nu
+\end{align}
+となる.
+$T_B$は輝度温度であり,Rayleigh-Jeans近似のもとでは黒体の温度$T$に一致する.
