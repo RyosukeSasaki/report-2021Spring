@@ -1,0 +1,106 @@
+\subsection{結果}
+図\ref{fig:solar_radio_raw}に測定データを示す.図\ref{fig:solar_radio_raw}の網掛け(青)部は太陽電波,網掛け(赤)部は黒体放射の測定である.
+それぞれの経過時間は$t=583$-$3620\ \si{\second}$, $t=3622$-$4003\ \si{\second}$である.また気温$T_R=297.7\si{\kelvin}$
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/solar_radio.tex}
+\caption{太陽電波の測定}
+\label{fig:solar_radio_raw}
+\end{center}
+\end{figure}
+\clearpage
+\subsubsection{主ビーム幅・結合定数の算出}
+図\ref{fig:solar_radio_fit}に太陽電波の測定値を(\ref{equ:v(t)})式の$v(t)$で最小自乗fitした曲線を示す.
+最小自乗fitはgnuplotのfit機能を用いて行った.
+ただしグラフの見易さのため,測定値のプロットは$1/10$に間引いている.
+最小自乗fitの結果各定数は以下のように求まった.
+\begin{align}
+  A&=1.0858\pm0.0008\ \si{\volt}\\
+  B&=0.8858\pm0.0014\ \si{\volt}\\
+  t_0&=2161.6\pm0.6\ \si{\second}\\
+  \sigma_t&=372.47\pm0.82\ \si{\second}
+\end{align}
+また太陽の日周運動の角速度$\mu$は測定日の太陽の赤緯が$\delta=12.025\si{\degree}$だったことから(\ref{equ:mu})式より
+\begin{align}
+  \mu=\frac{360\cos(12.025\si{\degree})}{24\times60\times60}=4.08\times10^{-3}\si{\degree.\second^{-1}}
+\end{align}
+となる,したがって$\sigma$は
+\begin{align}
+  \sigma=1.517\pm0.003\si{\degree}
+\end{align}
+である.したがってアンテナの主ビーム幅は(\ref{equ:HPBW})から
+\begin{align}
+  {\rm HPBW}=2\sqrt{2\ln2}\sigma=3.574\pm0.8\si{\degree}
+\end{align}
+である.またビーム占有率$\eta_{ff}$は測定日の太陽の視半径が$\theta_{\tiny\astrosun}=0.26283\si{\degree}$だったことから(\ref{equ:eta_ff})式より
+\begin{align}
+  \eta_{ff}&=1-\exp\left(-\frac{\theta_{\tiny\astrosun}^2}{2\sigma^2}\right)\nonumber\\
+  &=1.488\times10^{-2}
+\end{align}
+また不確かさについては
+\begin{align}
+  \frac{\partial\eta_{ff}}{\partial\sigma}=-\frac{\theta_{\tiny\astrosun}^2}{\sigma^3}\exp\left(-\frac{\theta_{\tiny\astrosun}^2}{2\sigma^2}\right)
+\end{align}
+なので
+\begin{align}
+  \delta_{\eta_{ff}}&=\left|\frac{\theta_{\tiny\astrosun}^2}{\overline{\sigma}^3}\exp\left(-\frac{\theta_{\tiny\astrosun}^2}{2\overline{\sigma}^2}\right)\right|\delta_{\sigma}\\
+  &=7\times10^{-5}
+\end{align}
+となり,以上から$\eta_{ff}$は
+\begin{align}
+  \eta_{ff}=(1.488\pm0.007)\times10^{-2}
+\end{align}
+となる.したがって主ビーム能率$\eta_{MB}=0.6\pm0.1$とすると結合定数$\eta_c$は
+\begin{align}
+  \overline{\eta_c}&=\overline{\eta_{MB}}\cdot\overline{\eta_{ff}}\\
+  \delta_{\eta_c}&=\overline{\eta_c}\sqrt{\left(\frac{\delta_{\eta_{MB}}}{\eta_{MB}}\right)^2+\left(\frac{\delta_{\eta_{ff}}}{\eta_{ff}}\right)^2}
+\end{align}
+なので
+\begin{align}
+  \eta_c=(8.9\pm 1.4)\times 10^{-3}
+\end{align}
+となる.
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/solar_radio_fit.tex}
+\caption{太陽電波の測定値と$v(t)$}
+\label{fig:solar_radio_fit}
+\end{center}
+\end{figure}
+\clearpage
+\subsubsection{太陽輝度温度算出}
+図\ref{fig:solar_radio_Temp}の網掛け(赤),網掛け(青),網掛け(黄)領域で$V_{off}$, $V_{on}$, $V_R$を測定すると以下のようになる.
+\begin{align}
+  V_{off}=1.104\pm0.002\ \si{\volt}\\
+  V_{on}=1.954\pm0.004\ \si{\volt}\\
+  V_{R}=2.371\pm0.005\ \si{\volt}
+\end{align}
+太陽の平均の大気吸収補正済みアンテナ温度は
+\begin{align}
+  \overline{T_A^{*}}=\frac{\overline{V_{on}}-\overline{V_{off}}}{\overline{V_R}-\overline{V_{off}}}{T_R}=1.997\times10^2\si{\kelvin}\\
+\end{align}
+したがって太陽の平均の輝度温度は
+\begin{align}
+  \overline{T_{sun}}=\frac{\overline{T_A^{*}}}{\overline{\eta_c}}=2.2\times10^4\si{\kelvin}
+\end{align}
+また大気吸収補正済みアンテナ温度の標準偏差は
+\begin{align}
+  \delta_{T_A^{*}}&=\overline{T_A^{*}}\sqrt{\left(\frac{\delta_{V_{on}}-\delta_{V_{off}}}{\overline{V_{on}}-\overline{V_{off}}}\right)^2+\left(\frac{\delta_{V_{R}}-\delta_{V_{off}}}{\overline{V_{R}}-\overline{V_{off}}}\right)^2}\nonumber\\
+  &=1.790\si{\kelvin}\nonumber
+\end{align}
+したがって太陽の輝度温度の標準偏差は
+\begin{align}
+  \delta_{T_{sun}}&=\overline{T_{sun}}\sqrt{\left(\frac{\delta_{T_A^{*}}}{\overline{T_A^{*}}}\right)^2+\left(\frac{\delta_{\eta_c}}{\overline{\eta_c}}\right)^2}\nonumber\\
+  &=3.5\times10^3\si{\kelvin}
+\end{align}
+以上から太陽の輝度温度は以下のように求まる.
+\begin{align}
+  T_{sun}=(2.2\pm0.4)\times10^4\si{\kelvin}
+\end{align}
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/solar_radio_Temp.tex}
+\caption{平均を計算する領域}
+\label{fig:solar_radio_Temp}
+\end{center}
+\end{figure}

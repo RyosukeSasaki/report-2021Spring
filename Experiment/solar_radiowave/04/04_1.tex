@@ -1,0 +1,77 @@
+\subsection{原理}
+\subsubsection{chopper-wheel法}
+chopper-wheel法は電波望遠鏡の受信信号から大気の放射,吸収の寄与を除く手法である.
+ここで$V_{on}$, $V_{off}=V_{sky}$, $V_{R}$をそれぞれ観測対象の天体,
+その近傍で天体を外した方向,常温の黒体を観測したときの受信機の出力電圧とする.
+(\ref{equ:Inu=I(0)+S})からそれぞれ
+\begin{align}
+  V_{on}&=a\left(\eta_cT_B{\rm e}^{-\tau}+T_{atm}(1-{\rm e}^{-\tau})+T_{RX}\right)\\
+  V_{off}&=V_{sky}=a\left(T_{atm}(1-{\rm e}^{-\tau})+T_{RX}\right)\\
+  V_{R}&=a\left(T_R+T_{RX}\right)
+\end{align}
+ここで$T_B$は天体の輝度温度, $T_{atm}$は地球大気の温度, $T_R$は常温黒体の温度, $T_{RX}$は受信機雑音温度である.
+また$\tau$は大気の光学的厚み, $\eta_c$は電波望遠鏡の感度パターンと天体の輝度温度の結合係数である.
+結合定数はアンテナの受信感度のある立体角に占める天体の視半径の割合を表す.
+ここで$T_A^{*}$を以下で定義する.
+\begin{align}
+  T_A^{*}&=\frac{V_{on}-V_{off}}{V_R-V_{sky}}T_R\nonumber\\
+  &=\frac{\eta_cT_B{\rm e}^{-\tau}}{T_R-T_{atm}(1-{\rm e}^{-\tau})}T_R\nonumber
+\end{align}
+ここで$T_R\simeq T_{atm}$とすると
+\begin{align}
+  T_A^{*}=\eta_c T_B
+\end{align}
+となる.この方法で得られる$T_A^{*}$は大気吸収補正済みアンテナ温度という量である.
+
+天球の視半径がアンテナの主ビームより十分小さい場合結合定数$\eta_c$は
+\begin{align}
+  \eta_c=\eta_{MB}\eta_{ff}
+\end{align}
+と表される.ここで$\eta_{MB}$は主ビーム能率, $\eta_{ff}$は主ビーム占有率である.
+主ビーム能率$\eta_{MB}$はアンテナの感度立体角に占める主ビームの割合である.
+有限開口のパラボラアンテナは回折により主ビーム以外にも感度を持ち,
+それは光軸からの角度に対してsinc関数の2乗で分布する.
+主ビーム以外の感度域はサイドローブと呼ばれ,全ビーム立体角に占める主ビームの割合が主ビーム能率となる.
+主ビーム能率は木星や月などの視半径と表面温度が既知な天体を標準として校正される.
+主ビーム占有率$\eta_{ff}$は主ビームに占める天体の割合であり\ref{subsubsec:eta_ff}節で述べる.
+\subsubsection{主ビーム占有率$\eta_{ff}$}
+\label{subsubsec:eta_ff}
+観測対象の天体が一様な輝度分布を持つとき,その主ビームに占める割合が主ビーム占有率$\eta_{ff}$である.
+アンテナの光軸からの角度に対するビームの分布を$P_\nu(\theta,\phi)$とするとき$\eta_{ff}$は
+\begin{align}
+  \eta_{ff}=\frac{\int\int_{source}P_\nu(\theta,\phi){\rm d}\Omega}{\int\int_{4\pi}P_\nu(\theta,\phi){\rm d}\Omega}
+\end{align}
+と表される.ここで$\int\int_{source}{\rm d}\Omega$は天体の占める領域での積分である.
+ここで主ビームを幅$\sigma$のGauss関数で近似すると
+\begin{align}
+  \label{equ:eta_ff}
+  \eta_{ff}&=\frac{\int_0^{2\pi}{\rm d}\phi\int_0^{\theta_{\tiny\astrosun}} \exp(-\theta^2/2\sigma^2)\theta{\rm d}\theta}{\int_0^{2\pi}{\rm d}\phi\int_0^{\infty} \exp(-\theta^2/2\sigma^2)\theta{\rm d}\theta}\nonumber\\
+  &=\frac{\sigma^2\left(1-\exp(-\theta_{\tiny\astrosun}^2/2\sigma^2)\right)}{\sigma^2}\nonumber\\
+  &=1-\exp\left(-\frac{\theta_{\tiny\astrosun}^2}{2\sigma^2}\right)
+\end{align}
+ここで$\theta_{\tiny\astrosun}$は天体の視半径である.
+
+また$\sigma$は観測値から求めることができる.ここで太陽の視半径は主ビームの幅より十分小さいものとする.
+図\ref{fig:fig/pass_sun.png}のように固定されたアンテナの主ビーム中心を太陽が日周運動で通過するとき,ビームの分布をGauss関数と近似したことから
+受信機の出力信号もGauss関数となる.すなわち出力信号$V(t)$は以下の$v(t)$でfitできる.
+\begin{align}
+  \label{equ:v(t)}
+  v(t)=A+B\exp\left(-\frac{(t-t_0)^2}{2\sigma_t^2}\right)
+\end{align}
+ここで$A$, $B$は定数, $\sigma_t$は時間軸での幅である.
+さらに観測時の日周運動の角速度$\mu$は太陽の赤緯$\delta$を用いて
+\begin{align}
+  \label{equ:mu}
+  \mu=\frac{360\cos\delta}{24\times60\times60}\ [\si{\degree.\second^{-1}}]
+\end{align}
+となる.したがって$\sigma_t$を$\sigma$に変換以下の式で変換できる.
+\begin{align}
+  \sigma=\sigma_t\mu
+\end{align}
+またアンテナの主ビーム幅は半値全幅(HPBW)で表されるのでその値は
+\begin{align}
+  \label{equ:HPBW}
+  {\rm HPBW}=2\sqrt{2\ln2}\sigma
+\end{align}
+で与えられる.
+\mfig[width=6cm]{fig/pass_sun.png}{主ビームを通過する天体}

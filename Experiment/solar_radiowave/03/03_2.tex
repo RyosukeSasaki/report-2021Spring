@@ -1,2 +1,81 @@
 \subsection{Allan分散}
 \subsubsection{原理}
+受信機の性能,雑音が定常的であるならば信号を時間平均することで受信機の感動を高めることができる.
+しかし実際には受信機の性能は時間的に変動し,雑音もまた有限時間において完全にランダムではないことがわかっている.
+このため有効に感度を向上できる積分時間の上限が存在する.この時間を考えるためにAllan分散が用いられる.
+
+連続量$s(t)$を時間平均で測定することを考えると時刻$t$,積分時間$T$のとき観測される量は
+\begin{align}
+  x(T,t)=\frac{1}{T}\int^t_{t-T}s(t'){\rm d}t'
+\end{align}
+である.ここで時刻$t$での観測量$x_s=x(T,t)$と$T$秒後の観測量$x_r=x(T,t+T)$の差を取ると
+\begin{align}
+  d=x_s-x_r
+\end{align}
+この$d$の分散$\sigma_d^2$は
+\begin{align}
+  \sigma_d^2(T)&=\langle(d-\langle d\rangle)^2\rangle\nonumber\\
+  &=\langle d^2\rangle-\langle d\rangle^2
+\end{align}
+となる.ここで$x_s$と$x_r$は同じ連続量を見ているので, $\langle d\rangle=0$が成り立つとすると
+\begin{align}
+  \sigma_d^2(T)=\langle d^2\rangle
+\end{align}
+となる.Allan分散はこれに$1/2$を掛けた値と定義される.
+\begin{align}
+  \sigma_A^2(T)=:\frac{1}{2}\langle d^2\rangle
+\end{align}
+ここで$\langle d^2\rangle$を考えると
+\begin{align}
+  \langle d^2\rangle&=\left\langle(x_s-x_r)^2\right\rangle\nonumber\\
+  &=\langle x_s^2\rangle-2\langle x_sx_r\rangle+\langle x_r^2\rangle\nonumber
+\end{align}
+ここで$\langle x_s^2\rangle=\langle x_r^2\rangle$を仮定すると
+\begin{align}
+  \langle d^2\rangle=2(\langle x_s^2\rangle-\langle x_sx_r\rangle)\nonumber
+\end{align}
+となり,ここで自己相関関数$R(\tau)=\langle x(T,t)x(T,t+\tau)$を用いると
+\begin{align}
+  \langle d^2\rangle=2(R(0)-R(T))
+\end{align}
+となる.ここで$R(0)$は定数なので$R(T)$について考える.
+Wiener-Khinchinの定理より自己相関関数のFourier変換はパワースペクトル$S(\omega)$で表される.\cite{ishikawa40:online}
+\begin{align}
+  \mathcal{F}(R(T))=S(\omega)
+\end{align}
+一般的に$S(\omega)=|\omega|^{-\alpha}$と表され,これを逆フーリエ変換すると
+\begin{align}
+  \mathcal{F}^{-1}(|\omega|^{-\alpha})=a(\alpha)|T|^{\alpha-1}
+\end{align}
+となる.以上から
+\begin{align}
+  \sigma_A^2(T)\sim -R(T)=-a(\alpha)|T|^{\alpha-1}
+\end{align}
+である.ここで$-a(\alpha)$は正である.
+したがって$T$-$\sigma_A^2$グラフにおいて$\alpha=0$の成分は負の傾き,
+$\alpha=1$の成分は定数, $\alpha=2$の成分は正の傾きを持つことになり,
+それぞれをwhite noise, flicker noise, drift noiseと呼ぶ.
+また$T$-$\sigma_A^2$グラフにおいて$\sigma_A^2$が最小となるのは全ノイズの影響が最小になる積分時間と言える.
+\subsubsection{方法}
+室外機を屋内に設置し,アンテナ全体を電波吸収体で覆った.
+その状態で室温の黒体放射を1時間測定した.
+測定中は出力結果の人為的な変動を防ぐため,観測装置を安定に保つよう配慮した.
+次に測定用計算機上のAllan分散計算ツール allanを用いてAllan分散を計算した.
+ただしAllan分散の計算は$t>1000$のデータで行った.
+\subsubsection{結果}
+図\ref{fig:allan_raw}に常温黒体の測定結果を示す.また,図\ref{fig:allan}にAllan分散の$T$依存性を示す.
+図\ref{fig:allan}から$\sigma_A^2$は$T=59$で最小値を取るため, $t_{eff}=59$である.
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/allan_raw.tex}
+\caption{常温黒体の測定}
+\label{fig:allan_raw}
+\end{center}
+\end{figure}
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/allan.tex}
+\caption{$T$-$\sigma_A^2$グラフ}
+\label{fig:allan}
+\end{center}
+\end{figure}
