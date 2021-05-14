@@ -3,7 +3,7 @@ set output "hot_water.tex"
 #set terminal wxt
 #set size square
 
-set xlabel "経過時間$T$ / $\\si{\\second}$"
+set xlabel "経過時間$t$ / $\\si{\\second}$"
 set ylabel "電圧 / $\\si{\\volt}$"
 
 #set format x "$%.1t \\times 10^{%T}$"
