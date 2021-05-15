@@ -1,0 +1,136 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+%\usepackage{url}
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+
+\renewcommand{\appendixname}{補遺}
+
+\begin{document}
+%\title{物理学演習第3}
+%\author{佐々木良輔}
+%\date{}
+%\maketitle
+\subsection*{3-1.}
+\subsubsection*{(1) 解答}
+\begin{align*}
+  Z=\left(2\cosh (\beta\mu H)\right)^N
+\end{align*}
+\dotfill\\
+\subsubsection*{(2) 解説}
+分配関数$Z$は(3.5)式から微視的状態$\nu$について
+\begin{align*}
+  Z&=\sum_\nu{\rm e}^{-\beta E}\\
+  &=\sum_\nu{\rm e}^{\beta\mu H\sum_i \sigma_i}
+\end{align*}
+となる.ここで$\sigma_i=\pm1$を取るので
+\begin{align}
+  Z&=\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H\sum_i \sigma_i}\nonumber\\
+  &=\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}\\
+  &=\sum_{\sigma_1=\pm1}{\rm e}^{\beta\mu H\sigma_1} \sum_{\sigma_2=\pm1}{\rm e}^{\beta\mu H\sigma_2}\cdots \sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H\sigma_N}\nonumber\\
+  &=({\rm e}^{\beta\mu H}+{\rm e}^{-\beta\mu H})^N\nonumber\\
+  &=(2\cosh (\beta\mu H))^N\nonumber
+\end{align}
+となる.
+\clearpage
+\subsubsection*{(2) 解答}
+\begin{align*}
+  F=-\frac{N}{\beta}\log(2\cosh (\beta\mu H))
+\end{align*}
+\dotfill\\
+\subsubsection*{(2) 解説}
+(3.12)式から
+\begin{align}
+  F&=-\frac{1}{\beta}\log Z\\
+  &=-\frac{1}{\beta}\log (2\cosh (\beta\mu H))^N\nonumber\\
+  &=-\frac{N}{\beta}\log(2\cosh (\beta\mu H))
+\end{align}
+\clearpage
+\subsubsection*{(3) 解答}
+\begin{align*}
+  \langle M\rangle&=N\mu\tanh(\beta\mu H)\\
+\end{align*}
+\dotfill\\
+\subsubsection*{(3) 解説}
+(3.5)式から$M$の期待値は
+\begin{align*}
+  \langle M\rangle&=\sum_\nu p_\nu M_\nu\\
+  &=\sum_\nu \frac{1}{Z}{\rm e}^{\beta\mu H\sum_i\sigma_i}\mu\sum_{i=1}^N \sigma_i\\
+  &=\frac{\mu}{Z}\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}(\sigma_1+\sigma_2+\cdots+\sigma_N)
+\end{align*}
+ここで$\partial F/\partial H$を考えると(1), (2)より
+\begin{align*}
+  \frac{\partial F}{\partial H}&=\frac{\partial Z}{\partial H}\frac{\partial F}{\partial Z}\\
+  &=\frac{\partial}{\partial H}\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}\times\frac{-1}{\beta Z}\\
+\end{align*}
+ここで級数は有限であり,項別に微分可能なので
+\begin{align*}
+  \frac{\partial F}{\partial H}&=\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}\frac{\partial}{\partial H}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}\times\frac{-1}{\beta Z}\\
+  &=\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}\beta\mu(\sigma_1+\sigma_2+\cdots+\sigma_N)\times\frac{-1}{\beta Z}\\
+  &=\frac{-\mu}{Z}\sum_{\sigma_1=\pm1}\sum_{\sigma_2=\pm1}\cdots\sum_{\sigma_N=\pm1}{\rm e}^{\beta\mu H(\sigma_1+\sigma_2+\cdots+\sigma_N)}(\sigma_1+\sigma_2+\cdots+\sigma_N)
+\end{align*}
+したがって(3)式から
+\begin{align}
+  \langle M\rangle&=-\frac{\partial F}{\partial H}\nonumber\\
+  &=\frac{N}{\beta}\frac{\partial}{\partial H}\log(2\cosh(\beta\mu H))\nonumber\\
+  &=\frac{N}{\beta}\frac{2\beta\mu\sinh(\beta\mu H)}{2\cosh(\beta\mu H)}\nonumber\\
+  &=N\mu\tanh(\beta\mu H)=N\mu\tanh(\mu H/k_BT)
+\end{align}
+\clearpage
+\appendix
+\section{}
+原子が1個のとき$M$の期待値$\langle m\rangle$は
+\begin{align*}
+  \langle m\rangle&=\frac{-\mu{\rm e}^{-\beta\mu H}+\mu{\rm e}^{\beta\mu H}}{{\rm e}^{-\beta\mu H}+{\rm e}^{\beta\mu H}}\\
+  &=\mu\tanh(\beta\mu H)
+\end{align*}
+であり,原子が$N$個のときの期待値$\langle M\rangle$は$\langle m\rangle$の$N$倍になっている.これは各原子が相互作用せず独立に動くことに整合する.
+\section{}
+(4)式において両辺を体積$V$で割る.
+\begin{align*}
+  \frac{\langle M\rangle}{V}&=\frac{N}{V}\mu\tanh(\mu H/k_BT)\\
+  \langle I\rangle&=n\mu\tanh(\mu H/k_BT)
+\end{align*}
+ここで$\langle I\rangle$は磁化の期待値, $n$は単位体積あたりの原子数である.
+$\mu H/k_BT \ll 1$のとき,すなわち温度が十分高いとき$\langle I\rangle$を1次まで展開すると$\tanh x\simeq x+o(x^3)$から
+\begin{align*}
+  \langle I\rangle&=n\mu\frac{\mu H}{k_BT}
+\end{align*}
+ここで磁化率$\chi=I/H$を用いて
+\begin{align*}
+  \chi&=\frac{n\mu^2}{k_B}\frac{1}{T}=:\frac{C}{T}
+\end{align*}
+これはキュリーの法則とよばれる.また$C=n\mu^2/k_B$はキュリー定数である.
+\clearpage
+\section{}
+$\langle M\rangle$は図\ref{fig:M}のように振る舞う.
+ここで粒子数$N=N_A$ (アボガドロ数), $\mu=\mu_B$ (ボーア磁子), $H=50\si{\tesla}$とした.
+\begin{figure}[hptb]
+\begin{center}
+\input{fig.tex}
+\caption{$\langle M\rangle$の挙動}
+\label{fig:M}
+\end{center}
+\end{figure}
+\end{document}
