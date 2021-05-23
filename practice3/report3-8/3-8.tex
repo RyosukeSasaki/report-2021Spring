@@ -1,0 +1,94 @@
+\subsection*{3-8}
+\subsubsection*{(1)}
+角振動数$\omega$の量子的調和振動子のエネルギーは$n\in\mathbb{N}$を用いて$\hbar\omega(n+1/2)$なので
+\begin{align}
+  Z_1&=\sum_n{\rm e}^{-\beta\hbar\omega(n+\frac{1}{2})}\nonumber\\
+  &={\rm e}^{-\beta\hbar\omega/2}\sum_{n=0}^{\infty}{\rm e}^{-\beta\hbar\omega n}\nonumber\\
+  &={\rm e}^{-\beta\hbar\omega/2}\frac{1}{1-{\rm e}^{-\beta\hbar\omega}}
+\end{align}
+\subsubsection*{(2)}
+$\bm{n}=(n_x,n_y,n_z)$ ($n_i\in\mathbb{Z}$)を用いて
+\begin{align}
+  \bm{k}=\frac{2\pi}{L}\bm{n}
+\end{align}
+\subsubsection*{(3)}
+$\omega=v|\bm{k}|$と(2)の結果から
+\begin{align}
+  |\bm{n}|=\frac{L\omega}{2\pi v}
+\end{align}
+したがって角振動数が$\omega$以下の状態数$N(\omega)$は$L$に対して格子間隔が十分小さい時半径$L\omega/2\pi v$の球の体積で近似できるので
+\begin{align}
+  N(\omega)&=\frac{4}{3}\pi\frac{L^3\omega^3}{8\pi^3v^3}\nonumber\\
+  &=\frac{V\omega^3}{6\pi^2v^3}
+\end{align}
+状態密度$D_v(\omega)$は$N(\omega)$を微分し
+\begin{align}
+  D_v(\omega)&=\frac{{\rm d}}{{\rm d}\omega}N(\omega)\nonumber\\
+  &=\frac{V\omega^2}{2\pi^2v^3}
+\end{align}
+\subsubsection*{(4)}
+\begin{align}
+  \int^{\omega_D}_0D(\omega){\rm d}\omega&=N(\omega_D)\nonumber\\
+  3N&=\frac{V\omega_D^3}{6\pi^2}\left(\frac{1}{v_l^3}+\frac{1}{v_t^3}\right)
+\end{align}
+したがって
+\begin{align}
+  \frac{9N\omega^2}{\omega_D^3}&=\frac{9N\omega^2}{\cfrac{3N}{\cfrac{V}{6\pi^2}\left(\cfrac{1}{v_l^3}+\cfrac{1}{v_t^3}\right)}}\nonumber\\
+  &=\frac{\omega^2V}{2\pi^2}\left(\frac{1}{v_l^3}+\frac{1}{v_t^3}\right)=D(\omega)
+\end{align}
+\subsubsection*{(5)}
+\begin{align}
+  F&=-k_BT\sum_k\log Z_1(\omega_k)\nonumber\\
+  &=k_BT\sum_k\left(\frac{\hbar\omega_k}{2k_BT}+\log\left(1-{\rm e}^{-\hbar\omega_k/k_BT}\right)\right)
+\end{align}
+角振動数$\omega$から$\omega+{\rm d}\omega$の間にある状態数は$D(\omega){\rm d}\omega$なので$\omega_k$に関する和は積分に書き換えられ
+\begin{align}
+  F&=k_BT\int_0^\infty{\rm d}\omega\ D(\omega)\left(\frac{\hbar\omega}{2k_BT}+\log\left(1-{\rm e}^{-\hbar\omega/k_BT}\right)\right)\nonumber\\
+  &=\frac{9Nk_BT}{\omega_D^3}\int_0^\infty{\rm d}\omega\ \omega^2\left(\frac{\hbar\omega}{2k_BT}+\log\left(1-{\rm e}^{-\hbar\omega/k_BT}\right)\right)
+\end{align}
+$\omega$の範囲は$0$から$\omega_D$で全ての状態数を網羅しているので
+\begin{align}
+  F=\frac{9Nk_BT}{\omega_D^3}\int_0^{\omega_D}{\rm d}\omega\ \omega^2\left(\frac{\hbar\omega}{2k_BT}+\log\left(1-{\rm e}^{-\hbar\omega/k_BT}\right)\right)
+\end{align}
+\subsubsection*{(6)}
+エネルギー$E$は$E=\partial(\beta F)/\partial\beta$なので
+\begin{align}
+  E&=\frac{\partial}{\partial\beta}\frac{9N}{\omega_D^3}\int_0^{\omega_D}{\rm d}\omega\ \omega^2\left(\frac{\hbar\omega\beta}{2}+\log\left(1-{\rm e}^{-\hbar\omega\beta}\right)\right)\nonumber\\
+  &=\frac{9N}{\omega_D^3}\int_0^{\omega_D}{\rm d}\omega\ \omega^2\left(\frac{\hbar\omega}{2}+\frac{\hbar\omega}{{\rm e}^{\beta\hbar\omega}-1}\right)
+\end{align}
+\subsubsection*{(7)}
+\begin{align}
+  C_V=\frac{\partial E}{\partial T}&=\frac{9N}{\omega_D^3}\int_0^{\omega_D}{\rm d}\omega\ \frac{\partial}{\partial T}\omega^2\left(\frac{\hbar\omega}{2}+\frac{\hbar\omega}{{\rm e}^{\beta\hbar\omega}-1}\right)\nonumber\\
+  &=\frac{9N}{\omega_D^3}\int_0^{\omega_D}{\rm d}\omega\ \omega^2\frac{\hbar\omega}{k_BT^2}\frac{\hbar\omega{\rm e}^{\hbar\omega/k_BT}}{({\rm e}^{\hbar\omega/k_BT}-1)^2}
+\end{align}
+ここで$\hbar\omega/k_BT=t$, $\hbar\omega_D/k_B=\Theta_D$とすると
+\begin{align}
+  C_V&=\frac{9N}{\omega_D^3}\int_0^{\Theta_D/T}{\rm d}t\ k_B\frac{k_B^3T^3}{\hbar^3}t^4\frac{e^t}{(e^t-1)^2}\nonumber\\
+  &=3Nk_B\frac{3T^3}{\Theta_D^3}\int_0^{\Theta_D/T}{\rm d}t\ \frac{t^4e^t}{(e^t-1)^2}\nonumber\\
+  &=3Nk_Bf\left(\frac{\Theta_D}{T}\right)
+\end{align}
+ここで$f(x)=3/x^3\int_0^x{\rm d}t\ t^4e^t/(e^t-1)^2$とした.
+\subsubsection*{(8)}
+$T\gg\theta_D$のとき被積分項が$t^4e^t/(e^t-1)^2\sim t^2$とできることから
+\begin{align}
+  f(x)&\sim\frac{3}{x^3}\int_0^x{\rm d}t\ t^2\nonumber\\
+  &=1
+\end{align}
+したがって
+\begin{align}
+  C_V=3Nk_B
+\end{align}
+\subsubsection*{(9)}
+$T\ll\theta_D$のとき$x\rightarrow\infty$より積分公式
+\begin{align}
+  \int_0^x{\rm d}t\ \frac{t^4e^t}{(e^t-1)^2}\sim\frac{4\pi^4}{15}
+\end{align}
+から
+\begin{align}
+  f(x)&\sim 3Nk_B\frac{3T^3}{\Theta_D^3}\frac{4\pi^4}{15}
+  \rightarrow 0
+\end{align}
+となる.
+\subsubsection*{(10)}
+上の結果から$C_V$は$T\rightarrow0$で$0$に, $T\rightarrow\infty$で$3Nk_B$に漸近するとわかる.図\ref{fig:desmos-graph.png}にその概形を示す.
+\mfig[width=6cm]{desmos-graph.png}{$C_V$の概形(Desmos計算機にて描画)}
