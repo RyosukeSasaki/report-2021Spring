@@ -1,0 +1,61 @@
+\subsection*{(1)}
+\subsubsection*{1次元の場合}
+粒子$i$の運動量を$p_i$ $(i=1,2,\ldots,N)$とすると微視的状態$\nu$のときのエネルギー$E_\nu$は
+\begin{align}
+  E_\nu=\sum_i\frac{p_i^2}{2m}
+\end{align}
+したがって分配関数$Z$は考えている空間の体積(長さ)を$L$とすると
+\begin{align}
+  \begin{split}
+    Z=\sum_\nu{\rm e}^{-\beta E_\nu}&=\frac{2^N}{h^NN!}\int{\rm d}p_1\cdots{\rm d}p_N\int{\rm d}r_1\cdots{\rm d}r_N\ {\rm e}^{-\beta\sum_i\frac{p_i^2}{2m}}\\
+    &=\frac{2^N}{h^NN!}L^N\left(\int_{-\infty}^{\infty}{\rm d}p\ {\rm e}^{-\beta\frac{p^2}{2m}}\right)^N\\
+    &=\frac{2^N}{h^NN!}L^N\left(2\pi mk_BT\right)^{\frac{N}{2}}
+  \end{split}
+\end{align}
+2行目から3行目にかけてガウス積分を用いた.したがって自由エネルギー$F$は
+\begin{align}
+  \begin{split}
+    F=-k_BT\log Z&=-k_BTN\log\left(\frac{2L}{h}\sqrt{2\pi mk_BT}\right)+k_BT\log N!\\
+    &=-k_BTN\log\left(\frac{2L}{h}\sqrt{2\pi mk_BT}\right)+k_BT(N\log N-N)\\
+    &=-k_BTN\log\left(\frac{2L}{Nh}\sqrt{2\pi mk_BT}{\rm e}\right)
+  \end{split}
+\end{align}
+1行目から2行目にかけてStirlingの近似を用いた.ここで熱力学の関係式$P=-\partial F/\partial V$から
+\begin{align}
+  P=\frac{Nk_BT}{L}
+\end{align}
+これは状態方程式である.また内部エネルギー$U=\partial(\beta F)/\partial\beta$から
+\begin{align}
+  \begin{split}
+    U&=\frac{\partial}{\partial\beta}\beta\left(-\frac{N}{\beta}\log\left(\frac{2L}{Nh}\sqrt{2\pi m\frac{1}{\beta}}{\rm e}\right)\right)\\
+    &=\frac{1}{2}Nk_BT
+  \end{split}
+\end{align}
+これはエネルギー等分配則である.
+\clearpage
+\subsubsection*{2次元の場合}
+1次元の場合において$\bm{p}=(p_x,p_y)$とすると分配関数$Z$は,空間の体積(面積)$S$をもちいて
+\begin{align}
+  \begin{split}
+    Z&=\frac{2^N}{h^{2N}N!}S^N\left(\int{\rm d}\bm{p}\ {\rm e}^{-\beta\frac{\bm{p}^2}{2m}}\right)^N\\
+    &=\frac{2^N}{h^{2N}N!}S^N\left(\int_{-\infty}^{\infty}{\rm d}p_x\ {\rm e}^{-\beta\frac{p_x^2}{2m}}\int_{-\infty}^{\infty}{\rm d}p_y\ {\rm e}^{-\beta\frac{p_y^2}{2m}}\right)^N\\
+    &=\frac{2^N}{h^{2N}N!}S^N\left(2\pi mk_BT\right)^N
+  \end{split}
+\end{align}
+したがって自由エネルギー$F$は(3)と同様に
+\begin{align}
+  F=-k_BTN\log\left(\frac{2S}{Nh^2}2\pi mk_BTe\right)
+\end{align}
+よって状態方程式,エネルギー等分配則はそれぞれ
+\begin{align}
+  \begin{split}
+    P&=-\frac{\partial F}{\partial S}\\
+    &=\frac{Nk_BT}{S}
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    U&=\frac{\partial(\beta F)}{\partial \beta}\\
+    &=Nk_BT
+  \end{split}
+\end{align}

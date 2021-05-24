@@ -1,0 +1,105 @@
+\clearpage
+\subsection*{(3)}
+エネルギーが$\varepsilon$, $0$, $-\varepsilon$を取る粒子の数を$n_+$, $n_0$, $n_-$とする.
+このとき粒子のエネルギーが$\epsilon_i=\varepsilon,\ 0,\ -\varepsilon$を取る確率はそれぞれの期待値を用いて
+\begin{align}
+  p_i=\frac{\langle n_i\rangle}{N}
+\end{align}
+このときエントロピー$S$は
+\begin{align}
+  S=-Nk_B\sum_i p_i\log p_i
+\end{align}
+となる.またエネルギー$E$, 粒子数$N$について
+\begin{align}
+  \sum_i\epsilon_iNp_i&=\langle E\rangle\\
+  \sum_iNp_i&=N
+\end{align}
+が成り立つ.粒子数の期待値が一定になるとき,熱平衡状態にあるべきなので$S$は極大になる.
+したがって$S$を極大にする粒子数をラグランジュの未定定数法から求める.ラグランジアン$L$は
+\begin{align}
+  \begin{split}
+    L&=S+aE+bN\\
+    &=-Nk_B\sum_i p_i\log p_i+a\sum_i\epsilon_iNp_i+b\sum_iNp_i
+  \end{split}
+\end{align}
+ここでエントロピーが極大となる条件は各$p_i$について
+\begin{align}
+  \begin{split}
+    0&=\frac{\partial L}{\partial p_i}\\
+    0&=-k_BN\log p_i-k_BN+a\epsilon_iN+bN
+  \end{split}
+\end{align}
+すなわち
+\begin{empheq}[left=\empheqlbrace]{align}
+  \begin{split}
+    p_+=\exp\left(-1+\frac{a}{k_B}+\frac{b\varepsilon}{k_B}\right)\\
+    p_0=\exp\left(-1+\frac{a}{k_B}\right)\\
+    p_-=\exp\left(-1+\frac{a}{k_B}-\frac{b\varepsilon}{k_B}\right)
+  \end{split}
+\end{empheq}
+したがって
+\begin{align}
+  p_0^2=p_+p_-
+\end{align}
+となる.両辺に$N^2$をかければ(15)式から
+\begin{align}
+  \langle n_0\rangle^2=\langle n_+\rangle\langle n_-\rangle
+\end{align}
+ここでエネルギーは
+\begin{align}
+  \begin{split}
+    \langle E\rangle&=\varepsilon(\langle n_+\rangle-\langle n_-\rangle)\\
+    &=N\varepsilon\frac{\langle n_+\rangle-\langle n_-\rangle}{\langle n_+\rangle+\langle n_0\rangle+\langle n_-\rangle}\\
+    &=N\varepsilon\frac{\frac{\langle n_+\rangle}{\langle n_0\rangle}-\frac{\langle n_-\rangle}{\langle n_0\rangle}}{\frac{\langle n_+\rangle}{\langle n_0\rangle}+1+\frac{\langle n_-\rangle}{\langle n_0\rangle}}\\
+  \end{split}
+\end{align}
+ここで$r=\langle n_+\rangle/\langle n_0\rangle$を用いる.ただし(23)式から
+\begin{align}
+    r^{-1}=\frac{\langle n_0\rangle}{\langle n_+\rangle}=\frac{\langle n_-\rangle}{\langle n_0\rangle}
+\end{align}
+なので$\langle E\rangle$は以下のようになる.
+\begin{align}
+  \langle E\rangle=N\varepsilon\frac{r-r^{-1}}{r+1+r^{-1}}
+\end{align}
+
+次に分配関数$Z$,自由エネルギー$F$を考える.
+\begin{align}
+  \begin{split}
+    Z&=\sum_\nu{\rm e}^{-\beta\sum_i\epsilon_i}\\
+    &=\sum_{\epsilon_1}{\rm e}^{-\beta\sum_i\epsilon_1}\sum_{\epsilon_2}{\rm e}^{-\beta\sum_i\epsilon_2}\cdots\sum_{\epsilon_N}{\rm e}^{-\beta\sum_i\epsilon_N}\\
+    &=({\rm e}^{\beta\varepsilon}+{\rm e}^{-\beta\varepsilon}+1)^N
+  \end{split}
+\end{align}
+\begin{align}
+  F=-\frac{1}{\beta}N\log({\rm e}^{\beta\varepsilon}+{\rm e}^{-\beta\varepsilon}+1)
+\end{align}
+したがって温度$T$での内部エネルギーは
+\begin{align}
+  \begin{split}
+    U&=\frac{\partial(\beta F)}{\partial \beta}\\
+    &=N\varepsilon\frac{{\rm e}^{-\beta\varepsilon}-{\rm e}^{\beta\varepsilon}}{{\rm e}^{\beta\varepsilon}+{\rm e}^{-\beta\varepsilon}+1}
+  \end{split}
+\end{align}
+これと(26)式から
+\begin{align}
+  r={\rm e}^{-\beta\varepsilon}
+\end{align}
+したがって$r$の定義から
+\begin{align}
+  \begin{split}
+    \langle n_+\rangle=\langle n_0\rangle{\rm e}^{-\beta\varepsilon}\\
+    \langle n_-\rangle=\langle n_0\rangle{\rm e}^{\beta\varepsilon}
+  \end{split}
+\end{align}
+したがって
+\begin{align}
+  \begin{split}
+    N&=\langle n_+\rangle+\langle n_0\rangle+\langle n_-\rangle=\langle n_0\rangle(1+{\rm e}^{\beta\varepsilon}+{\rm e}^{-\beta\varepsilon})\\
+    \therefore\ &
+    \begin{cases}
+      \langle n_0\rangle&=\frac{N}{1+{\rm e}^{\varepsilon/k_BT}+{\rm e}^{-\varepsilon/k_BT}}\\
+      \langle n_+\rangle&=\frac{N{\rm e}^{-\varepsilon/k_BT}}{1+{\rm e}^{\varepsilon/k_BT}+{\rm e}^{-\varepsilon/k_BT}}\\
+      \langle n_-\rangle&=\frac{N{\rm e}^{\varepsilon/k_BT}}{1+{\rm e}^{\varepsilon/k_BT}+{\rm e}^{-\varepsilon/k_BT}}
+    \end{cases}
+  \end{split}
+\end{align}

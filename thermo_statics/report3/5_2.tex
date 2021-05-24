@@ -1,0 +1,32 @@
+\clearpage
+\subsection*{(2)}
+微視的状態を$\nu$と,粒子$i$のエネルギーを$\epsilon_i=0,\varepsilon$とするとエネルギー$E_\nu$は
+\begin{align}
+  E_\nu=\sum_{i=1}^N\epsilon_i
+\end{align}
+したがって分配関数$Z$は
+\begin{align}
+  \begin{split}
+    Z&=\sum_{\epsilon_1}\sum_{\epsilon_2}\cdots\sum_{\epsilon_N}{\rm e}^{-\beta\sum_i\epsilon_i}\\
+    &=\sum_{\epsilon_1}{\rm e}^{-\beta\epsilon_1}\sum_{\epsilon_2}{\rm e}^{-\beta\epsilon_2}\cdots\sum_{\epsilon_N}{\rm e}^{-\beta\epsilon_N}\\
+    &=(1+{\rm e}^{-\beta\varepsilon})^N
+  \end{split}
+\end{align}
+また自由エネルギー$F$は
+\begin{align}
+  F&=-\frac{1}{\beta}\log Z\\
+  &=-\frac{1}{\beta}N\log(1+{\rm e}^{-\beta\varepsilon})
+\end{align}
+ここで高分子の長さ$l$は微視的状態$\nu$においてエネルギー$\varepsilon$にある粒子の数を$n_\nu$とすると$l=an_\nu$である.
+また$E_\nu=\varepsilon n_\nu$なので$l$の期待値は状態が$\nu$にある確率$p_\nu$を用いて
+\begin{align}
+  \begin{split}
+    \langle l\rangle&=\sum_\nu p_\nu an_\nu\\
+    &=\sum_\nu \frac{1}{Z}{\rm e}^{-\beta E_\nu}a\frac{E_\nu}{\varepsilon}\\
+    &=\frac{a}{\varepsilon}\frac{\sum_\nu E_\nu{\rm e}^{-\beta E_\nu}}{Z}\\
+    &=-\frac{a}{\varepsilon}\frac{1}{Z}\frac{\partial}{\partial\beta}\sum_\nu{\rm e}^{-\beta E_\nu}\\
+    &=-\frac{a}{\varepsilon}\frac{1}{Z}\frac{\partial Z}{\partial\beta}\\
+    &=\frac{a}{\varepsilon}\frac{\partial(\beta F)}{\partial\beta}\\
+    &=\frac{Na}{1+{\rm e}^{-\beta\varepsilon}}=\frac{Na}{1+{\rm e}^{-\varepsilon/k_BT}}
+  \end{split}
+\end{align}
