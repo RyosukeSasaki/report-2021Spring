@@ -1,0 +1,22 @@
+reset
+set terminal tikz size 10cm, 10cm
+set output "width_FWHM.tex"
+#set terminal wxt
+set size square
+set samples 100000
+
+set xlabel "Slit Width / $\\si{\\micro\\metre}$"
+set ylabel "Beam Width / $\\si{\\nano\\metre}$"
+#a=0.00315923 pm 0.0001085
+#b=0.7021046 pm 0.03598
+a=1/250
+b=0
+y(x)=a*x+b
+fit y(x) "width_FWHM.dat" via a, b
+c=0.004714
+d=0
+g(x)=c*x+d
+
+set key bottom right
+
+plot "width_FWHM.dat" notitle lt 21 lc -1 ps 2, y(x) dt 2 lc -1 lw 2 title "$f(x)$", g(x) dt 5 lc -1 lw 2 title "$g(x)$"
