@@ -9,6 +9,15 @@ set xlabel "Slit Width / $\\si{\\micro\\metre}$"
 set ylabel "Beam Width / $\\si{\\nano\\metre}$"
 #a=0.00315923 pm 0.0001085
 #b=0.7021046 pm 0.03598
+
+set xrange [50:550]
+set yrange [0.2:1.8]
+
+set xtics 0,100,600
+set mxtics 2
+set ytics 0.2,0.4,1.8
+set mytics 2
+
 a=1/250
 b=0
 y(x)=a*x+b

@@ -9,6 +9,11 @@ set ylabel "$V_{out}$ / $\\si{\\volt}$"
 set xrange [0:35]
 set yrange [-0.8:-0.45]
 
+set xtics 0,10,40
+set mxtics 2
+set ytics -0.8,0.1,-0.5
+set mytics 2
+
 a=-0.1
 b=-0.45
 f(x)=a*x+b

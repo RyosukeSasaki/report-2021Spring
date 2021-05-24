@@ -6,7 +6,12 @@ set size square
 set samples 100000
 
 set xrange [0:32]
-set yrange [0:20]
+set yrange [0:22]
+
+set xtics 0,10,30
+set mxtics 2
+#set ytics 0,0,0
+#set mytics 2
 
 set xlabel "Current / $\\si{\\milli\\ampere}$"
 set ylabel "Beam Width / $\\si{\\nano\\metre}$"

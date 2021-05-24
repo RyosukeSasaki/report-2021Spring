@@ -8,8 +8,16 @@ set output oname
 set size square
 set samples 100000
 
-set xlabel "Slit Width / $\\si{\\micro\\metre}$"
-set ylabel "Beam Width / $\\si{\\nano\\metre}$"
+set xrange [60:120]
+set yrange [0.2:0.5]
+
+set xtics 60,20,120
+set mxtics 2
+set ytics 0.2,0.1,0.5
+set mytics 2
+
+set xlabel "$D$ / $\\si{\\micro\\metre}$"
+set ylabel "$t/T$ / $\\si{\\nano\\metre}$"
 #a=0.00405648, b=-0.0160335
 #set key below
 a=0.004
