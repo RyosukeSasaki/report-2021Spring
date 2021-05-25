@@ -1,0 +1,38 @@
+\subsection*{問1}
+ここでは密度行列のDjikstra法とBellman-Ford法を比較した.
+図\ref{fig:graph/dijkstra.tex}にDijkstra法でのノード数$N$とUpdateの回数を示す.
+またそれぞれの系列について$y(x)=ax^n$という関数で最小二乗fittingを行った.
+表\ref{tab:dijkstra_n}にDense graphの場合とSparse graphの場合で得られた$n$を示す.
+したがってそれぞれの系列で計算量は$O(N^2)$程度になっていることがわかる.
+
+また図\ref{fig:graph/bellman.tex}にBellman-Ford法でのノード数$N$とUpdateの回数を示す.
+これについても同様に$y(x)=ax^n$でfittingを行い,その結果は表のようになった.
+したがってDense graphでは概ね$O(N^2)$の計算量であるのに対し, Sparse graphでは計算量が減っていると考えられる.
+\begin{table}[h]
+\caption{Dijkstra法での各系列の次数}
+\label{tab:dijkstra_n}
+\centering
+\begin{tabular}{c|c}
+\hline
+&$n$\\
+\hline \hline
+Dense graph&$2.00\pm0.00$\\
+Sparse graph&$2.00\pm0.00$\\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+  \caption{Bellman-Ford法での各系列の次数}
+  \label{tab:dijkstra_n}
+  \centering
+  \begin{tabular}{c|c}
+  \hline
+  &$n$\\
+  \hline \hline
+  Dense graph&$1.99\pm0.00$\\
+  Sparse graph&$1.41\pm0.00$\\
+  \hline
+  \end{tabular}
+  \end{table}
+\gnu{Dijkstra法でのノード数と計算量の関係}{graph/dijkstra.tex}
+\gnu{Bellman-Ford法でのノード数と計算量の関係}{graph/bellman.tex}
