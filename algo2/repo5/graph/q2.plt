@@ -8,6 +8,7 @@ set xlabel "$N$"
 set ylabel "計算量 / $\\times 10^6$"
 
 #set format y "$%.1t$"
+set format y "$%.1t$"
 
 set xrange [0:2050]
 #set yrange [0:0]

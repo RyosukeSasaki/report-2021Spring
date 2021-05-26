@@ -2,7 +2,7 @@
 \bibliographystyle{jplain}
 
 \usepackage{url}
-
+\usepackage{multirow}
 \usepackage{graphicx}
 \usepackage{gnuplot-lua-tikz}
 %\usepackage{pgfplots}
@@ -10,6 +10,27 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{bm}
 \usepackage{siunitx}
+
+\usepackage{listings,jvlisting} %日本語のコメントアウトをする場合jvlisting（もしくはjlisting）が必要
+%ここからソースコードの表示に関する設定
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
 
 \makeatletter
 \def\fgcaption{\def\@captype{figure}\caption}
@@ -41,5 +62,15 @@
 \date{}
 \maketitle
 \input{01.tex}
+\clearpage
+\input{02.tex}
+\input{03.tex}
+\clearpage
+\input{04.tex}
+\clearpage
+\input{05.tex}
+\clearpage
+\appendix
 \bibliography{ref.bib}
+\input{src.tex}
 \end{document}

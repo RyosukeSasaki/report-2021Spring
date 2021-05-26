@@ -1,0 +1,26 @@
+\subsection*{問4}
+OpenMPを用いてQuick sortを並列化しスレッド数と計算時間の関係を調べた.ソースコードをListing \ref{fuga}に示す.
+再帰呼出しが5回行われるまでは新規タスクを生成し,それ以上の深さでは逐次的に計算した.
+また計算を実行した計算機の諸元を表に示す.
+図\ref{fig:graph/quick.tex}にスレッド数と計算時間の関係を示す.
+計算時間はスレッド数が1, 2, 4, 6それぞれの場合で10回計算を行い,その平均を取った.
+ここで全計算量に対して並列処理が可能な部分の割合を$r$,スレッド数を$N$とすると
+計算時間$T$は$T\propto r/N+(1-r)$となると考えられるので,計測された計算時間を$y(x)=a(r/x+(1-r))$
+という関数で最小二乗fittingを行い図\ref{fig:graph/quick.tex}の点線を得た.
+fittingにより$r=0.604\pm0.076$を得た.すなわち並列化可能部分の割合が6割程度であると考えられる.
+\gnu{計算時間とスレッド数の関係}{graph/quick.tex}
+\begin{table}[h]
+\caption{計算機の諸元}
+\label{tab:syogen}
+\centering
+\begin{tabular}{cc}
+\hline
+&内容\\
+\hline \hline
+CPU&intel Xeon E5-2690 v4 ($2.6\ \si{\giga\hertz}$, 仮想マシンへの割当は6コア)\\
+OS&Ubuntu 20.04 LTS\\
+RAM&$115.38\ \si{\giga B}$ (/proc/meminfoから)\\
+他&Azure lab service上のインスタンス\\
+\hline
+\end{tabular}
+\end{table}

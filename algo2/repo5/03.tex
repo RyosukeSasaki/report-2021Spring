@@ -1,0 +1,60 @@
+\subsection*{問3}
+文字列検索のアルゴリズムとしてBitap法というものがある.
+他のアルゴリズムと比較してBitap法はあいまい検索に対応する,検索がビット演算のみで行われるため高速であるといった特徴がある.\cite{Bitap:online}
+
+Bitap法は検索パターン$p$から生成されるビットマスクを用いたビット演算により状態遷移図を遷移させることで検索を行う.
+例として対象文字列$T$をabdcababca, 検索パターン$p$をabcaとする.このとき各文字に対するビットマスク$m_i$は表\ref{tab:bitmask}のようになる.
+ただし$m_0$はパターンに含まれない全ての文字に対応する.
+このように文字iに対応するビットマスクはパターンにおいてiが存在するところに$1$が立つ.
+また状態遷移図としてパターン文字数と同じ長さのビット列(レジスタ$R$)を用いる.
+レジスタに対し以下の演算を行うことで検索を行う.ただしレジスタの初期状態は全ビットが$0$である.\cite{Bitap:online}
+\begin{enumerate}
+  \item レジスタを1ビット左にシフトする
+  \item LSBに1を立てる
+  \item 現在位置の文字に対応するマスクをAND演算する
+  \item 次の文字に進み同じ演算を繰り返す.
+\end{enumerate}
+これにしたがって演算をした場合のレジスタの遷移を表\ref{tab:seni}に示す.
+表\ref{tab:seni}のようにレジスタの$n$番目に1が立っているとき,現在の検索位置において$p$と$T$が$n$文字目まで一致している.
+すなわちMSBに$1$が立ったときパターンが一致している.
+
+また$p$が"ab.a"のようにあいまい部分を含んでいるときビットマスクを表のようにすることで検索を実行できる.
+\begin{table}[h]
+\caption{ビットマスク}
+\label{tab:bitmask}
+\centering
+\begin{tabular}{ccccc}
+$m_i${\textbackslash}$p$&a&b&c&a\\
+\hline \hline
+$m_a$&1&0&0&1\\
+$m_b$&0&1&0&0\\
+$m_c$&0&0&1&0\\
+$m_0$&0&0&0&0\\
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{状態遷移}
+\label{tab:seni}
+\centering
+\begin{tabular}{c|ccccccccccc}
+&&\multicolumn{10}{c}{入力文字列}\\
+&初期状態&a&b&d&c&a&b&a&b&c&a\\
+\hline \hline
+\multirow{4}{*}{$R$}&0&1&0&0&0&1&0&1&0&0&0\\
+&0&0&1&0&0&0&1&0&1&0&0\\
+&0&0&0&0&0&0&0&0&0&0&0\\
+&0&0&0&0&0&0&0&0&0&0&1
+\end{tabular}
+\end{table}
+\begin{table}[h]
+  \caption{ビットマスク}
+  \label{tab:bitmask}
+  \centering
+  \begin{tabular}{ccccc}
+  $m_i${\textbackslash}$p$&a&b&.&a\\
+  \hline \hline
+  $m_a$&1&0&1&1\\
+  $m_b$&0&1&1&0\\
+  $m_0$&0&0&1&0\\
+  \end{tabular}
+  \end{table}
