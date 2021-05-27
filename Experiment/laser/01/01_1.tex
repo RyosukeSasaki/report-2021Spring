@@ -1,0 +1,82 @@
+\subsection{レーザーの共振原理}
+Light Amplification by Stimulated Emission of Radiation (LASER,レーザー)は誘導放射により増幅された光である.
+放射とは励起した媒質原子が基底状態に遷移する際に電磁波を放出する過程であり,誘導放射と自発放射の2種類がある.
+自発放射は励起した原子がある確率で自発的に基底状態に遷移する現象であるのに対し,
+誘導放射は電場との相互作用により原子の状態が遷移する現象である.
+誘導放射により放出される電磁波は外部の電場と同位相である.
+したがって誘導放射が支配的な電磁波は位相が時間的,空間的に均一であり,
+このような電磁波をコヒーレント(coherent)光と呼ぶ.
+
+媒質中を進行する光は上記のように誘導放射と自発放射の成分があり,その輻射強度$I$の変化は(\ref{qeu:radiation})のように表される.
+\begin{align}
+  \label{qeu:radiation}
+  \frac{{\rm d}I}{{\rm d}x}\propto AN_u+BIN_u-BIN_l=AN_u-BI(N_l-N_u)
+\end{align}
+ここで$N_u$は励起状態, $N_l$は基底状態の原子の密度である.
+(\ref{qeu:radiation})の第1項は自発放射,第2項は誘導放射による自発放射,第3項は媒質による吸収を表す.
+吸収は誘導放射の逆過程であるため同じ係数が掛かっている.
+(\ref{qeu:radiation})は非同時線形微分方程式であり,その解は以下のようになる.
+\begin{align}
+  I(x)=\frac{AN_u}{B(N_l-N_u)}+C{\rm e}^{-B(N_l-N_u)x}
+\end{align}
+ここで$N_l>N_u$のときは$x\rightarrow\infty$で第2項が0に収束することから自発放射が支配的に,
+$N_u>N_l$のときは第2項が発散することから誘導放射が支配的になるとわかる.
+レーザーでは$N_u>N_l$なる状態を人工的に作り,共振器を用いて媒質中での進行距離を大きくすることで誘導放射が支配的な光を生成する.
+また$N_u>N_l$なる分布を反転分布と呼ぶ.
+
+共振器は図\ref{fig:fig/fig1.png}のような構成になっている.
+レーザーが実際に発振するには前述の反転分布よりも強い条件が必要になる.
+それは共振器から半透鏡や窓を用いて光を取り出したり,回折などにより損失が発生するためである.
+したがって実際に発振が起きるには$N_u-N_l>N_{th}$なる条件が必要になる.
+ここで$N_{th}$は損失の大きさによって定まる閾値である.
+\mfig[width=12cm]{fig/fig1.png}{共振器の概略図}
+また実際に放射される光は図\ref{fig:mode}のように媒質の熱運動によるドップラー効果や自発放射によりある程度の幅$f\pm\Delta f$を持っている.
+この中で共振器の内部で定在波として存在できる波長のみが選択的に増幅される.
+共振器の長さを$L$とすると周波数$\nu$の光が共振器内で定在波として存在する条件は
+\begin{align}
+  \nu_m=\frac{mc}{2L}\qquad (m\in\mathbb{N})
+\end{align}
+であり$\nu_m$が放射光の分布幅$2\Delta f$に収まっていれば増幅され発振する.
+それぞれの$m$に対応する光軸方向の電磁場の分布を縦モードと呼ぶ.
+また電磁場は光軸に垂直な方向にも分布を持ち,これを横モードと呼ぶ.
+横モードは軸からの距離$r$と軸方向$z$について
+\begin{align}
+  E=E_0(z){\rm e}^{-(r/w(z))^2}
+\end{align}
+で表され,このようなビームをガウスビームと呼ぶ.
+$w(z)$はビーム幅に関する値でスポットサイズという.
+\begin{figure}[htbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[ticks=none,
+        axis lines=center,
+        ymin=0,
+        ymax=0.6,
+        ylabel=$I_\nu$,
+        xlabel=$\nu$,
+        axis line style = thick,
+        width=12cm,
+        height=7cm
+        ]
+        \addplot[domain=0:8,samples=100]{e^(-(x-4)^2)/2};
+        \draw [] (axis cs:0.7,0.35) node [above] {$m=1$};
+        \draw [] (axis cs:2,0.35) node [above] {$2$};
+        \draw [] (axis cs:3,0.35) node [above] {$3$};
+        \draw [] (axis cs:4,0.35) node [above] {$4$};
+        \draw [] (axis cs:5,0.35) node [above] {$5$};
+        \draw [] (axis cs:6,0.35) node [above] {$6$};
+        \draw [] (axis cs:7,0.35) node [above] {$7$};
+        \draw [] (axis cs:4,0.5) node [above] {放射光の分布};
+        \draw[-latex,black] (axis cs:1,0) -- (axis cs:1,0.35);
+        \draw[-latex,black] (axis cs:2,0) -- (axis cs:2,0.35);
+        \draw[-latex,black] (axis cs:3,0) -- (axis cs:3,0.35);
+        \draw[-latex,black] (axis cs:4,0) -- (axis cs:4,0.35);
+        \draw[-latex,black] (axis cs:5,0) -- (axis cs:5,0.35);
+        \draw[-latex,black] (axis cs:6,0) -- (axis cs:6,0.35);
+        \draw[-latex,black] (axis cs:7,0) -- (axis cs:7,0.35);
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  \caption{共振器のモード}
+  \label{fig:mode}
+\end{figure}

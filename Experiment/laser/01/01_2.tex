@@ -1,0 +1,22 @@
+\subsection{ガウスビームの拡散}
+ガウスビームは回折によって伝搬に伴い広がりを持つようになり,やがて球面波となる.
+任意の位置でのガウスビームのスポットサイズ$w(z)$と波面の曲率半径は以下で与えられる.
+また図\ref{fig:w(z)}, 図\ref{fig:R(z)}に$w(z)$, $R(z)$
+のプロットを示す.図\ref{fig:w(z)}は片対数である.
+ただし$w_0=1\si{\milli\metre}$, $\lambda=600\si{\nano\metre}$とした.
+図\ref{fig:w(z)}から$z\simeq10\si{\metre}$程度までは一定のビーム幅でその後急速に拡散しているのがわかる.
+\begin{align}
+  w(z)&=\sqrt{w_0^2+\left(\frac{\lambda z}{\pi w_0}\right)^2}\\
+  R(z)&=z+\frac{\pi^2w_0^4}{\lambda^2z}
+\end{align}
+\clearpage
+\begin{figure}[hptb]
+\begin{center}
+\input{graph/other/beam_w.tex}
+\caption{$z$-$w(z)$の関係}
+\label{fig:w(z)}
+\input{graph/other/beam_R.tex}
+\caption{$z$-$R(z)$の関係}
+\label{fig:R(z)}
+\end{center}
+\end{figure}
