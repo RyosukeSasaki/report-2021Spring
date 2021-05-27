@@ -1,5 +1,5 @@
 reset
-set terminal tikz size 10cm, 10cm
+set terminal tikz size 9cm, 9cm
 set output "beam_w.tex"
 #set terminal wxt
 set size square

@@ -1,0 +1,42 @@
+\subsection{分光計について}
+分光計の模式図を図\ref{fig:fig/fig2.png}に示す.
+有限の幅を持ったスリット$S_1$から入射した光が回折格子で反射し$S_2$から出る.
+このとき入射角$\alpha=\gamma+\theta$, 出射角$\beta=\gamma-\theta$であり,それぞれ$\delta\alpha$, $\delta\beta$の幅を持つ.
+ここで回折条件は格子定数$d$として
+\begin{align}
+  \begin{split}
+    \lambda\pm\delta\lambda&=d|\sin(\alpha\pm\delta\alpha)-\sin(\beta\pm\delta\beta)|\\
+    &\simeq d|\sin\alpha-\sin\beta\pm(\cos\alpha\delta\alpha-\cos\beta\delta\beta)|\\
+  \end{split}
+\end{align}
+となる.ここで$\delta\alpha,\delta\beta\ll1$として近似した.
+$\lambda$に関する部分を見ると
+\begin{align}
+  \begin{split}
+    \pm\lambda&=d(\sin\alpha-\sin\beta)\\
+    &=2d\sin\theta\cos\gamma
+  \end{split}
+\end{align}
+となり,回折格子を回転させることで任意の波長の光を取り出せることがわかる.
+また$\delta\lambda$に関する部分を見ると
+\begin{align}
+    \delta\lambda&=d|\cos\alpha\delta\alpha-\cos\beta\delta\beta|
+\end{align}
+ここで誤差の伝搬則を用いると
+\begin{align}
+  |\delta\lambda|=d\sqrt{(\cos\alpha\delta\alpha)^2+(\cos\beta\delta\beta)^2}
+\end{align}
+となる.ここで幾何学的に
+\begin{align}
+  F\delta\alpha\simeq x_1\cos\gamma
+\end{align}
+なので$x_1=x_2=x$のもとで
+\begin{align}
+  |\delta\lambda|=d\sqrt{\left(\frac{x\cos\gamma}{F}\cos\alpha\right)^2+\left(\frac{x\cos\gamma}{F}\cos\beta\right)^2}
+\end{align}
+さらに$\gamma,\alpha,\beta\ll1$と仮定すると波長の幅は以下のようになる.
+\begin{align}
+  |\delta\lambda|\simeq \frac{\sqrt{2}d}{F}x
+\end{align}
+\clearpage
+\mfig[width=6cm]{fig/fig2.png}{分光計の模式図}
