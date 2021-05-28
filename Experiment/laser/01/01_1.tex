@@ -52,11 +52,13 @@ $w(z)$はビーム幅に関する値でスポットサイズという.
         axis lines=center,
         ymin=0,
         ymax=0.6,
-        ylabel=$I_\nu$,
-        xlabel=$\nu$,
+        ylabel=輻射強度$I_\nu$,
+        xlabel=周波数$\nu$,
         axis line style = thick,
         width=12cm,
-        height=7cm
+        height=7cm,
+        ylabel near ticks,
+        xlabel near ticks,
         ]
         \addplot[domain=0:8,samples=100]{e^(-(x-4)^2)/2};
         \draw [] (axis cs:0.7,0.35) node [above] {$m=1$};

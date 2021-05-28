@@ -1,1 +1,63 @@
 \subsection{FPIについて}
+Fabry-Perrot Interderometer (FPI, ファブリ・ペロー干渉計)は任意の波長を選択的に取り出す光学機器である.
+図にFPIの模式図を示す.
+2つの半透鏡が向かいあわせに設置され,共振器長$D$が可変できるようになっている.
+このとき周波数$\nu$の光が共振器内で定在波として存在する条件は
+\begin{align}
+  \nu_m=\frac{mc}{2D}\qquad(m\in\mathbb{N})
+\end{align}
+であり$D$を可変することで特定の波長を選択的に取り出すことができる.
+$D$を一定の速度で掃引するとモードの異なるスペクトルパターンが周期的に現れ,これを測定することでスペクトルを高い分解能で測定できる.
+
+FPIを用いてHe-Neレーザーのスペクトルを調べることを考える.
+He-Neレーザーは多モード発振しておりそのここでは$\lambda_1$と$\lambda_2$にピークを持つとする.
+したがってFPIスペクトルは図\ref{fig:He-Ne_FPI}のようになる.したがって以下が成り立つ.
+\begin{align}
+  \Delta D_1&=\frac{(m+1)\lambda_1}{2}-\frac{m\lambda_1}{2}=\frac{\lambda_1}{2}\\
+  \Delta D_2&=\frac{m\lambda_2}{2}-\frac{m\lambda_1}{2}=\frac{m\Delta\lambda}{2}
+\end{align}
+ここで実際に測定されるのはピーク間の時間間隔であるが$D$の掃引速度が一定($=v$)であるならば
+図\ref{fig:He-Ne_FPI}のように$\Delta_1=vT,\Delta_2=vt$となるので
+\begin{align}
+  \frac{t}{T}=\frac{\Delta D_2}{\Delta D_1}=\frac{m\Delta\lambda}{\lambda}
+\end{align}
+である.更に干渉条件$D\sim\frac{m\lambda}{2}$より$m$を消去すると
+\begin{align}
+  \frac{t}{T}=\frac{2\Delta\lambda}{\lambda^2}D
+\end{align}
+となるので$\lambda,D$が既知ならば$t/T$から$\Delta\lambda$が求まる.
+\begin{figure}[htbp]
+  \begin{center}
+    \begin{tikzpicture}
+      \begin{axis}[ticks=none,
+        axis lines=center,
+        ymin=0,
+        ymax=0.5,
+        xmin=1,
+        xmax=7,
+        ylabel=輻射強度$I$,
+        xlabel=共振器長$D$,
+        axis line style = thick,
+        width=12cm,
+        height=7cm,
+        ylabel near ticks,
+        xlabel near ticks,
+        ]
+        \draw [] (axis cs:4,0.37) node [above] {$\Delta D_1=vT$};
+        \draw [] (axis cs:2.75,0.22) node [above] {$\Delta D_2=vt$};
+        \draw [] (axis cs:5.4,0.4) node [above] {$\tfrac{(m+1)\lambda_1}{2}$};
+        \draw [] (axis cs:6.1,0.4) node [above] {$\tfrac{(m+1)\lambda_2}{2}$};
+        \draw [] (axis cs:2.5,0.4) node [above] {$\tfrac{m\lambda_1}{2}$};
+        \draw [] (axis cs:3.0,0.4) node [above] {$\tfrac{m\lambda_2}{2}$};
+        \draw[-latex,red] (axis cs:2.5,0) -- (axis cs:2.5,0.35);
+        \draw[-latex,red] (axis cs:3,0) -- (axis cs:3,0.2);
+        \draw[-latex,red] (axis cs:5.5,0) -- (axis cs:5.5,0.35);
+        \draw[-latex,red] (axis cs:6,0) -- (axis cs:6,0.2);
+        \draw[latex-latex,black] (axis cs:2.5,0.37) -- (axis cs:5.5,0.37);
+        \draw[latex-latex,black] (axis cs:2.5,0.22) -- (axis cs:3,0.22);
+      \end{axis}
+    \end{tikzpicture}
+  \end{center}
+  \caption{He-NeレーザーのFPIスペクトル}
+  \label{fig:He-Ne_FPI}
+\end{figure}
