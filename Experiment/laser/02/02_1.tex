@@ -34,9 +34,19 @@ $\lambda$に関する部分を見ると
 \begin{align}
   |\delta\lambda|=d\sqrt{\left(\frac{x\cos\gamma}{F}\cos\alpha\right)^2+\left(\frac{x\cos\gamma}{F}\cos\beta\right)^2}
 \end{align}
-さらに$\gamma,\alpha,\beta\ll1$と仮定すると波長の幅は以下のようになる.
+さらに$\gamma,\alpha,\beta\ll1$と仮定するとスペクトルの幅は以下のようになる.
 \begin{align}
   |\delta\lambda|\simeq \frac{\sqrt{2}d}{F}x
 \end{align}
-\clearpage
+
+分光計に単色光を入射した場合の出力が半値幅$2|\delta\lambda|$すなわち$\sigma_a=\delta\lambda/2\sqrt{2\ln 2}$のガウス関数であるとする.
+このとき$\sigma_\lambda$のガウス関数型スペクトルを持った光を入射すると,その出力のスペクトル$H$は以下の畳み込み積分で表される.
+\begin{align}
+  \begin{split}
+    H(\lambda)&=\int_{-\infty}^{\infty}\frac{1}{2\pi\sigma_a\sigma_\lambda}{\rm e}^{-(t/\sqrt{2}\sigma_a)^2}{\rm e}^{-((\lambda-t)/\sqrt{2}\sigma_\lambda)^2}{\rm d}t\\
+    &=\frac{{\rm e}^{-\lambda^2/2(\sigma_a^2+\sigma_\lambda^2)}}{2\pi\sigma_a\sigma_\lambda}\int^\infty_{-\infty}\exp\left(-\frac{\sigma_a^2+\sigma_\lambda^2}{2\sigma_a^2\sigma_\lambda^2}\left(t-\frac{\sigma_a^2\sigma_\lambda^2}{\sigma_a^2+\sigma_\lambda^2}\frac{\lambda}{\sigma_\lambda^2}\right)^2\right)\\
+    &=\frac{1}{\sqrt{2\pi(\sigma_a^2+\sigma_\lambda^2)}}\exp\left(-\frac{t^2}{2(\sigma_a^2+\sigma_\lambda^2)}\right)
+  \end{split}
+\end{align}
+すなわちガウス関数型のスペクトル分布を持った光を分光器に入力した場合も同様にガウス関数型のスペクトルが得られることがわかる.
 \mfig[width=6cm]{fig/fig2.png}{分光計の模式図}
