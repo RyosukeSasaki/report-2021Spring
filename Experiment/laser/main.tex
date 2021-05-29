@@ -10,6 +10,10 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{bm}
 \usepackage{siunitx}
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzset{system call={/usr/bin/uplatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource" && dvipdfmx "\image"}}
+%\pgfkeys{/pgf/images/include external/.code={\includegraphics{#1}}}
 
 \makeatletter
 \def\fgcaption{\def\@captype{figure}\caption}
@@ -26,7 +30,7 @@
 \end{center}
 }
 \newcommand{\gnu}[2]{
-  \begin{figure}[htb]
+\begin{figure}[htb]
 \begin{center}
 %\input{#2}
 \caption{#1}
@@ -38,18 +42,9 @@
 \begin{document}
 \input{01.tex}
 \input{02.tex}
+\input{03.tex}
+\input{04.tex}
+\input{05.tex}
 %\gnu{day1 fitting data}{graph/day1/day1_02.tex}
-%\gnu{test}{graph/day2/Aa.tex}
-%\gnu{test}{graph/day2/Ab.tex}
-%\gnu{test}{graph/day2/Ac.tex}
-%\gnu{test}{graph/day2/Ad.tex}
-%\gnu{test}{graph/day2/Ae.tex}
-%\gnu{test}{graph/day2/Ba_slope.tex}
-%\gnu{test}{graph/day2/Bb_slope.tex}
-%\gnu{test}{graph/day2/Bc_slope.tex}
-%\gnu{test}{graph/day2/Bd_slope.tex}
-%\gnu{test}{graph/day2/width_FWHM.tex}
-%\gnu{test}{graph/day2/current_FWHM.tex}
-%\gnu{test}{graph/day3/day3_1.tex}
 \bibliography{ref.bib}
 \end{document}
