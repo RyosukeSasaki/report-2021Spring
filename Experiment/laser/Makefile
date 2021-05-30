@@ -1,4 +1,4 @@
-FILES=report-cover.pdf\
+FILES=report-cover-las.pdf\
 			out/main.pdf
 R=1
 NUM=03
