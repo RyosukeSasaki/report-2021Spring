@@ -1,0 +1,23 @@
+\subsection{分光スペクトルについて}
+(\ref{equ:|deltalambda|})式で示したように光線が有限幅のスリット全幅から入射するとき
+スリット幅$x$とレーザー線幅$\delta\lambda$の間には線形関係が存在すると考えられる.
+ここで格子定数$d=1/1200\ \si{\milli\metre}$, $F=250\ \si{\milli\metre}$とすると
+(\ref{equ:|deltalambda|})式は
+\begin{align}
+  \delta\lambda=4.714\times10^{-3}\ \si{\nano\metre.\micro\metre^{-1}}\times x\ \si{\micro\metre}
+\end{align}
+となる.一方で図\ref{fig:graph/day2/width_FWHM.tex}を直線でfittingすると
+\begin{align}
+  y=3.159\times10^{-3}x+7.210\times10^{-2}
+\end{align}
+となる.それぞれを図\ref{fig:graph/day2/width_FWHM.tex}に重ねてプロットすると図\ref{fig:graph/day2/width_FWHM_fit.tex}のようになる.
+このように測定データには線形関係が見られ(\ref{equ:|deltalambda|})式ともオーダーが一致していることがわかる.
+またこのことからLDからのレーザー光はスリット幅よりも十分大きな線幅を持っていると考えられる.
+\gnu{スリット幅と線幅の関係}{graph/day2/width_FWHM_fit.tex}
+\clearpage
+
+また図\ref{fig:graph/day2/current_FWHM.tex}から印加電流の増大にしたがって線幅が減少していることがわかる.
+\ref{subsec:laser_theory}節で述べたレーザーの発振原理から考えると,
+電流の増加に伴い中心波長がより選択的に増幅され,ピークが高くなることにより相対的に線幅が細くなっていると考えられる.
+また図\ref{fig:graph/day2/current_FWHM.tex}を見ると$20$から$25\ \si{\milli\ampere}$に不連続な変化があるのがわかる.
+これは入力電流が\ref{subsec:laser_thresh}で求めた発振閾値を超えたことによりレーザーとして動作を始め,増幅によりピークが一気に高くなったためと考えられる.

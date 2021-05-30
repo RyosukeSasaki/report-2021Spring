@@ -1,0 +1,33 @@
+\subsection{He-Neレーザーの多モード発振}
+図\ref{fig:graph/day3/day3_2.tex}を直線でfittingした.その結果は図のようになる.
+fittingにより直線は
+\begin{align}
+  y=4.056\times10^{-3}x-1.603\times10^{-2}
+\end{align}
+となった.(\ref{equ:Tt_deltalambda})式からこの直線の傾きを$a$とすれば
+\begin{align}
+  \Delta\lambda=\frac{a\lambda^2}{2}
+\end{align}
+となる.ここで$\lambda=632.8\ \si{\nano\metre}$は既知なので
+\begin{align}
+  \begin{split}
+    \Delta\lambda&=4.056\times10^{-3}\times10^{-6}\ \si{\nano\metre^{-1}}\times632.8^2\ \si{\nano\metre^2}\div 2\\
+    &=8.12\times10^{-4}\ \si{\nano\metre}
+  \end{split}
+\end{align}
+を得る.またこの波長差がHe-Neレーザーの多モード発振に由来するならば共振器長を$L$とすると
+\begin{align}
+  \begin{split}
+    \Delta\lambda&=\frac{2L}{m+1}-\frac{2L}{m}\\
+    &\simeq\frac{2L}{m^2}=\frac{\lambda^2}{2L}
+  \end{split}
+\end{align}
+なので上で求めた$\Delta\lambda$を用いて
+\begin{align}
+  \begin{split}
+    L&\simeq\frac{632.8^2\ \si{\nano\metre^2}}{2\times8.12\times10^{-4}\ \si{\nano\metre}}\times10^8\ \si{\centi\metre.\nano\metre^{-1}}\\
+    &=24.7\ \si{\centi\metre}
+  \end{split}
+\end{align}
+となり公称値($28\ \si{\centi\metre}$)と概ね一致している.
+\gnu{$D$と$t/T$の関係}{graph/day3/day3_1.tex}

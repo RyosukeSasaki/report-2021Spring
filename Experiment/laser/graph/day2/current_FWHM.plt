@@ -14,7 +14,7 @@ set mxtics 2
 #set mytics 2
 
 set xlabel "Current / $\\si{\\milli\\ampere}$"
-set ylabel "Beam Width / $\\si{\\nano\\metre}$"
+set ylabel "Line Width / $\\si{\\nano\\metre}$"
 #a=0.00315923 pm 0.0001085
 #b=0.7021046 pm 0.03598
 a=1/250

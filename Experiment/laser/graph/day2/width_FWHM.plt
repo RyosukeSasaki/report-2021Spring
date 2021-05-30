@@ -6,7 +6,7 @@ set size square
 set samples 100000
 
 set xlabel "Slit Width / $\\si{\\micro\\metre}$"
-set ylabel "Beam Width / $\\si{\\nano\\metre}$"
+set ylabel "Line Width / $\\si{\\nano\\metre}$"
 #a=0.00315923 pm 0.0001085
 #b=0.7021046 pm 0.03598
 
@@ -28,4 +28,4 @@ g(x)=c*x+d
 
 set key bottom right
 
-plot "width_FWHM.dat" notitle lt 21 lc -1 ps 2, y(x) dt 2 lc -1 lw 2 title "$f(x)$", g(x) dt 5 lc -1 lw 2 title "$g(x)$"
+plot "width_FWHM.dat" notitle lt 21 lc -1 ps 2#, y(x) dt 2 lc -1 lw 2 title "fitting curve", g(x) dt 5 lc -1 lw 2 title "theoretical curve"

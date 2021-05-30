@@ -1,5 +1,11 @@
 \subsection{半導体レーザーの発振閾値}
-図\ref{fig:graph/day1/day1_01.tex}を$x<22.5$と$22.5\leq x$
+\label{subsec:laser_thresh}
+図\ref{fig:graph/day1/day1_01.tex}の$x<22.5$と$22.5\leq x$
 それぞれの区間を直線でfittingした.その結果を図\ref{fig:graph/day1/day1_02.tex}に示す.
 fittingにより各直線は
-\gnu{図\ref{fig:graph/day1/day1_01.tex}に対するfitting}{graph/day1/day1_02.tex}
+\begin{align}
+  y&=-0.002102x-0.4638\qquad(x<22.5)\\
+  y&=-0.03410x+0.2862\qquad(22.5\leq x)
+\end{align}
+となり,発振閾値は$I=23.4\ \si{\milli\ampere}$となった.
+\gnu{印加電流とレーザー強度の関係}{graph/day1/day1_02.tex}
