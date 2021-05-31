@@ -1,0 +1,33 @@
+<Qucs Schematic 0.0.19>
+<Properties>
+  <View=0,143,1074,1951,1,0,300>
+  <Grid=10,10,0>
+  <DataSet=inv_amp.dat>
+  <DataDisplay=inv_amp.sch>
+  <OpenDisplay=1>
+  <Script=inv_amp.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Title>
+  <FrameText1=Drawn By:>
+  <FrameText2=Date:>
+  <FrameText3=Revision:>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 114 776 793 613 3 #c0c0c0 1 00 1 0 0.001 0.01 1 -0.6 0.1 0.6 1 -1 0.2 1 315 0 225 "" "" "">
+	<"V_i.Vt" #0000ff 0 3 0 0 0>
+	<"V_o.Vt" #ff0000 0 3 0 0 0>
+  </Rect>
+  <Tab 140 1931 325 1011 3 #c0c0c0 1 00 1 2271 1 1 1 0 1 1 1 0 1 10001 315 0 225 "" "" "">
+	<"V_o.Vt" #0000ff 0 3 1 0 0>
+	<"V_i.Vt" #0000ff 0 3 1 0 0>
+  </Tab>
+</Diagrams>
+<Paintings>
+</Paintings>
