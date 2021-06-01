@@ -1,0 +1,33 @@
+\subsubsection*{(2-1)}
+球の平均密度は以下で与えられる.
+\begin{align}
+  \begin{split}
+    \overline{\rho}&=\int_0^R4\pi r^2\rho(r){\rm d}r\div\frac{4\pi}{3}R^3\\
+    &=A-\frac{3B}{4}=5.50\times10^3\ \si{\kilo\gram.\metre^{-3}}
+  \end{split}
+\end{align}
+第2回授業資料から地球の平均密度は$5515\ \si{\kilo\gram.\metre^{-3}}$であり相対誤差$0.2\%$で一致している.
+\subsubsection*{(2-2)}
+静水圧平衡を仮定すると
+\begin{align}
+  P(0)=\int_0^R\frac{GM(r)\rho(r)}{r^2}{\rm d}r
+\end{align}
+したがって球内部の密度が一定なとき
+\begin{align}
+  \begin{split}
+    P(0)&=G\overline{\rho}\int_0^R{\rm d}r\ \frac{1}{r^2}\int_0^r{\rm d}r'\ 4\pi r'^2\overline{\rho}\\
+    &=4\pi G\overline{\rho}^2\int_0^R{\rm d}r\ \frac{1}{r^2}\int_0^r{\rm d}r'\ r'^2\\
+    &=\frac{4\pi GR^2\overline{\rho}^2}{6}=172\ \si{\giga\pascal}
+  \end{split}
+\end{align}
+また球内部の密度が$\rho(r)$のとき
+\begin{align}
+  \begin{split}
+    P(0)&=\pi G\int_0^R{\rm d}r\ \frac{\rho(r)}{r^2}\int_0^r{\rm d}r'\ 4r'^2\rho(r')\\
+    &=\pi G\int_0^R{\rm d}r\ \frac{1}{r^2}\left(A-r\frac{B}{R}\right)\left(\frac{4A}{3}r^3-\frac{B}{R}r^4\right)\\
+    &=\pi G\left(\frac{2A^2}{3}-\frac{7AB}{9}+\frac{B^2}{4}\right)R^2\\
+    &=311\ \si{\giga\pascal}
+  \end{split}
+\end{align}
+これは被積分項$GM(r)\rho(r)/r^2$に$1/r^2$依存性があるため,
+$r$が小さければ小さいほど密度が高くなる$\rho(r)$を用いるとより密度の高い中心付近の寄与が大きく顕れるためである.

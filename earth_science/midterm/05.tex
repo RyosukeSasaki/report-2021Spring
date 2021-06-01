@@ -1,0 +1,46 @@
+\subsubsection*{(5-1)}
+P波の音速が一定であるため,球内で波の屈折などは起こらず直達波は直進する.
+P波の経路の長さ$L$は第2余弦定理より
+\begin{align}
+  L^2=2R_P^2(1-\cos\Delta)
+\end{align}
+したがって直達P波の走時$T$は
+\begin{align}
+  T&=\frac{R_P\sqrt{2(1-\cos\Delta)}}{v_0}\\
+  &=\frac{2R_P\sin\frac{\Delta}{2}}{v_0}
+\end{align}
+\subsubsection*{(5-2)}
+走時パラメーター$p$は
+\begin{align}
+  p=\frac{{\rm d}T}{{\rm d}\Delta}=\frac{R_P}{v_0}\cos\frac{\Delta}{2}
+\end{align}
+ここである角距離$\Delta_1$での走時パラメーターが$\beta_1$は
+\begin{align}
+  \beta_1=\frac{R_P}{v_0}\cos\frac{\Delta_1}{2}
+\end{align}
+である.したがってHerglotz-Wiechertの公式から
+\begin{align}
+  \int_0^{\Delta_1}{\rm d}\Delta\ \cosh^{-1}\left(\frac{p}{\beta_1}\right)&=\pi\ln\frac{R_P}{r_1}
+\end{align}
+ここで恒等式から
+\begin{align}
+  \int_0^{\Delta_1}{\rm d}\Delta\ \cosh^{-1}\left(\frac{\cos\frac{\Delta}{2}}{\cos\frac{\Delta_1}{2}}\right)&=-\pi\ln\cos\frac{\Delta_1}{2}
+\end{align}
+したがって
+\begin{align}
+  r_1&=R_P{\rm e}^{\ln\cos\frac{\Delta_1}{2}}\\
+  &=R_P\cos\frac{\Delta_1}{2}
+\end{align}
+したがって地震波速度$v$は
+\begin{align}
+  v=\frac{r_1}{\beta_1}=\frac{R_P\cos\frac{\Delta_1}{2}}{\frac{R_P}{v_0}\cos\frac{\Delta_1}{2}}=v_0
+\end{align}
+と求まった.
+\subsubsection*{(5-3)}
+角距離が一定以上のとき直達P波が観測されなかったことから,
+図\ref{fig:fig1.png}のように内部に液体の核がありP波が阻害されていると考えられる.
+また内部の核の半径は以下のようになる.
+\begin{align}
+  r=R_P\cos\left(\frac{1}{2}\frac{2\pi}{3}\right)=\frac{R_P}{2}
+\end{align}
+\mfig[width=6cm]{fig1.png}{内部構造の推定}

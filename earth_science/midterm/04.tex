@@ -1,0 +1,21 @@
+\subsubsection*{(4-1)}
+グーテンベルグリヒターの式において両辺の指数を取ると
+\begin{align}
+  \label{equ:gutenberg-richter}
+  n(M)=10^a10^{-bM}
+\end{align}
+すなわち$b$は減衰に関する項であり$b$が大きいほど$n(M)$は急速に減衰する.
+つまり$a$が等しく$b$が高い地域はマグニチュードが大きい地震の発生頻度が高いと言える.
+幾つかの$b$についてのプロットを図\ref{fig:graph/4-1.tex}に示す.
+\gnu{$n(M)$に対する$b$の依存性}{graph/4-1.tex}
+\subsubsection*{(4-2)}
+(\ref{equ:gutenberg-richter})からマグニチュード$M$以上の地震の総数は
+\begin{align}
+  \begin{split}
+    \int^\infty_Mn(M){\rm d}M&=10^a\int^\infty_M10^{-bM}{\rm d}M\\
+    N(M)&=10^a\frac{0-10^{-bM}}{-b\ln 10}\\
+    \log N(M)&=a-bM-\log b\ln 10\\
+    &=A-bM
+  \end{split}
+\end{align}
+となる.

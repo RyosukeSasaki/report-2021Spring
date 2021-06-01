@@ -1,0 +1,33 @@
+\subsubsection*{(3-1)}
+変形後の各辺の長さは以下で表される.
+\begin{align}
+  a'&=a(1+\epsilon_{xx})\\
+  b'&=b(1+\epsilon_{yy})\\
+  c'&=c(1+\epsilon_{zz})
+\end{align}
+したがって体積歪み$\Delta$は
+\begin{align}
+  \begin{split}
+    \Delta=\frac{\delta V}{V}&=\frac{abc(1+\epsilon_{xx})(1+\epsilon_{yy})(1+\epsilon_{zz})-abc}{abc}\\
+    &=1+\epsilon_{xx}+\epsilon_{yy}+\epsilon_{zz}+\epsilon_{xx}\epsilon_{yy}+\epsilon_{yy}\epsilon_{zz}+\epsilon_{zz}\epsilon_{xx}-1
+  \end{split}
+\end{align}
+ここで$\epsilon_{ii}$の2次以上を無視すると
+\begin{align}
+  \Delta=\epsilon_{xx}+\epsilon_{yy}+\epsilon_{zz}
+\end{align}
+を得る.
+\subsubsection*{(3-2)}
+弾性体の構成方程式から
+\begin{align}
+  \sum_{i,j}\sigma_{ij}=\sum_{i,j}\left(\lambda\Delta\delta_{ij}+2\mu\epsilon_{ij}\right)
+\end{align}
+ここで歪みテンソル,応力テンソルは対角成分のみが非零なので
+\begin{align}
+  \begin{split}
+    \sigma_{xx}+\sigma_{yy}+\sigma_{zz}&=3\lambda\Delta+2\mu(\epsilon_{xx}+\epsilon_{yy}+\epsilon_{zz})\\
+    -3P&=(3\lambda+2\mu)\Delta\\
+    -\frac{P}{\Delta}&=\lambda+\frac{2}{3}\mu=k
+  \end{split}
+\end{align}
+を得る.
