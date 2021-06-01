@@ -1,0 +1,74 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{siunitx}
+
+\usepackage{tcolorbox}
+\newtcbox{\code}[1][]{
+  colback=gray!10!white,
+  colframe=gray!20!white,
+  boxrule=1pt,
+  left=0mm,right=0mm,top=0mm,bottom=0mm,
+  box align=base,
+  nobeforeafter,
+  fontupper=\ttfamily
+}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+
+\begin{document}
+\title{}
+\author{61908697 佐々木良輔}
+\date{}
+\maketitle
+cpu kernelとgpu kernelについてそれぞれ5回時間を計測した.
+ただしgpu kernelについてはReductionをホスト側で行う場合とデバイス側で行う場合とでそれぞれ5回時間を計測した.単位は全て${\rm ms}$である.
+デバイスでReductionを行うときは\code{\_\_shfl\_down\_sync}を用いて同一Warp内の部分和を集計しそれをホスト側で再度集計している.
+
+表\ref{tab:}からcpu kernelに比べてgpu kernelは$1/700$程度の時間で計算が実行できている.
+またReductionをデバイス側で行った場合はそうでない場合に比べて1割程度高速化している.
+\begin{table}[h]
+\caption{}
+\label{tab:}
+\centering
+\begin{tabular}{cccc}
+\hline
+No.&gpu kernel (Reduction in host)&gpu kernel (Reduction in device)&cpu kernel\\
+\hline \hline
+1&2.589760&2.370848&16721.085938\\
+2&2.568512&2.399328&16708.503906\\
+3&2.569280&2.369952&16679.330078\\
+4&2.680256&2.368896&16724.927734\\
+5&2.568864&2.384512&16635.873047\\
+\hline
+平均&2.595&2.379&$1.670\times10^4$\\
+\hline
+\end{tabular}
+\end{table}
+\end{document}
