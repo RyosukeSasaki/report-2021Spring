@@ -1,0 +1,80 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\usepackage{tcolorbox}
+\newtcbox{\code}[1][]{
+  colback=gray!10!white,
+  colframe=gray!20!white,
+  boxrule=1pt,
+  left=0mm,right=0mm,top=0mm,bottom=0mm,
+  box align=base,
+  nobeforeafter,
+  fontupper=\ttfamily
+}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+
+\begin{document}
+\title{}
+\author{61908697 佐々木良輔}
+\date{}
+\maketitle
+\subsubsection*{問1}
+評価指標は\code{my\_compare()}の呼び出し回数である.
+\begin{table}[h]
+\caption{各アルゴリズムの性能}
+\label{tab:eval}
+\centering
+\begin{tabular}{c|ccc}
+\hline
+&game1&game2&game3\\
+\hline \hline
+DFS&22&325&281\\
+BFS&282&37&418\\
+A*(Fair evaluator)&10 &7  &13\\
+A*(Weak evaluator)&15 &8  &27\\
+A*(Bad evaluator) &105&10 &153\\
+\hline
+\end{tabular}
+\end{table}
+\subsubsection*{問2}
+DFSではスタック, BFSではキュー, A*探索では優先度付きキューを用いている.
+A*で優先度付きキューを用いるのはコストが低い順に探査を行うためである.
+\subsubsection*{問3}
+Fair評価器は駒ごとの目標状態への距離の情報をマンハッタン距離としてコストに含んでいる.
+またWeak評価器は各駒の現在の駒の絶対位置の情報をコストに含んでいる.
+一方でBad評価器では各駒の絶対的な位置の情報を捨て駒と駒の間の相対的な位置情報のみからコストを算出している.
+したがってコストに含まれる情報が他の2つに比べて少ないために性能が悪化していると考えられる.
+\end{document}
