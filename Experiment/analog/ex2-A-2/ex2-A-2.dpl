@@ -1,0 +1,33 @@
+<Qucs Schematic 0.0.19>
+<Properties>
+  <View=-103,120,1596,1642,1,104,240>
+  <Grid=10,10,0>
+  <DataSet=ex2-A-2.dat>
+  <DataDisplay=ex2-A-2.sch>
+  <OpenDisplay=1>
+  <Script=ex2-A-2.m>
+  <RunScript=0>
+  <showFrame=0>
+  <FrameText0=Title>
+  <FrameText1=Drawn By:>
+  <FrameText2=Date:>
+  <FrameText3=Revision:>
+</Properties>
+<Symbol>
+</Symbol>
+<Components>
+</Components>
+<Wires>
+</Wires>
+<Diagrams>
+  <Rect 167 784 1157 644 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 "" "" "">
+	<"V_i.Vt" #0000ff 0 3 0 0 0>
+	<"V_o.Vt" #ff0000 0 3 0 0 0>
+  </Rect>
+  <Tab 160 1622 542 712 3 #c0c0c0 1 00 1 0 1 1 1 0 1 1 1 0 1 1001 315 0 225 "" "" "">
+	<"V_i.Vt" #0000ff 0 8 1 0 0>
+	<"V_o.Vt" #0000ff 0 8 1 0 0>
+  </Tab>
+</Diagrams>
+<Paintings>
+</Paintings>
