@@ -1,0 +1,253 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+
+\begin{document}
+\title{}
+\author{61908697 佐々木良輔}
+\date{}
+\maketitle
+\subsection*{3.16}
+\subsubsection*{(1)}
+分散関係より
+\begin{align}
+  \begin{split}
+    k&=\frac{\pi}{L}n=\frac{\omega_{\bm{k}}}{c}\qquad
+    \therefore n=\frac{L\omega_{\bm{k}}}{\pi c}
+  \end{split}
+\end{align}
+ここで状態が密に存在しているならば振動数が$\omega$から$\omega+{\rm d}\omega$に含まれる状態数$D(\omega){\rm d}\omega$は$|\bm{n}|=L\omega/2\pi c$で厚さ${\rm d}\omega$の球殻の第一象限の体積に等しく,また偏光として2自由度があることを考えると
+\begin{align}
+  \begin{split}
+    D(\omega){\rm d}\omega&=4\pi\left(\frac{L\omega}{\pi c}\right)^2\times\frac{1}{8}\times2\times{\rm d}n\\
+    &=\frac{L^3\omega^2}{\pi^2c^3}{\rm d}\omega
+  \end{split}
+\end{align}
+$L^3=V$より
+\begin{align}
+  D(\omega)=\frac{V\omega^2}{\pi^2c^3}
+\end{align}
+\subsubsection*{(2)}
+\begin{align}
+  \begin{split}
+    Z_{\bm{k},\lambda}&=\sum_{n_{\bm{k},\lambda}=0}^{\infty}{\rm e}^{-n_{\bm{k},\lambda}\hbar\omega_{\bm{k}}/k_BT}\\
+    &=\frac{1}{1-{\rm e}^{-\hbar\omega_{\bm{k}}/k_BT}}
+  \end{split}
+\end{align}
+1行目から2行目の変形で無限等比級数の和の公式を用いた.
+\subsubsection*{(3)}
+\begin{align}
+  \begin{split}
+    \langle n_{\bm{k},\lambda}\rangle&=\frac{1}{Z}\sum_{\nu}n_{\bm{k},\lambda}{\rm e}^{-\beta E_\nu}\\
+    &=\sum_{\bm{k},\lambda}\frac{\sum_{n_{\bm{k},\lambda}}n_{\bm{k},\lambda}{\rm e}^{-\beta n_{\bm{k},\lambda}\hbar\omega_{\bm{k}}}}{\sum_{n_{\bm{k},\lambda}}{\rm e}^{-\beta n_{\bm{k},\lambda}\hbar\omega_{\bm{k}}}}\\
+    &=-\frac{1}{\beta}\frac{\partial}{\partial(\hbar\omega_{\bm{k}})}\log Z
+  \end{split}
+\end{align}
+となるので$\varepsilon_{\bm{k}}=\hbar\omega_{\bm{k}}$と置くと
+\begin{align}
+  \begin{split}
+    \langle n_{{\bm{k}},\lambda}\rangle&=-\frac{1}{\beta}\frac{\partial}{\partial \varepsilon_k}\log\prod_{{\bm{k}},\lambda}\frac{1}{1-{\rm e}^{-\beta\varepsilon_{\bm{k}}}}\\
+    &=\frac{1}{\beta}\frac{\partial}{\partial\varepsilon_{\bm{k}}}\sum_{\bm{k}}\log(1-{\rm e}^{-\beta\varepsilon_{\bm{k}}})\\
+    &=\frac{1}{{\rm e}^{\hbar\omega_{\bm{k}}/k_BT}-1}
+  \end{split}
+\end{align}
+となる.また波数${\bm{k}}$,偏光$\lambda$の光のエネルギーの期待値は
+\begin{align}
+  \begin{split}
+    \langle E_{{\bm{k}},\lambda}\rangle&=\langle n_{{\bm{k}},\lambda}\hbar\omega_{\bm{k}}\rangle\\
+    &=\hbar\omega_{\bm{k}}\langle n_{{\bm{k}},\lambda}\rangle\\
+    &=\frac{\hbar\omega_{\bm{k}}}{{\rm e}^{\hbar\omega_{\bm{k}}/k_BT}-1}
+  \end{split}
+\end{align}
+\subsubsection*{(4)}
+振動数が$\omega$から$\omega+{\rm d}\omega$の振動子の状態数は(3)から
+\begin{align}
+  D(\omega){\rm d}\omega=\frac{V\omega^2}{\pi^2c^3}{\rm d}\omega
+\end{align}
+また振動数$\omega$の光のエネルギー期待値は(7)から
+\begin{align}
+  \frac{\hbar\omega}{{\rm e}^{\hbar\omega/k_BT}-1}
+\end{align}
+である.振動数が$\omega$から$\omega+{\rm d}\omega$の範囲でこの期待値が変化しないとすれば,
+振動数が$\omega$から$\omega+{\rm d}\omega$の電磁波の単位体積あたりのエネルギー$\epsilon(\omega){\rm d}\omega$は
+\begin{align}
+  \begin{split}
+    \epsilon(\omega){\rm d}\omega&=\frac{V\omega^2}{\pi^2c^3}{\rm d}\omega\frac{\hbar\omega}{{\rm e}^{\hbar\omega/k_BT}-1}\times\frac{1}{V}\\
+    &=\frac{\hbar}{\pi^2c^3}\frac{\omega^3}{{\rm e}^{\hbar\omega/k_BT}-1}{\rm d}\omega
+  \end{split}
+\end{align}
+\subsubsection*{(5)}
+\begin{align}
+  \epsilon(\omega)=\frac{\hbar}{\pi^2c^3}\frac{\omega^3}{{\rm e}^{\hbar\omega/k_BT}-1}{\rm d}\omega=:\frac{\hbar}{\pi^2c^3}f(\omega)
+\end{align}
+とする.ここで以下を考える.
+\begin{align}
+  \frac{\rm d}{{\rm d}\omega}f(\omega)=\frac{\omega^2\left({\rm e}^{\beta\hbar\omega}(3-\beta\hbar\omega)-3\right)}{({\rm e}^{\beta\hbar\omega}-1)^2}=0
+\end{align}
+この$\omega\neq0$かつ$\omega<\infty$なる解は
+\begin{align}
+  {\rm e}^{\beta\hbar\omega}(3-\beta\hbar\omega)-3=0
+\end{align}
+を満たす.ここで$x=\beta\hbar\omega$を用いて
+\begin{align}
+  g(x):=e^x(3-x)-3
+\end{align}
+とする.ここで$g(0)=0$, $\lim_{x\rightarrow\infty}g(x)=-\infty$である.
+\begin{align}
+  \frac{\rm d}{{\rm d}x}g(x)=e^x(2-x)
+\end{align}
+これは$0\leq x\leq 2$で正, $x>2$で負である.したがって$g(x)$の増減表は表\ref{tab:zougen}のようになる.
+\begin{table}[h]
+\caption{$g(x)$の増減表}
+\label{tab:zougen}
+\centering
+\begin{tabular}{c|cccccc}
+\hline
+$x$&0&$\cdots$&2&$\cdots$&$x_0$&$\infty$\\
+\hline \hline
+$g(x)$&0&$\nearrow$&&$\searrow$&0&$-\infty$\\
+$g'(x)$&\multicolumn{2}{c}{$+$}&0&\multicolumn{3}{c}{$-$}\\
+\hline
+\end{tabular}
+\end{table}\\
+このことから$g(x)=0$は$x_0$にて唯一の解を持つ.すなわち$f(x)$の極値の数は1つである.
+ここで$f(0)=0$, $\lim_{x\rightarrow\infty}f(x)=0$であり,更に$x\geq0$において$f(x)\geq0$である.
+したがって$x\geq0$において$f(x)$の唯一の極値は最大値である.
+ここで
+\begin{align}
+  w{\rm e}^w=-\frac{3}{e^3}
+\end{align}
+なる$w$を用いると$x_0=w+3$は
+\begin{align}
+  \begin{split}
+    g(x_0)&=3{\rm e}^{w+3}-(w+3){\rm e}^{w+3}-3\\
+    &=3{\rm e}^{w+3}-3{\rm e}^{w+3}-{\rm e}^3w{\rm e}^w-3=0
+  \end{split}
+\end{align}
+となるので$x_0$は$g(x)$の解である.
+また$x=\beta\hbar\omega$としていたので$f(\omega)=0$の解$\omega_0$は
+\begin{align}
+  \begin{split}
+    \omega_0=\frac{x_0}{\hbar\beta}=\frac{x_0k_BT}{\hbar}
+  \end{split}
+\end{align}
+となる.したがって$\epsilon(\omega)$は$\omega_0$で最大値を取り,そのときの振動数は$T$に比例する.
+\subsubsection*{(6)}
+\begin{align}
+  \begin{split}
+    \frac{E}{V}&=\int^\infty_0\epsilon(\omega){\rm d}\omega\\
+    &=\frac{\hbar}{\pi^2c^3}\int^\infty_0\frac{\omega^3}{{\rm e}^{\beta\hbar\omega}-1}{\rm d}\omega
+  \end{split}
+\end{align}
+ここで$\omega=x/\beta\hbar$とすると
+\begin{align}
+  \begin{split}
+    \frac{E}{V}&=\frac{\hbar}{\pi^2c^3}\frac{1}{\hbar^4\beta^4}\int^\infty_0\frac{x^3}{{\rm e}^x-1}{\rm d}x\\
+    &=\frac{1}{\pi^2c^3\hbar^3\beta^4}\zeta(4)\Gamma(4)
+  \end{split}
+\end{align}
+ここで$\zeta(4)=\pi^4/90$, $\Gamma(4)=6$より以下を得る.
+\begin{align}
+  \frac{E}{V}=\frac{\pi^2(k_BT)^4}{15c^3\hbar^3}
+\end{align}
+\subsubsection*{(7)}
+自由エネルギー$F$は
+\begin{align}
+  F&=-\frac{1}{\beta}\log Z=\frac{1}{\beta}\sum_{\bm{k}}\log(1-{\rm e}^{-\beta\hbar\omega_{\bm{k}}})
+\end{align}
+ここで$\bm{k}$が十分に密だとして総和を積分に置換する.状態密度$D(\omega)$を用いて
+\begin{align}
+  \begin{split}
+    F&=\frac{1}{\beta}\int_0^{\infty}\log(1-{\rm e}^{-\beta\hbar\omega})\frac{V\omega^2}{\pi^2c^3}{\rm d}\omega\\
+    &=\frac{1}{\beta}\frac{V}{\pi^2c^3}\int_0^\infty\log(1-{\rm e}^{-\beta\hbar\omega})\omega^2{\rm d}\omega  
+  \end{split}
+\end{align}
+$x=\beta\hbar\omega$とすると
+\begin{align}
+  \begin{split}
+    F&=\frac{1}{\beta^4\hbar^3}\frac{V}{\pi^2c^3}\int_0^\infty\log(1-{\rm e}^{-x})x^2{\rm d}x\\
+    &=\frac{1}{\beta^4\hbar^3}\frac{V}{\pi^2c^3}\left( \left[ \frac{x^3}{3}\log(1-{\rm e}^{-x}) \right]_0^\infty -\int_0^\infty\frac{x^3}{3}\frac{1}{e^x-1}{\rm d}x\right)\\
+    &=-\frac{\pi^4}{45}\frac{1}{\beta^4\hbar^3}\frac{V}{\pi^2c^3}\\
+    &=-\frac{\pi^2V(k_BT)^4}{45c^3\hbar^3}=-\frac{1}{3}E
+  \end{split}
+\end{align}
+エントロピー$S$は
+\begin{align}
+  \begin{split}
+    S&=-\frac{\partial F}{\partial T}\\
+    &=\frac{4\pi^2Vk_B^4}{45c^3\hbar^3}T^3
+  \end{split}
+\end{align}
+定積比熱$C_V$は
+\begin{align}
+  \begin{split}
+    C_V&=\frac{\partial E}{\partial T}\\
+    &=-3\frac{\partial F}{\partial T}\\
+    &=-\frac{4\pi^2Vk_B^4}{15c^3\hbar^3}T^3
+  \end{split}
+\end{align}
+圧力$P$は
+\begin{align}
+  \begin{split}
+    P&=-\frac{F\partial F}{\partial V}\\
+    &=-\frac{\pi^2(k_BT)^4}{45c^3\hbar^3}=\frac{1}{3}\frac{E}{V}
+  \end{split}
+\end{align}
+となる.
+\subsubsection*{(8)}
+光子の総数$N$は
+\begin{align}
+  N=\sum_{\bm{k}}\langle n_{\bm{k},\lambda}\rangle
+\end{align}
+前問と同様に総和を積分に置換すると
+\begin{align}
+  \begin{split}
+    N&=\int^\infty_0\frac{V\omega^2}{\pi^2c^3}\frac{1}{{\rm e}^{\beta\hbar\omega}-1}{\rm d}\omega\\
+    &=\frac{V}{\pi^2c^3}\frac{1}{\beta^3\hbar^3}\int^\infty_0\frac{x^2}{{\rm e}^{x}-1}{\rm d}x\\
+    &=\frac{V}{\pi^2c^3}\frac{k_B^3T^3}{\hbar^3}\Gamma(3)\zeta(3)\\
+    &=\frac{2Vk_B^3\zeta(3)}{\pi^2c^3\hbar^3}T^3
+  \end{split}
+\end{align}
+となり,光子の総数は$T^3$に比例する.
+\subsubsection*{(9)}
+\begin{align}
+  \begin{split}
+    \frac{N}{V}&=\frac{2k_B^3\zeta(3)}{\pi^2c^3\hbar^3}T^3\\
+    &=\frac{2\times(1.381\times10^{-23})^3\times1.202}{3.142^2\times(2.998\times10^8)^3\times(1.055\times10^{-34})^3}300^3\\
+    &=5.474\times10^{14}
+  \end{split}
+\end{align}
+\end{document}
