@@ -1,0 +1,43 @@
+\subsection*{2 耐力壁}
+耐力壁は地震や風圧などによって生じる水平荷重に耐えるため強化された壁である.
+地震や台風の多い日本では耐力壁の設置は必須であり,その長さは床面積やその地域での風圧力,屋根の重さなどに応じて定められている.
+表\ref{tab:tairyoku}に建築基準法施行令における木造建築での耐力壁の長さに関するの一部を規定を示す.
+表\ref{tab:tairyoku}から階数が高くなればなるほど,また同じ建物でも下の階ほど必要な耐力壁の長さが長くなっている.
+これは下の階が上の階の荷重鉛直荷重や伝達してきた上の階から水平荷重を支える必要があるからである.
+
+耐力壁には様々な種類がある.木造の場合には筋交い(図\ref{fig:fig6.jpg}),構造用合板(図\cite{gouhan})などがある.
+筋交いは木材の幅やたすき掛けの有無によって1から5倍の有効長さ倍率がかかる.\cite{alma990015457520204034}
+また構造用合板はスライスされた木材を繊維方向が異なるように重ねて接着したもので,木材の異方性を打ち消している.
+鉄筋コンクリートにおいては通常より壁厚を大きくすることで耐力壁として取り扱われる.\cite{alma990015457520204034}
+また鉄骨造の場合も筋交いを入れることで耐力性を高めることがあり,これは鉄骨ブレースと呼ばれる.\cite{tekkotu:online}
+
+また耐力壁は表\ref{tab:tairyoku}に示した有効長さ以上を確保すると同時に建物内部に均等に配置する必要がある.
+更に建物の形状が不整形な場合は表\ref{tab:tairyoku}を用いることは出来ず,構造計算をする必要がある.
+\begin{table}[h]
+\caption{耐力壁の必要有効長さ\cite{alma990015457520204034}}
+\label{tab:tairyoku}
+\centering
+\begin{tabular}{cc|cc}
+\hline
+&&\multicolumn{2}{c}{壁長さ $\si{\centi\metre}$ / 床面積 $\si{\metre^2}$}\\
+\multicolumn{2}{c|}{屋根の重さ}&比較的重い屋根&軽い屋根\\
+\hline \hline
+\multicolumn{2}{c|}{平屋建}&15&11\\
+\hline
+\multirow{2}{*}{2階建}&1階&33&29\\
+&2階&21&15\\
+\hline
+\multirow{3}{*}{3階建}&1階&50&46\\
+&2階&39&34\\
+&3階&24&18\\
+\hline
+\end{tabular}
+\end{table}
+\begin{figure}[htbp]
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=6cm]{fig6.jpg}{筋交い\cite{daijin}}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+    \mfig[width=6cm]{fig7.jpg}{構造用合板の断面\cite{gouhan}}
+  \end{minipage}
+\end{figure}
