@@ -1,0 +1,95 @@
+\subsection*{6-1}
+この問題での分配関数は$Z=(1+{\rm e}^{-\beta\varepsilon})^N$なので大分配関数$\Xi$は
+\begin{align}
+  \begin{split}
+    \Xi&=\sum_{N=0}^{\infty}{\rm e}^{\beta\mu N}(1+{\rm e}^{\beta\varepsilon})^N\\
+    &=\sum_{N=0}^{\infty}\left({\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})\right)^N\\
+    &=\frac{1}{1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})}
+  \end{split}
+\end{align}
+したがってグランドポテンシャル$\Omega$は
+\begin{align}
+  \Omega=\frac{1}{\beta}\log(1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon}))
+\end{align}
+粒子数の期待値$\langle N\rangle$は
+\begin{align}
+  \begin{split}
+    \langle N\rangle&=-\frac{\partial\Omega}{\partial\mu}\\
+    &=-\frac{1}{\beta}\frac{-\beta{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})}{1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})}\\
+    &=\frac{{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})}{1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})}
+  \end{split}
+\end{align}
+これを用いて化学ポテンシャル$\mu$は
+\begin{align}
+  \begin{split}
+    \langle N\rangle(1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon}))&={\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})\\
+    {\rm e}^{\beta\mu}&=\frac{\langle N\rangle}{1+\langle N\rangle}\frac{1}{1+{\rm e}^{-\beta\varepsilon}}
+  \end{split}
+\end{align}
+ここで$\langle N\rangle\gg 1$とすると
+\begin{align}
+  \mu=-\frac{1}{\beta}\log(1+{\rm e}^{-\beta\varepsilon})
+\end{align}
+またグランドポテンシャルはルジャンドル変換
+\begin{align}
+  \Omega=F-\mu N
+\end{align}
+によって定義されるので,自由エネルギー$F$は
+\begin{align}
+  \begin{split}
+    F&=\Omega+\mu N\\
+    &=\frac{1}{\beta}\log(1-{\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon}))-\frac{1}{\beta}\log(1+{\rm e}^{-\beta\varepsilon})\langle N\rangle\\
+    &=-\frac{1}{\beta}\left(\log\langle N\rangle-\log({\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon}))\right)-\frac{1}{\beta}\langle N\rangle\log(1+{\rm e}^{-\beta\varepsilon})\\
+  \end{split}
+\end{align}
+ここで${\rm e}^{\beta\mu}(1+{\rm e}^{-\beta\varepsilon})=1$なので
+\begin{align}
+  F=-\frac{1}{\beta}\log\langle N\rangle-\frac{1}{\beta}\langle N\rangle\log(1+{\rm e}^{-\beta\varepsilon})
+\end{align}
+さらに$F$は示量性の変数なので$O(N)$以下の項を捨てると
+\begin{align}
+  F&=-\frac{1}{\beta}\langle N\rangle\log(1+{\rm e}^{-\beta\varepsilon})\\
+  &=-k_BT\langle N\rangle\log(1+{\rm e}^{-\beta\varepsilon})
+\end{align}
+これはミクロカノニカル及ぼカノニカルアンサンブルで得られた結果と一致する.
+\subsection*{6-2}
+この問題での分配関数は$Z=1/N!(1/\hbar\omega\beta)^N$なので大分配関数$\Xi$は
+\begin{align}
+  \begin{split}
+    \Xi&=\sum_{N=0}^\infty{\rm e}^{\beta\mu N}\frac{1}{N!}\left(\frac{1}{\hbar\omega\beta}\right)^N\\
+    &=\exp\left(\frac{{\rm e}^{\beta\mu}}{\hbar\omega\beta}\right)
+  \end{split}
+\end{align}
+ここでテイラー展開の表式を用いた.
+したがってグランドポテンシャル$\Omega$は
+\begin{align}
+  \begin{split}
+    \Omega&=-\frac{1}{\beta}\log\Xi\\
+    &=-\frac{1}{\beta}\frac{e^{\beta\mu}}{\hbar\omega\beta}
+  \end{split}
+\end{align}
+粒子数の期待値$\langle N\rangle$は
+\begin{align}
+  \langle N\rangle=-\frac{\partial\Xi}{\partial\mu}=\frac{{\rm e}^{\beta\mu}}{\hbar\omega\beta}
+\end{align}
+したがって化学ポテンシャル$\mu$は
+\begin{align}
+  \mu=\frac{1}{\beta}\log(\langle N\rangle\hbar\omega\beta)
+\end{align}
+以上から自由エネルギー$F$は
+\begin{align}
+  \begin{split}
+    F&=\Omega+\mu N\\
+    &=-\frac{1}{\beta}\frac{{\rm e}^{\beta\mu}}{\hbar\omega\beta}+\mu\frac{{\rm e}^{\beta\mu}}{\hbar\omega\beta}\\
+    &=\frac{N}{\beta}(\log(N\hbar\omega\beta)-1)
+  \end{split}
+\end{align}
+また同じ問題をカノニカルアンサンブルで考えると
+\begin{align}
+  \begin{split}
+    F&=-\frac{1}{\beta}\log\frac{\left(\frac{1}{\hbar\omega\beta}\right)^N}{N!}\\
+    &=-\frac{1}{\beta}(\log\frac{1}{\hbar\omega\beta}-N\log N-N)\\
+    &=\frac{N}{\beta}(\log(N\hbar\omega\beta)-1)
+  \end{split}
+\end{align}
+となり一致する.
