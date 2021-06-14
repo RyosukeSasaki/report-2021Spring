@@ -1,0 +1,17 @@
+\subsection{原理}
+\subsubsection{加算回路の回路方程式}
+図\ref{fig:05/adder.png}に加算回路の回路図を示す.
+$R_1$, $R_2$を流れる電流をそれぞれ$i_1$, $i_2$とすると
+\begin{align}
+  \begin{split}
+    v_1&=R_1i_1\\
+    v_2&=R_2i_2
+  \end{split}
+\end{align}
+仮想短絡によりオペアンプの$-$端子の電位は0である.またオペアンプに流れ込む電流は0とみなせるので$R_3$を流れる電流は$I=i_1+i_2$となる.したがって
+\begin{align}
+  v_o=-\left(\frac{R_3}{R_1}v_1+\frac{R_3}{R_2}v_2\right)
+\end{align}
+となり,たしかに2つの入力それぞれを定数倍したものが加算されていることがわかる.
+\mfig[width=10cm]{05/adder.png}{加算回路}
+\subsubsection{減算回路の回路方程式}
