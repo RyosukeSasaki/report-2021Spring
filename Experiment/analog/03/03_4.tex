@@ -1,0 +1,48 @@
+\subsection{考察}
+\subsubsection{測定1-A-01}
+$R_1=0.999\ \si{\kilo\ohm}$, $R_2=3.381\ \si{\kilo\ohm}$
+としたことから反転増幅器のGainは
+\begin{align}
+  |G|=\frac{R_2}{R_1}=3.38
+\end{align}
+となる.一方で(\ref{equ:inv_amp_gain})からシミュレーションにより得られたGainは$|G|=3.39$である.
+実験値と理論値の相対誤差は$0.3\%$であり,十分に一致していると考えられる.
+
+また図\ref{fig:graph/1-A/1-A-01.tex}からオペアンプの入力電圧$\pm15\ \si{\volt}$を超える電圧は出力されていないことがわかる.
+さらに$v_o$が飽和した時$v_d$も変化していることがわかる.
+これについて(\ref{equ:inv_amp_circuit_eq})から
+\begin{align}
+  \begin{split}
+    \frac{v_i-v_d}{R_1}&=\frac{v_d-v_o}{R_2}\\
+    v_d&=\frac{R_2v_i}{R_1+R_2}+\frac{R_1v_o}{R_1+R_2}
+  \end{split}
+\end{align}
+ここで$v_o$が飽和した時$v_o=\pm15\ \si{\volt}$となる.このことから
+\begin{align}
+  \label{equ:v_d_theo}
+  v_{d\pm}=0.772v_i\pm3.42
+\end{align}
+を得る.一方で図\ref{fig:graph/1-A/1-A-01.tex}の$V_d$の直線部を最小二乗fitして回帰曲線を求めると図\ref{fig:graph/1-A/1-A-02.tex}のようになり,
+回帰曲線は以下の関数になった.
+\begin{align}
+  y=
+  \begin{cases}
+    \begin{split}
+      0.7718x+3.420\\
+      0.7719x-3.419
+    \end{split}
+  \end{cases}
+\end{align}
+それぞれ有効数字3桁の範囲で(\ref{equ:v_d_theo})と完全に一致しており,上での立式は正しいと考えられる.
+\gnu{$V_d$の回帰曲線}{graph/1-A/1-A-02.tex}
+\clearpage
+\subsubsection{測定1-A-02}
+図\ref{fig:03/inv_amp_1kHz.png}を見るとたしかに$V_{p-p}$が0.33倍程度で,位相が反転した波形が出力されていることがわかる.
+
+図\ref{fig:graph/1-A/theo-bode.tex}と図\ref{fig:graph/1-A/bode.tex}を見比べるとどちらも
+周波数依存性の無いグラフでありその値もほぼ等しい.
+したがって(\ref{equ:inv_amp_transform_eq})で得た伝達関数は正しいとわかる.
+
+位相がどちらも$\pi$程度で一定であるのに対し,
+Gainは$0.3\%$程度の差がある.これはgnuplotが十分な桁数を持ってグラフを描画しているのに対し,
+Qucs Spiceが小数点以下3桁を切り捨てて出力したことが原因だと考えられる.

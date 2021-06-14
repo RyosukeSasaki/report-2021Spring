@@ -1,0 +1,17 @@
+\subsection{考察}
+\subsubsection{測定1-B-01}
+$R_1=1.034\ \si{\kilo\ohm}$, $R_2=5.025\ \si{\kilo\ohm}$
+としたことから反転増幅器のGainは
+\begin{align}
+  |G|=1+\frac{R_2}{R_1}=5.85
+\end{align}
+となる.一方で(\ref{equ:amp_gain})からシミュレーションにより得られたGainは$|G|=5.84$である.
+実験値と理論値の相対誤差は$0.2\%$であり,十分に一致していると考えられる.
+
+また図\ref{fig:graph/1-B/1-B-01.tex}から反転増幅器と同様にオペアンプの入力電圧$\pm15\ \si{\volt}$を超える電圧は出力されていないことがわかる.
+\subsubsection{測定1-B-02}
+図\ref{fig:04/amp_1kHz.png}を見るとたしかに$V_{p-p}$が1.6倍程度で,同位相の波形が出力されていることがわかる.
+
+図\ref{fig:graph/1-B/theo-bode.tex}と図\ref{fig:graph/1-B/bode.tex}を見比べるとどちらも
+周波数依存性の無いグラフでありその値もほぼ等しい.
+したがって(\ref{equ:inv_amp_transform_eq})で得た伝達関数は正しいとわかる.

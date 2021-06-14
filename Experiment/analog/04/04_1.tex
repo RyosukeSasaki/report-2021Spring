@@ -1,0 +1,24 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図\ref{fig:04/1-b.png}に非反転増幅器の回路図を示す.
+仮想短絡を考えるとオペアンプの-端子の電圧$v_{-}]$は入力電圧$v_i$と等しいと考えられる.
+さらに$v_-$は$v_o$を$R_1$と$R_2$で分圧した電圧になるので
+\begin{align}
+  \begin{split}
+    \label{equ:amp_circuit_eq}
+    v_i=v_-&=\frac{R_1}{R_1+R_2}v_o\\
+    v_o&=\left(1+\frac{R_2}{R_1}\right)v_i
+  \end{split}
+\end{align}
+となる.以上から非反転増幅器は入力信号に対して位相がそのままで,電圧が$1+R_2/R_1$倍の信号が出力されることがわかる.
+\mfig[width=10cm]{04/1-b.png}{非反転増幅器}
+\subsubsection{伝達関数}
+(\ref{equ:amp_circuit_eq})から伝達関数を求めると以下のようになる.
+\begin{align}
+  \begin{split}
+    V_o&=\left(1+\frac{R_2}{R_1}\right)V_i\\
+    G(s)=\frac{V_o}{V_i}&=1+\frac{R_2}{R_1}
+  \end{split}
+\end{align}
+これに図\ref{fig:04/1-b.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/1-B/theo-bode.tex}のようになる.
+\gnu{Bode線図の理論値}{graph/1-B/theo-bode.tex}

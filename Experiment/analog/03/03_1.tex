@@ -1,0 +1,35 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図\ref{fig:03/1-a.png}に反転増幅器の回路図を示す.
+オペアンプの入力インピーダンスが$R_2$に比べて非常に高いことから入力電流$i$はすべて$R_2$に流れ込むとして良い.
+したがってOhmの法則から
+\begin{align}
+  \label{equ:inv_amp_circuit_eq}
+  i=\frac{v_i-v_d}{R_1}=\frac{v_d-v_o}{R_2}
+\end{align}
+ここで(\ref{equ:01-VoA})式から
+\begin{align}
+  v_o=A(0-v_d)
+\end{align}
+が成り立つためこれらを連立すると
+\begin{align}
+  v_o=-v_i\frac{R_2}{R_1}\frac{1}{1+\frac{R_1+R_2}{AR_1}}
+\end{align}
+$A$が十分大きいとき
+\begin{align}
+  \label{equ:inverted_amp_Vo}
+  v_o=-\frac{R_2}{R_1}v_i
+\end{align}
+となる.以上から反転増幅器は入力信号に対して位相が反転し,電圧が$R_2/R_1$倍の信号が出力されることがわかる.
+\mfig[width=10cm]{03/1-a.png}{反転増幅器}
+\subsubsection{伝達関数}
+(\ref{equ:inverted_amp_Vo})から伝達関数を求めると以下のようになる.
+\begin{align}
+  \begin{split}
+    \label{equ:inv_amp_transform_eq}
+    V_o&=-\frac{R_2}{R_1}V_i\\
+    G(s)=\frac{V_o}{V_i}&=-\frac{R_2}{R_1}
+  \end{split}
+\end{align}
+これに図\ref{fig:03/1-a.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/1-A/theo-bode.tex}のようになる.
+\gnu{Bode線図の理論値}{graph/1-A/theo-bode.tex}
