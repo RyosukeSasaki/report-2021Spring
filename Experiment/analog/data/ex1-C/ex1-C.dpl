@@ -1,4 +1,4 @@
-<Qucs Schematic 0.0.19>
+<Qucs Schematic 0.0.22>
 <Properties>
   <View=0,120,1612,1087,1,0,60>
   <Grid=10,10,0>
@@ -20,9 +20,10 @@
 <Wires>
 </Wires>
 <Diagrams>
-  <Rect 250 942 1125 622 3 #c0c0c0 1 00 1 0 0.2 1 1 -0.1 0.5 1.1 1 -0.1 0.5 1.1 315 0 225 "" "" "">
-	<"Vin.Vt" #0000ff 0 3 0 0 0>
-	<"Vout.Vt" #ff0000 0 3 0 0 0>
+  <Rect 250 942 1125 622 3 #c0c0c0 1 00 1 0 5e-05 0.001 1 -0.624239 0.5 7 1 -1 0.2 1 315 0 225 "" "" "">
+	<"ex1-C:V1.Vt" #0000ff 0 3 0 0 0>
+	<"ex1-C:V2.Vt" #ff0000 0 3 0 0 0>
+	<"ex1-C:Vout.Vt" #ff00ff 0 3 0 0 0>
   </Rect>
 </Diagrams>
 <Paintings>

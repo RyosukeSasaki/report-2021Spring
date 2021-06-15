@@ -10,8 +10,32 @@ $R_1$, $R_2$を流れる電流をそれぞれ$i_1$, $i_2$とすると
 \end{align}
 仮想短絡によりオペアンプの$-$端子の電位は0である.またオペアンプに流れ込む電流は0とみなせるので$R_3$を流れる電流は$I=i_1+i_2$となる.したがって
 \begin{align}
+  \label{equ:adder}
   v_o=-\left(\frac{R_3}{R_1}v_1+\frac{R_3}{R_2}v_2\right)
 \end{align}
 となり,たしかに2つの入力それぞれを定数倍したものが加算されていることがわかる.
 \mfig[width=10cm]{05/adder.png}{加算回路}
 \subsubsection{減算回路の回路方程式}
+図に減算回路の回路図を示す.
+オペアンプの$+$端子の電圧$v_+$は$V_2$を$R_2$と$R_4$で分圧した電圧に等しいので
+\begin{align}
+  v_+=\frac{R_4}{R_2+R_4}v_2
+\end{align}
+同様に$v_-$は
+\begin{align}
+  v_-=\frac{R_1v_o+R_3v_1}{R_1+R_3}
+\end{align}
+仮想短絡から$v_+=v_-$なので
+\begin{align}
+  \begin{split}
+    \label{equ:subtractor}
+    \frac{R_4}{R_2+R_4}v_2&=\frac{R_1v_o+R_3v_1}{R_1+R_3}\\
+    v_o&=\frac{(R_1+R_3)R_4}{(R_2+R_4)R_1}v_2-\frac{R_3}{R_1}v_1
+  \end{split}
+\end{align}
+ここで$R_1=R_2=R$, $R_3=R_4=R_f$とすると
+\begin{align}
+  v_o=\frac{R_f}{R}(v_2-v_1)
+\end{align}
+となり,たしかに2つの入力それぞれを定数倍したものが減算されていることがわかる.
+\mfig[width=10cm]{05/subtractor.png}{減算回路}
