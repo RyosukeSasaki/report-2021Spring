@@ -1,23 +1,41 @@
-\subsection{完全積分回路の原理}
+\subsection{原理}
 \subsubsection{回路方程式}
 図\ref{fig:06/2-a-01.png}に完全積分回路の回路図を示す.
 $R_1$を流れる電流は全てコンデンサに流れるので
 コンデンサ両端の電圧$v_C$は
 \begin{align}
   \begin{split}
-    v_C=\frac{q}{C}&=\frac{1}{C}\int^t_0I{\rm d}t+v_C(0)\\
-    &=\frac{1}{CR_1}\int^t_0v_1{\rm d}t+v_C(0)
+    v_C=\frac{q}{C}&=\frac{1}{C}\int^t_0i{\rm d}t+v_C(0)\\
+    &=\frac{1}{CR_1}\int^t_0v_i{\rm d}t+v_C(0)
   \end{split}
 \end{align}
 ここでコンデンサの初期電荷による項を$v_C(0)$としている.仮想短絡によりオペアンプの$-$端子の電位は0なので
 出力電圧$v_o$は時刻$t=0$でコンデンサに電荷が無いとすれば
 \begin{align}
-  v_o=-v_C=-\frac{1}{CR_1}\int^t_0v_1{\rm d}t
+  \label{equ:integrator}
+  v_o=-v_C=-\frac{1}{CR_1}\int^t_0v_i{\rm d}t
 \end{align}
 となり確かに入力電圧の積分値が出力となっている.
 \mfig[width=10cm]{06/2-a-01.png}{積分回路}
+\clearpage
 \subsubsection{伝達関数}
 ラプラス変換の積分則は以下のようになる.
 \begin{align}
-  \mathcal{L}
+  \mathcal{L}\left(\int^t_0f(t){\rm d}t\right)=\frac{1}{s}F(s)
 \end{align}
+ここで初期値は0としている.したがって(\ref{equ:integrator})をラプラス変換すると
+\begin{align}
+  \begin{split}
+    V_o&=-\frac{1}{CR_1s}V_i(s)\\
+    G(s)&=-\frac{1}{CR_1s}
+  \end{split}
+\end{align}
+よってGainと位相差は
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left|-\frac{1}{CR_1j\omega}\right|=-20\log(CR_1\omega)\\
+    \phi(\omega)&=\angle\left(-\frac{1}{CR_1j\omega}\right)=\angle(j)=\frac{\pi}{2}
+  \end{split}
+\end{align}
+以上から図\ref{fig:06/2-a-01.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/2-A-01/theo-bode.tex}のようになる.
+\gnu{Bode線図の理論値}{graph/2-A-01/theo-bode.tex}

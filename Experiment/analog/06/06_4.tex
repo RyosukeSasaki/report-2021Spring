@@ -1,0 +1,71 @@
+\subsection{考察}
+\subsubsection{測定2-A-01-(a)}
+矩形波の1周期を以下の関数で表される.
+\begin{align}
+  \begin{split}
+    v_i=
+    \begin{cases}
+      V\qquad(0\leq t<T/2)\\
+      -V\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+これを(\ref{equ:integrator})に代入すると
+\begin{align}
+  \label{equ:complete_integrator_rect}
+  \begin{split}
+    v_o=-\frac{1}{CR_1}\int_0^Tv_i{\rm d}t
+    =
+    \begin{cases}
+      -Vt/CR_1\qquad(0\leq t<T/2)\\
+      Vt/CR_1\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+となり,これは三角波である.
+図\ref{fig:06/ex2-A-1.png}を見ると出力波形はたしかに三角波であり,積分器として機能していることがわかる.
+
+一方で(\ref{equ:complete_integrator_rect})から予測される三角波の上限値$v_{max}$と下限値$v_{min}$は以下のようになる.
+\begin{align}
+  \begin{split}
+    v_{max}&=0\\
+    v_{min}&=-\frac{VT}{2CR_1}
+  \end{split}
+\end{align}
+これに値を代入すると$v_{min}\simeq-3.04\ \si{\volt}$となる.
+しかし図\ref{fig:06/ex2-A-1.png}を見ると実際の波形は大きく逸れている.
+これはコンデンサーの初期電荷が$0$でないことに依ると考えられる.
+ここでQucs Spiceのコンデンサ部品にはトランジェント初期電圧という項目があったため,
+これを0として再度シミュレーションを行った.
+その結果は図\ref{fig:06/ex2-A-3.png}のようになった.
+このグラフの上限値は$0\ \si{\volt}$,下限値は$-3.04\ \si{\volt}$であり上で予測した波形と一致している.
+したがって図\ref{fig:06/ex2-A-1.png}の波形が予測される波形と異なっていたのはコンデンサの初期電圧によるものだと言える.
+このことは完全積分回路ではコンデンサの帯電により容易に出力にオフセットが掛かることを示唆している.
+\mfig[width=7cm]{06/init_v.png}{トランジェント初期電圧の設定}
+\mfig[width=12cm]{06/ex2-A-3.png}{トランジェント初期電圧を設定したときの出力波形}
+\subsubsection{測定2-A-01-(b)}
+平均値が0からオフセットした矩形波はオフセット電圧を$V_{ofst}$として以下のように表される.
+\begin{align}
+  \begin{split}
+    v_i=
+    \begin{cases}
+      V+V_{ofst}\qquad(0\leq t<T/2)\\
+      -V+V_{ofst}\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+これを(\ref{equ:integrator})に代入すると
+\begin{align}
+  \label{equ:complete_integrator_rect}
+  \begin{split}
+    v_o=-\frac{1}{CR_1}\int_0^Tv_i{\rm d}t
+    =
+    \begin{cases}
+      (-V-V_{ofst})t/CR_1\qquad(0\leq t<T/2)\\
+      (V-V_{ofst})t/CR_1\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+となり,三角波に一定のドリフトが掛かった波形になるとわかる.
+実際に図\ref{fig:06/ex2-A-2.png}では三角波に減少傾向のドリフトが掛かっており,
+正しく積分演算を行っていると考えられる.

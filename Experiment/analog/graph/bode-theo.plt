@@ -2,7 +2,7 @@ reset
 set terminal tikz size 10,14
 pi=3.14159265
 #fname=""
-oname     ="1-B/theo-bode.tex"
+oname     ="2-A-02/theo-bode.tex"
 set output oname
 #set terminal wxt
 set size ratio 0.6
@@ -11,17 +11,19 @@ set logscale x
 
 set xrange [7:110000]
 
-R1=1034
-R2=608.4
+R1=981
+R2=1001
+C=0.103*10**(-6)
 
-G(x)=1+R2/R1
-phase(x)=0
+omega(x)=2*pi*x
+G(x)=20*log10(R2/R1)-20*log10(sqrt(1+(C*R2*omega(x))**2))
+phase(x)=pi-atan(C*R2*omega(x))
 
 #tit="$\\sigma=5.704\\pm0.006$, $x_0=657.8\\pm0.0$"
 set multiplot layout 2,1
-set xlabel "frequency / $\\si{\\hertz}$"
-set ylabel "$|G(s)|$ / $\\si{\\decibel}$"
+set xlabel "Frequency / $\\si{\\hertz}$"
+set ylabel "Gain / $\\si{\\decibel}$"
 plot G(x) notitle lw 2
-set xlabel "frequency / $\\si{\\hertz}$"
-set ylabel "phase / $\\si{rad}$"
+set xlabel "Frequency / $\\si{\\hertz}$"
+set ylabel "Phase / $\\si{rad}$"
 plot phase(x) notitle lw 2

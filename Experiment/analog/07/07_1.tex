@@ -1,0 +1,55 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図\ref{fig:07/2-a-02.png}に不完全積分回路の回路図を示す.
+$R_2$に流れる電流を$i_R$, $C_1$に流れる電流を$i_C$とする.
+オペアンプの$-$端子は仮想短絡から電位0なので
+\begin{align}
+  \begin{split}
+    i_R&=-\frac{v_o}{R_2}\\
+    i_C&=-C\frac{\partial v_o}{\partial t}
+  \end{split}
+\end{align}
+オペアンプに流れ込む電流は0とできるので
+\begin{align}
+  \begin{split}
+    \label{equ:incomplete_integrator_differential_eq}
+    -\frac{v_o}{R_2}-C\frac{\partial v_o}{\partial t}&=\frac{v_i}{R_1}\\
+    \left(\frac{1}{CR_2}+\frac{\partial}{\partial t}\right)v_o&=-\frac{v_i}{CR_1}
+  \end{split}
+\end{align}
+ここで$R_2\rightarrow\infty$とすると完全積分回路と同じ結果が得られる.
+(\ref{equ:incomplete_integrator_differential_eq})は1次の非斉次微分方程式なので,その解は$\tau=CR_2$を用いて
+\begin{align}
+  \label{equ:incomplete_integrator_vo}
+  v_o(t)={\rm e}^{-t/\tau}\left(-\int^t_0\frac{v_i(t)}{CR_1}{\rm e}^{t/\tau}{\rm d}t\right)
+\end{align}
+ここで積分定数は0とした.
+\mfig[width=10cm]{07/2-a-02.png}{不完全積分回路}
+\subsubsection{伝達関数}
+ラプラス変換の微分則は以下のようになる.
+\begin{align}
+  \mathcal{L}\left(\frac{\rm d}{{\rm d}t}f(t)\right)=sF(s)
+\end{align}
+したがって
+(\ref{equ:incomplete_integrator_differential_eq})をラプラス変換すると
+\begin{align}
+  \begin{split}
+    \frac{1}{CR_2}V_o+sV_o&=-\frac{1}{CR_1}V_i\\
+    G(s)&=-\frac{R_2}{R_1}\frac{1}{1+CR_2s}
+  \end{split}
+\end{align}
+よってGainと位相差は
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left|-\frac{R_2}{R_1}\frac{1}{1+CR_2j\omega}\right|\\
+    &=20\log\left(\frac{R_2}{R_1}\right)-20\log\sqrt{1+(CR_2\omega)^2}
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    \phi(\omega)=\angle\left(-\frac{R_2}{R_1}\frac{1}{1+CR_2j\omega}\right)
+    &=\angle(-R_2/R_1)-\angle(1+CR_2j\omega)\\
+    &=\pi-\arctan(CR_2\omega)
+  \end{split}
+\end{align}
+以上から図\ref{fig:07/2-a-02.png}で示した値を代入してBode線図を描くと図のようになる

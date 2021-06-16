@@ -1,9 +1,11 @@
 \subsection{方法}
 \subsubsection{測定1-B-01}
-図\ref{fig:04/1-b.png}の回路をQucs Spice上で作成した.まず$R_1=1.034\ \si{\kilo\ohm}$, $R_2=5.025\ \si{\kilo\ohm}$
+図\ref{fig:04/1-b.png}の回路をQucs Spice上で作成しDC bias Simulationを行った.
+まず$R_1=1.034\ \si{\kilo\ohm}$, $R_2=5.025\ \si{\kilo\ohm}$
 として電圧利得6倍の非反転増幅器を構成した.この非反転増幅器上で入力電圧$V_i$を$-3\ \si{\volt}$から$3\ \si{\volt}$まで$0.5\ \si{\volt}$
 刻みで変化させながら出力電圧$V_o$を記録した.
 \subsubsection{測定1-B-02}
 上記の回路で$R_2$を$608.4\ \si{\ohm}$に変更し,電圧利得1.6倍の非反転増幅器を構成した.
+この回路においてTransient Simulationを行った.
 この回路に$V_{p-p}=1\ \si{\volt}$,周波数が$10$, $100$, $1\si{\kilo}$, $10\si{\kilo}$, $100\ \si{\kilo\hertz}$の正弦波を入力し利得及び位相差を記録, Bode線図を作成した.
 また周波数が$1\ \si{\kilo\hertz}$の時の波形を記録した.
