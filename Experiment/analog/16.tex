@@ -1,0 +1,25 @@
+\section{実験4-B-01：対数変換回路}
+\subsection{原理}
+図\ref{fig:16/taisuu.png}に対数変換回路の回路図を示す.
+\mfig[width=12cm]{16/taisuu.png}{対数変換回路}
+\subsection{方法}
+図\ref{fig:16/taisuu.png}の回路をQucs Spiceで作成した.
+VDCを$0$から$5\ \si{\volt}$までパラメータスイープ機能を用いて掃引し,出力特性を調べた.
+\subsection{結果}
+図\ref{fig:16/ex4-B-02-2.png}に対数変換回路の出力特性を示す.
+\mfig[width=12cm]{16/ex4-B-02-2.png}{対数変換回路の出力特性}
+\subsection{考察}
+図\ref{fig:16/ex4-B-02-2.png}からこの回路の出力はたしかに$v_i$に対して$-\log v_i$のような形を取っている.
+\clearpage
+\section{実験4-B-02：逆対数変換回路}
+\subsection{原理}
+図\ref{fig:16/taisuu.png}に逆対数変換回路の回路図を示す.
+\mfig[width=12cm]{16/gyaku.png}{逆対数変換回路}
+\subsection{方法}
+図\ref{fig:16/gyaku.png}の回路をQucs Spiceで作成した.
+VDCを$-0.1$から$0.1\ \si{\volt}$までパラメータスイープ機能を用いて掃引し,出力特性を調べた.
+\subsection{結果}
+図\ref{fig:16/ex4-B-03-2.png}に逆対数変換回路の出力特性を示す.
+\mfig[width=12cm]{16/ex4-B-03-2.png}{逆対数変換回路の出力特性}
+\subsection{考察}
+図\ref{fig:16/ex4-B-03-2.png}からこの回路の出力はたしかに$v_i$に対して$-{\rm e}^{v_i}$のような形を取っている.

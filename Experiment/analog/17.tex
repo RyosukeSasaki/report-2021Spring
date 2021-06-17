@@ -1,0 +1,20 @@
+\section{乗算回路}
+\subsection{原理}
+図\ref{fig:17/jousan.png}に乗算回路の回路図を示す.
+これは2つの対数変換回路,加算回路,逆対数変換回路からなる.
+乗算回路は2つの入力を一度対数に変換し,これらを加算回路に入れ,それを逆対数に変換したものが出力となる.これは以下に相当する
+\begin{align}
+  \exp(\log(v_1)+\log(v_2))=\exp(\log(v_1v_2))=v_1v_2
+\end{align}
+この処理によって乗算を実現している.
+\mfig[width=14cm]{17/jousan.png}{乗算回路}
+\subsection{方法}
+\subsubsection{測定1}
+一方の入力を$f=50\ \si{\hertz}$, 平均値$2\ \si{\volt}$, $V_{p-p}=2\ \si{\volt}$の正弦波,
+もう一方の入力を$f=10\ \si{\hertz}$, 平均値$1.5\ \si{\volt}$, $V_{p-p}=1\ \si{\volt}$矩形波として出力波形を記録した.
+\subsection{結果}
+\subsubsection{測定1}
+出力波形を図\ref{fig:17/kadai.png}に示す.青線が$v_1$,赤線が$v_2$,ピンクが$v_o$である.
+\mfig[width=12cm]{17/kadai.png}{出力波形}
+\subsubsection{考察}
+出力波形は矩形波に伴い振幅が変化しており,乗算がされていることが確認できる.
