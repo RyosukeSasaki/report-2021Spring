@@ -1,11 +1,11 @@
 \subsubsection{伝達関数}
 図に2次のBPFの回路図を示す.
 これは前節,前々節で取り扱ったHPFとLPFを接続したものである.
-この一般の入力に対してこの回路方程式を解くのは困難だが,この伝達関数がHPFとBPFの線形和になることから
+この一般の入力に対してこの回路方程式を解くのは困難だが,この伝達関数がHPFとBPFの伝達関数の線形和になることから
 Gainと位相差は以下のように求まる.
 \begin{align}
   \begin{split}
-    G_V(\omega)&=20\log\left(\frac{R_2R_4}{R_1R_3}\right)+20\log\sqrt{1+(C_1R_2\omega)^2}-20\log\frac{\omega}{\sqrt{\omega^2+\left(\frac{1}{C_2R_4}\right)^2}}\\
+    G_V(\omega)&=20\log\left(\frac{R_2R_4}{R_1R_3}\right)-20\log\sqrt{1+(C_1R_2\omega)^2}+20\log\frac{\omega}{\sqrt{\omega^2+\left(\frac{1}{C_2R_4}\right)^2}}\\
   \end{split}
 \end{align}
 \begin{align}

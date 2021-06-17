@@ -1,0 +1,19 @@
+\subsubsection{伝達関数}
+図に2次のLPFの回路図を示す.
+これはLPFを2つ接続したものである.この伝達関数は2つの伝達関数の線形和になることから
+Gainと位相差は以下のように求まる.
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left(\frac{R_2R_4}{R_1R_3}\right)-20\log\sqrt{1+(C_1R_2\omega)^2}
+    -20\log\sqrt{1+(C_2R_4\omega)^2}
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    \phi(\omega)&=2\pi-\arctan(C_1R_2\omega)-\arctan(C_2R_4\omega)\\
+    &=-\arctan(C_1R_2\omega)-\arctan(C_2R_4\omega)
+  \end{split}
+\end{align}
+よってBode線図をプロットすると図\ref{fig:graph/3-C/theo-bode.tex}のようになる
+\mfig[width=12cm]{14/ex3-C.png}{2次LPF}
+\gnu{Bode線図の理論値}{graph/3-C/theo-bode.tex}
