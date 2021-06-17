@@ -24,6 +24,7 @@ $R_2$に流れる電流を$i_R$, $C_1$に流れる電流を$i_C$とする.
   v_o(t)={\rm e}^{-t/\tau}\left(-\int^t_0\frac{v_i(t)}{CR_1}{\rm e}^{t/\tau}{\rm d}t\right)
 \end{align}
 ここで積分定数は0とした.
+$\tau$は時定数である.
 \mfig[width=10cm]{07/2-a-02.png}{不完全積分回路}
 \subsubsection{伝達関数}
 ラプラス変換の微分則は以下のようになる.
@@ -52,4 +53,55 @@ $R_2$に流れる電流を$i_R$, $C_1$に流れる電流を$i_C$とする.
     &=\pi-\arctan(CR_2\omega)
   \end{split}
 \end{align}
-以上から図\ref{fig:07/2-a-02.png}で示した値を代入してBode線図を描くと図のようになる
+ここで$\omega$が十分小さいときは
+\begin{align}
+  \begin{split}
+    G_V(\omega)&\simeq20\log(R_2/R_1)\\
+    \phi(\omega)&\simeq\pi
+  \end{split}
+\end{align}
+また$\omega$が大きいときは
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=-20\log\left(\sqrt{\frac{R_1}{R_2}+(CR_1\omega)^2}\right)\simeq-20\log(CR_1\omega)\\
+    \phi(\omega)&\simeq\frac{\pi}{2}
+  \end{split}
+\end{align}
+すなわち$G_V(\omega)$は低周波域では反転増幅器,高周波では完全積分回路の特性を示す.
+以上から図\ref{fig:07/2-a-02.png}で示した値を代入して
+Bode線図を描くと図\ref{fig:graph/2-A-02/theo-bode.tex}のようになる.
+破線は低周波,高周波でのGainの漸近線である.この交点は
+\begin{align}
+  \begin{split}
+    20\log(R_2/R_1)&=-20\log(CR_1\omega)\\
+    \therefore\ \omega_c&=\frac{1}{\tau}
+  \end{split}
+\end{align}
+であり,このときの周波数はカットオフ周波数$f_c=\omega_c/2\pi$と呼ばれる.
+
+以上から低周波数域では出力信号がそのまま透過するのに対し,高周波域では信号が減衰するとわかる.
+この特性を利用して不完全積分回路をローパスフィルタ(LPF)として用いることができる.
+
+このことはコンデンサのリアクタンスが低周波に対して大きく,高周波に対して小さいことからも定性的に理解できる.
+すなわち低周波成分はコンデンサに比べてリアクタンスの低い抵抗に流れるのに対して,高周波成分はコンデンサに流れ込むのである.
+\gnu{Bode線図の理論値}{graph/2-A-02/theo-bode.tex}
+\subsubsection{ステップ応答}
+入力をステップ関数
+\begin{align}
+  \begin{split}
+    v_i(t)=
+    \begin{cases}
+      0\qquad(t\leq 0)\\
+      V_s\qquad(0\leq t)
+    \end{cases}
+  \end{split}
+\end{align}
+とすると(\ref{equ:incomplete_integrator_vo})は以下のようになる.
+\begin{align}
+  \begin{split}
+    v_o&=-\frac{V_s{\rm e}^{-t/\tau}}{CR_1}\int^t_0{\rm e}^{t/\tau}{\rm d}t\\
+    &=-\frac{R_2}{R_1}\left(1-{\rm e}^{-t/\tau}\right)V_s
+  \end{split}
+\end{align}
+ここで$t=\tau$において出力電圧は漸近値$-R_2V_s/R_1$の$1-1/{\rm e}=0.632$倍となることがわかる.
+これは回路の応答速度の指標として用いられる数値となっている.

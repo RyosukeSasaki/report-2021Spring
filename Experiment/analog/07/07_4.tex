@@ -1,0 +1,31 @@
+\subsection{考察}
+\subsubsection{測定2-A-02-(a)}
+$R_2=1.001\ \si{\kilo\ohm}$, $C=0.103\ \si{\micro\farad}$から時定数は
+\begin{align}
+  \tau=0.10310\ \si{\milli\second}
+\end{align}
+である.一方で実際に測定された時定数は$\tau=0.10300\ \si{\milli\second}$であったことから
+相対誤差は$0.1\%$であり,よく一致している.
+
+また時定数からカットオフ周波数は
+\begin{align}
+  f_c=1.55\ \si{\kilo\hertz}
+\end{align}
+となる.一方で入力信号の周波数は$80\ \si{\hertz}$であることから回路は反転増幅器の特性を示すと考えられる.
+また$R_1\simeq R_2$であり出力波形の増幅率はほぼ1となる.
+実際に図\ref{fig:07/ex2-A-2-1.png}を見ると出力波形は入力波形とほぼ同振幅で位相が反転しているとわかる.
+\subsubsection{測定2-A-02-(b)}
+条件3において$R_1\simeq R_2$なのでカットオフ周波数は
+\begin{align}
+  f_c\simeq15.3\ \si{\hertz}
+\end{align}
+である.またBode線図は図\ref{fig:graph/2-A-03/theo-bode.tex}のようになる.
+したがって$80\ \si{\hertz}$の入力信号に対しては条件3の回路は積分器としての特性を持つと考えられる.
+実際に図\ref{fig:07/ex2-A-2-3-rect.png}を見ると若干の歪みはあるが三角波が出力されていることがわかる.
+
+また図\ref{fig:07/ex2-A-2-3-sin.png}を見ると正弦波入力に対して出力は余弦波となっている.
+sin関数を積分するとcos関数が現れることからも,この結果は妥当と言える.
+
+更に図\ref{fig:07/ex2-A-2-3-tri.png}を見ると三角波入力に対してある曲線が出力されている.
+これは三角波はある区間において1次関数であることから,積分したことにより2次関数が出力されたと考えられる.
+\gnu{Bode線図の理論値}{graph/2-A-03/theo-bode.tex}

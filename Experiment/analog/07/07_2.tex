@@ -1,7 +1,26 @@
 \subsection{方法}
 \subsubsection{測定2-A-02-(a)}
-図\ref{fig:06/2-a-01.png}の回路をQucs Spice上で作成しTransient Simulationを行った.
-$R_1=9.98\ \si{\kilo\ohm}$, $C=0.103\ \si{\micro\farad}$である.
-$v_1$は$V_{p-p}=1\ \si{\volt}$, $f=80\ \si{\hertz}$の矩形波とした.
+図\ref{fig:06/2-a-01.png}の回路をQucs Spice上で作成しTransient Simulationを行い,時定数$\tau$を測定した.
+時定数は出力の電圧値をQucs Spiceの表機能で読み取ることで求めた.
+$R_1=0.981\ \si{\kilo\ohm}$, $R_2=1.001\ \si{\kilo\ohm}$, $C=0.103\ \si{\micro\farad}$である.
+また$v_1$は$V_{p-p}=1\ \si{\volt}$, $f=80\ \si{\hertz}$の矩形波とした.
+
 \subsubsection{測定2-A-02-(b)}
-入力の矩形波の平均値を$-1$から$1\ \si{\volt}$の範囲で変化させて同様にTransient Simulationを行った.
+上の回路のにおいて抵抗を表のように変更して出力波形を比較した.
+その中で入力波形に対して出力波形が尤もらしかった,すなわち出力波形が三角波に近かった回路に対して入力を正弦波,
+三角波に変えた時の出力波形を記録した.
+\begin{table}[h]
+\caption{測定2-A-02-(b)の測定条件}
+\label{tab:2-A-02-(b)}
+\centering
+\begin{tabular}{cccc}
+\hline
+条件&$R_1$ / $\si{\ohm}$&$R_2$ / $\si{\ohm}$&時定数$\tau$ / $\si{\milli\second}$\\
+\hline \hline
+1&$981$&$1.00\si{\kilo}$&$0.103$\\
+2&$9.87\si{\kilo}$&$9.82\si{\kilo}$&$1.01$\\
+3&$100\si{\kilo}$&$101\si{\kilo}$&$10.4$\\
+4&$1.00\si{\mega}$&$1.00\si{\mega}$&$103$\\
+\hline
+\end{tabular}
+\end{table}
