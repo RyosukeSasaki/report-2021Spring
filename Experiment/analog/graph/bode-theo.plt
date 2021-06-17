@@ -2,14 +2,14 @@ reset
 set terminal tikz size 10,14
 pi=3.14159265
 #fname=""
-oname     ="2-A-03/theo-bode.tex"
+oname     ="2-B-01/theo-bode.tex"
 set output oname
 #set terminal wxt
 set size ratio 0.6
 set samples 1000
 set logscale x
 
-set xrange [0.01:1100]
+set xrange [7:110000]
 
 R1=100000
 R2=101000

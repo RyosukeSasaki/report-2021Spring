@@ -1,0 +1,31 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図に微分回路の回路図を示す.
+仮想短絡からコンデンサの右側の電位は0である.
+またコンデンサに溜まっている電荷は$q=Cv_i$なので流れる電流$i_C$は
+\begin{align}
+  i_C=C\frac{{\rm d}v_i}{{\rm d}t}
+\end{align}
+この電流は全て抵抗に流れ込むとできるので出力電圧は
+\begin{align}
+  \label{equ:differentiator_vo}
+  v_o=-R_1i_C=-CR_1\frac{{\rm d}v_i}{{\rm d}t}
+\end{align}
+となり出力電圧はたしかに入力電圧の微分で与えられる.
+\mfig[width=10cm]{08/ex2-b-01.png}{微分回路}
+\subsubsection{伝達関数}
+ラプラス変換の微分則(\ref{equ:Laplace_differential})から(\ref{equ:differentiator_vo})は
+\begin{align}
+  \begin{split}
+    V_o&=-sCR_1V_i\\
+    G(s)&=-sCR_1
+  \end{split}
+\end{align}
+よってGainと位相差は
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left|-CR_1j\omega\right|=20\log(CR_1\omega)\\
+    \angle(\omega)&=-\frac{\pi}{2}
+  \end{split}
+\end{align}
+以上から図\ref{fig:08/2-b-01.png}で示した値を代入してBode線図を描くと図のようになる.
