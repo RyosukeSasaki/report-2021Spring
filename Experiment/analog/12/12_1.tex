@@ -1,0 +1,24 @@
+\subsection{原理}
+\subsubsection{伝達関数}
+図\ref{fig:12/ex3-A-02.png}に能動LPFの回路図を示す.
+これは微分回路の入力インピーダンスが$1/sC$から$R_1+1/sC$となった回路と言えるので
+(58)式において$1/sC$を$R_1+1/sC$に, $R_1$を$R_2$に置き換えれば
+\begin{align}
+  G(s)=-\frac{R_2}{R_1}\frac{s}{s+\frac{1}{CR_2}}
+\end{align}
+よってGainと位相差は
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left|-\frac{R_2}{R_1}\frac{j\omega}{j\omega+\frac{1}{CR_2}}\right|\\
+    &=20\log\left(\frac{R_2}{R_1}\right)+20\log\frac{\omega}{\sqrt{\omega^2+\left(\frac{1}{CR_2}\right)^2}}
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    \phi(\omega)&=\angle\left(-\frac{R_2}{R_1}\frac{s}{s+\frac{1}{CR_2}}\right)\\
+    &=-\frac{\pi}{2}-\arctan(CR_2\omega)
+  \end{split}
+\end{align}
+よってBode線図は図\ref{fig:graph/3-A-02/theo-bode.tex}のようになる.
+\mfig[width=10cm]{12/ex3-A-02.png}{能動HPF}
+\gnu{Bode線図の理論値}{graph/3-A-02/theo-bode.tex}

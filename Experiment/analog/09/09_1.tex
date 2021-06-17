@@ -1,0 +1,49 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図\ref{fig:09/ex2-C-a.png}に受動LPFの回路図を示す.
+コンデンサの両端の電圧を$v_C$とする.
+また電流は全てコンデンサを介してGNDに帰るとすると,流れる全電流$i$は
+\begin{align}
+  i=\frac{{\rm d}Q}{{\rm d}t}=C\frac{{\rm d}v_C}{{\rm d}t}
+\end{align}
+したがってキルヒホッフの法則から入力電圧を$v_i$とすると
+\begin{align}
+  v_i=R_1C\frac{{\rm d}v_C}{{\rm d}t}+v_C
+\end{align}
+また明らかに$v_C=v_o$なので
+\begin{align}
+  \left(\frac{1}{CR_1}+\frac{{\rm d}}{{\rm d}t}\right)v_o=\frac{v_i}{CR_1}
+\end{align}
+これは(\ref{equ:incomplete_integrator_differential_eq})において$R_1=R_2$として右辺の符号を反転したものに等しい.
+したがってその解は$\tau=CR_1$を用いて以下のようになる.
+\begin{align}
+  v_o(t)={\rm e}^{-t/\tau}\int^t_0\frac{v_i(t)}{CR_1}{\rm e}^{t/\tau}{\rm d}t
+\end{align}
+\mfig[width=10cm]{09/ex2-C-a.png}{受動LPF}
+\subsubsection{伝達関数}
+式の形が不完全積分回路と同じなので,同様の議論を繰り返せば
+\begin{align}
+  G(s)=\frac{1}{1+CR_1s}
+\end{align}
+したがってGainと位相差は以下で与えられる.
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=-20\log\sqrt{1+(CR_1\omega)^2}\\
+    \phi(\omega)&=-\arctan(CR_1\omega)
+  \end{split}
+\end{align}
+よって図\ref{fig:09/ex2-C-a.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/2-C-01/theo-bode.tex}のようになる.
+またカットオフ周波数も同様に
+\begin{align}
+  f_c=\frac{\omega_c}{2\pi}=\frac{1}{2\pi\tau}
+\end{align}
+となる.カットオフ周波数においてGainは
+\begin{align}
+  G_V(\omega_c)=-20\log\sqrt{1+1^2}\simeq-3
+\end{align}
+また電圧利得は
+\begin{align}
+  \frac{\sqrt{2}}{2}\simeq0.70711
+\end{align}
+となる.すなわちカットオフ周波数はGainが$-3$程度に減衰する周波数として特徴づけられる.
+\gnu{Bode線図の理論値}{graph/2-C-01/theo-bode.tex}

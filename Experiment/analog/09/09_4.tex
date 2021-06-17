@@ -1,0 +1,22 @@
+\subsection{考察}
+\subsubsection{測定2-C-(a)-01}
+$R_1=1.984\ \si{\kilo\hertz}$, $C=0.099\ \si{\micro\farad}$であったことからカットオフ周波数は
+\begin{align}
+  f_c=\frac{1}{2\pi CR_1}=810.30\ \si{\hertz}
+\end{align}
+である.したがって測定値との相対誤差は$6.2\times10^{-3}\%$でありよく一致している.
+またカットオフ周波数においては
+\begin{align}
+  \phi(\omega)=-\arctan(1)=-\frac{\pi}{4}
+\end{align}
+であり$\pi/4$だけ位相が進む.図\ref{fig:09/ex2-C-a_sqrt2.png}を見るとたしかに位相が進んでいる.
+\subsubsection{測定2-C-(a)-02}
+\label{subsubsec:passiveLPF}
+図\ref{fig:graph/2-C-01/bode.tex}を見ると伝達関数から得られたBode線図と測定値の傾向は一致していることがわかる.
+また,受動LPFと能動LPFではGainは同様の振る舞いを示すのに対して,位相差は$\pi$だけシフトしている.
+受動LPFでは低周波域で位相差が0に近いため,
+低周波域をそのままの位相で透過したい場合は受動LPFを,
+低周波域を逆相で透過したい場合は能動LPFを用いるべきである.
+
+また,能動LPFであれば$R_2$を$R_1$より大きくすれば低周波域でのGainを正にすることができるが,
+受動LPFではGainが正になることはない.

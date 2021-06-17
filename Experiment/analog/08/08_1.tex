@@ -1,6 +1,7 @@
 \subsection{原理}
+\label{subsec:differentiator_theo}
 \subsubsection{回路方程式}
-図に微分回路の回路図を示す.
+図\ref{fig:08/ex2-b-01.png}に微分回路の回路図を示す.
 仮想短絡からコンデンサの右側の電位は0である.
 またコンデンサに溜まっている電荷は$q=Cv_i$なので流れる電流$i_C$は
 \begin{align}
@@ -25,7 +26,11 @@
 \begin{align}
   \begin{split}
     G_V(\omega)&=20\log\left|-CR_1j\omega\right|=20\log(CR_1\omega)\\
-    \angle(\omega)&=-\frac{\pi}{2}
+    \phi(\omega)&=-\frac{\pi}{2}
   \end{split}
 \end{align}
-以上から図\ref{fig:08/2-b-01.png}で示した値を代入してBode線図を描くと図のようになる.
+以上から図\ref{fig:08/ex2-b-01.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/2-B-01/theo-bode.tex}のようになる.
+
+以上から微分回路のGainは低周波域で小さく,高周波域で大きくなることがわかる.
+このことはコンデンサが高周波に対して低いリアクタンスを持っており透過しやすいという事実からも定性的に理解できる.
+\gnu{Bode線図の理論値}{graph/2-B-01/theo-bode.tex}

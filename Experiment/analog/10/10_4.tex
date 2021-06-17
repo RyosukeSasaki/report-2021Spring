@@ -1,0 +1,16 @@
+\subsection{考察}
+\subsubsection{測定2-C-(b)-01}
+$R_1=1.991\ \si{\kilo\hertz}$, $C=0.099\ \si{\micro\farad}$であったことからカットオフ周波数は
+\begin{align}
+  f_c=\frac{1}{2\pi CR_1}=807.45\ \si{\hertz}
+\end{align}
+である.したがって測定値との相対誤差は$3.7\times10^{-3}\%$でありよく一致している.
+またカットオフ周波数においては
+\begin{align}
+  \phi(\omega)=\frac{\pi}{4}
+\end{align}
+であり$\pi/4$だけ位相が遅れる.図\ref{fig:10/ex2-C-b_sqrt2.png}を見るとたしかに位相が遅れている.
+\subsubsection{測定2-C-(b)-02}
+図\ref{fig:graph/2-C-02/bode.tex}を見ると伝達関数から得られたBode線図と測定値はよく一致している.
+Gain線図から低周波域の信号は減衰し,高周波域の信号は透過しているため,この回路はたしかにHPFとして機能している.
+また位相差は高周波域で0に近づくことから,受動HPFでは高周波の信号を位相を反転せずに透過するとわかる.

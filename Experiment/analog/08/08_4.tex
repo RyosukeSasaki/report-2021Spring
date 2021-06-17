@@ -1,1 +1,53 @@
 \subsection{考察}
+\subsubsection{測定2-B-01}
+ステップ関数や矩形波は値の切り替わるタイミングで変化率が$\infty$であり,その微分は$\delta$関数になると考えられる.
+実際に図\ref{fig:08/ex2-B-100k.png}を見ると値が切り替わるタイミングで非常に高いピークが現れており,出力はたしかに$\delta$関数のような形をしていることがわかる.
+またピークの符号は(\ref{equ:differentiator_vo})から$v_i$が減少した場合は正,増加した場合は負のピークを持つことになり,図\ref{fig:08/ex2-B-100k.png}でもたしかにそのようになっている.
+
+一方で図\ref{fig:08/ex2-B-100k.png}のピークは完全な$\delta$関数ではなく有限の幅を持っていることもわかる.
+これに関しては測定2-B-02に関する考察で述べる.
+\subsubsection{測定2-B-02}
+ここで積分回路と同様に時定数を$\tau=CR_1$と定義すると$\tau$が大きいとコンデンサの容量が大きいか,
+抵抗が大きくなるためコンデンサが電荷を放出するのにより長い時間がかかると考えられる.
+逆に$\tau$が小さいとコンデンサが電荷をすぐに放出できることから,より応答性の良い微分回路になると考えられる.
+実際に図\ref{fig:08/ex2-B-1k-rect.png}を見ると図\ref{fig:08/ex2-B-100k.png}に比べて$R_1$が小さい方がよりピーク幅が狭くなっており,応答性が高くなっていると考えられる.
+しかしながら実際の回路では熱雑音や電磁波によるノイズが存在し,更にこれらの周波数が高いことを考えるとノイズが非常に大きな利得で増幅される.
+したがって極めて低雑音な環境でなければこの回路は実用的に動作し得ないと考えられる.
+
+また(\ref{equ:differentiator_vo})から正弦波入力に対して出力波形は
+\begin{align}
+  v_o=-CR_1\omega\cos(\omega t)
+\end{align}
+となる.このことから出力波形は$-\cos\omega t$の形をするはずであり,
+図\ref{fig:08/ex2-B-1k-sin.png}を見ると実際にそうなっている.
+またその振幅は
+\begin{align}
+  CR_1\omega=0.106\times10^{-6}\times979\time2\pi\times100\simeq0.06
+\end{align}
+程度になるべきである.実際に図\ref{fig:08/ex2-B-1k-sin.png}の振幅はその程度の値になっていることがわかる.
+
+また三角波入力に対しての出力波形は,三角波が定数$a$, $b$を用いて
+\begin{align}
+  \begin{split}
+    v=
+    \begin{cases}
+        Vt+a\qquad(0\leq t<T/2)\\
+        -Vt+b\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+と表されることから
+\begin{align}
+  \begin{split}
+    v=
+    \begin{cases}
+        -CR_1V\qquad(0\leq t<T/2)\\
+        CR_1V\qquad(T/2\leq t<T)
+    \end{cases}
+  \end{split}
+\end{align}
+ここで$V$は三角波の傾きであり$V=200\ \si{\volt.\second^{-1}}$である.したがって
+\begin{align}
+  CR_1V\simeq2.0\times10^{-2}\ \si{\volt}
+\end{align}
+となる.実際に図\ref{fig:08/ex2-B-1k-tri.png}の波形はその程度の値になっていることがわかる.

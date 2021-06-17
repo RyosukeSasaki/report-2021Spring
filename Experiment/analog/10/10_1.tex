@@ -1,0 +1,39 @@
+\subsection{原理}
+\subsubsection{回路方程式}
+図\ref{fig:10/ex2-C-b.png}に受動HPFの回路図を示す.
+$R_2$に電流が流れ込まないとすると,全電流を$i$とすると
+\begin{align}
+  \begin{split}
+    \label{equ:HPF_differential_eq}
+    v_i&=\frac{1}{C}\int_0^ti{\rm d}t+Ri\\
+    &=\frac{1}{CR_1}\int_0^tv_o{\rm d}t+v_o
+  \end{split}
+\end{align}
+これは$v_o$について1次の非斉次微分方程式なのでその解は$\tau=CR_1$を用いて以下のようになる.
+\begin{align}
+  v_o(t)={\rm e}^{-t/\tau}\int^t_0\frac{{\rm d}v_i}{{\rm d}t}{\rm e}^{t/\tau}{\rm d}t
+\end{align}
+\mfig[width=10cm]{10/ex2-C-b.png}{受動LPF}
+\subsubsection{伝達関数}
+(\ref{equ:HPF_differential_eq})をラプラス変換すると
+\begin{align}
+  \begin{split}
+    V_i&=\frac{V_o}{CR_1s}+V_o\\
+    G(s)&=\frac{s}{s+\frac{1}{CR_1}}
+  \end{split}
+\end{align}
+したがってGainと位相差は以下で与えられる.
+\begin{align}
+  \begin{split}
+    G_V(\omega)&=20\log\left|\frac{j\omega}{j\omega+\frac{1}{CR_1}}\right|\\
+    &=20\log\frac{\omega}{\sqrt{\omega^2+\left(\frac{1}{CR_1}\right)^2}}
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    \phi(\omega)&=\angle(j\omega)-\angle\left(j\omega+\frac{1}{CR_1}\right)\\
+    &=\frac{\pi}{2}-\arctan(CR_1\omega)
+  \end{split}
+\end{align}
+よって図\ref{fig:10/ex2-C-b.png}で示した値を代入してBode線図を描くと図\ref{fig:graph/2-C-02/theo-bode.tex}のようになる.
+\gnu{Bode線図の理論値}{graph/2-C-02/theo-bode.tex}
