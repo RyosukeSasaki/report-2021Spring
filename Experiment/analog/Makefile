@@ -2,7 +2,7 @@ FILES=report-cover.pdf\
 			out/main.pdf
 R=1
 NUM=01
-NAME=jik
+NAME=ana
 
 connect: $(FILES)
 	pdftk $(FILES) cat output "sasaki_ryosuke_$(NUM)_$(NAME).pdf"
