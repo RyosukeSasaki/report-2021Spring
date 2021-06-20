@@ -1,0 +1,123 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+
+\begin{document}
+\title{}
+\author{61908697 佐々木良輔}
+\date{}
+\maketitle
+\subsubsection*{問題}
+全ての微視的状態に任意の個数の粒子が存在しうる場合(ボース分布)を考える.つまり$N_\lambda$個の同種
+の玉を$M_\lambda$個の入れ物に入れるのと同じだけの重率がある場合,エントロピーが
+\begin{align}
+  S=-k_B\sum_j\left(f_j\log f_j-(1+f_j)\log(1+f_j)\right)
+\end{align}
+となることを示し,熱平衡状態で
+\begin{align}
+  f_j=\frac{1}{\exp\left(\frac{\epsilon_\lambda-\mu}{k_BT}-1\right)}
+\end{align}
+となることを示せ.\\
+\hrulefill
+\subsubsection*{回答}
+準位$\lambda$に幾つでも粒子を入れることができるので,状態数は
+\begin{align}
+  W_\lambda={}_{M_\lambda+N_\lambda-1}{\rm C}_{N_\lambda}=\frac{(M_\lambda+N_\lambda-1)!}{N_\lambda!(M_\lambda-1)!}
+\end{align}
+したがってエントロピー$S$はStirlingの公式を用いて
+\begin{align}
+  \begin{split}
+    S&=k_B\log\prod_\lambda W_\lambda\\
+    &=k_B\sum_\lambda((M_\lambda+N_\lambda-1)\log(M_\lambda+N_\lambda-1)\\
+    &\qquad-N_\lambda\log N_\lambda-(M_\lambda-1)\log(M_\lambda-1))\\
+  \end{split}
+\end{align}
+ここで$N_\lambda\gg1$, $M_\lambda\gg1$なので
+\begin{align}
+  \begin{split}
+    S&=k_B\sum_\lambda((M_\lambda+N_\lambda)\log(M_\lambda+N_\lambda)-N_\lambda\log N_\lambda-M_\lambda\log M_\lambda)\\
+    &=-k_B\sum_\lambda M_\lambda\left(\frac{N_\lambda}{M_\lambda}\log\frac{N_\lambda}{M_\lambda}-\left(1+\frac{N_\lambda}{M_\lambda}\right)\log\left(1+\frac{N_\lambda}{M_\lambda}\right)\right)
+  \end{split}
+\end{align}
+ここで準位$\lambda$には$M_\lambda$の状態があるので$\sum_\lambda M_\lambda=\sum_j$となる.したがって
+\begin{align}
+  \begin{split}
+    S&=-k_B\sum_j\left(f_j\log f_j-(1+f_j)\log(1+f_j)\right)
+  \end{split}
+\end{align}
+熱平衡状態ではエントロピーが最大になるので,その分布を求める.ここで全粒子数と全エネルギーは
+\begin{align}
+  N=\sum_\lambda N_\lambda=\sum_jf_j
+\end{align}
+\begin{align}
+  E=\sum_\lambda N_\lambda\epsilon_\lambda=\sum_jf_j\epsilon_\lambda^{(j)}
+\end{align}
+で保存する.ここで$\epsilon_\lambda^{(j)}$は粒子$j$のエネルギーである.ラグランジュの未定乗数法を用いると
+\begin{align}
+  \tilde{S}=S-a\left(\sum_jf_j-N\right)-b\left(\sum_jf_j\epsilon_\lambda^{(j)}-E\right)
+\end{align}
+ここで両辺を$f_j$で偏微分すると
+\begin{align}
+  \begin{split}
+    \tilde{S}=k_B\left(-\log f_j+\log(1+f_j)\right)-a-b\epsilon_\lambda^{(j)}=0\\
+    \log\left(\frac{1+f_j}{f_j}\right)=\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\\
+    f_j=\frac{1}{\exp\left(\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\right)-1}
+  \end{split}
+\end{align}
+となる.ここで熱力学関係式から
+\begin{align}
+  \begin{split}
+    \frac{1}{T}&=\frac{\partial S}{\partial E}=\sum_j\frac{\partial S}{\partial f_j}\frac{\partial f_j}{\partial E}\\
+    &=\sum_j-k_B(\log f_j-\log(1+f_j))\frac{\partial f_j}{\partial E}\\
+    &=\sum_jk_B\log\left(\frac{1+f_j}{f_j}\right)\frac{\partial f_j}{\partial E}\\
+    &=\sum_j(a+b\epsilon_\lambda^{(j)})\frac{\partial f_j}{\partial E}\\
+    &=a\frac{\partial}{\partial E}\left(\sum_jf_j\right)+b\frac{\partial}{\partial E}\left(\sum_jf_j\epsilon_j^{(j)}\right)\\
+    &=a\frac{\partial N}{\partial E}+b\frac{\partial E}{\partial E}=b
+  \end{split}
+\end{align}
+\clearpage
+\begin{align}
+  \begin{split}
+    -\frac{\mu}{T}&=\frac{\partial S}{\partial N}=\sum_j\frac{\partial S}{\partial f_j}\frac{\partial f_j}{\partial N}\\
+    &=a\frac{\partial N}{\partial N}+b\frac{\partial E}{\partial N}=a
+  \end{split}
+\end{align}
+したがって(10)に代入すると
+\begin{align}
+  f_j=\frac{1}{\exp\left(\frac{\epsilon_\lambda-\mu}{k_BT}\right)-1}
+\end{align}
+
+\end{document}
