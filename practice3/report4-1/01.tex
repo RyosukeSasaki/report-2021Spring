@@ -1,0 +1,82 @@
+\subsection*{(1)}
+\subsubsection*{(a)}
+粒子の見分けがつかない時,準位$\lambda$は$M_\lambda$の状態を持つとしたので,粒子の見分けがつかない場合の準位$\lambda$の状態数$W_\lambda$は以下のとおりである.
+\begin{align}
+  W_\lambda=\frac{M_\lambda^{N_\lambda}}{N_\lambda!}
+\end{align}
+\subsubsection*{(b)}
+(a)から全状態数$W$は
+\begin{align}
+  W=\prod_\lambda\frac{M_\lambda^{N_\lambda}}{N_\lambda!}
+\end{align}
+なのでBoltzmannの公式からエントロピー$S$は
+\begin{align}
+  \begin{split}
+    S&=k_B\log W\\
+    &=k_B\sum_\lambda(\log M_\lambda^{N_\lambda}-\log N_\lambda!)
+  \end{split}
+\end{align}
+ここでStirlingの公式を用いると
+\begin{align}
+  \begin{split}
+    S&=k_B\sum_\lambda(N_\lambda\log M_\lambda-N_\lambda\log N_\lambda+N\lambda)\\
+    &=-k_B\sum_\lambda\left(N_\lambda\log\frac{N_\lambda}{M_\lambda}-N_\lambda\right)
+  \end{split}
+\end{align}
+また準位$\lambda$には$M_\lambda$の状態があるので$\sum_\lambda M_\lambda=\sum_j$であるので
+\begin{align}
+  \begin{split}
+    -k_B\sum_\lambda\left(N_\lambda\log\frac{N_\lambda}{M_\lambda}-N_\lambda\right)=-k_B\sum_j(f_j\log f_j-f_j)
+  \end{split}
+\end{align}
+\subsubsection*{(c)}
+全粒子数と全エネルギー一定の条件
+\begin{align}
+  \label{equ:N}
+  \sum_\lambda N_\lambda=\sum_jf_j&=N\\
+  \label{equ:E}
+  \sum_\lambda N_\lambda\epsilon_\lambda=\sum_jf_j\epsilon_\lambda^{(j)}&=E
+\end{align}
+よりラグランジュの未定乗数法を用いると
+\begin{align}
+  \tilde{S}=-k_B\sum_j\left(f_j\log f_j-f_j\right)-a\left(\sum_j f_j-N\right)-b\left(\sum_j f_j\epsilon_\lambda^{(j)}-E\right)
+\end{align}
+となる.ただし$\epsilon_\lambda^{(j)}$は粒子$j$のエネルギーである.ここで$f_j$で偏微分すると
+\begin{align}
+  \begin{split}
+    \label{equ:f_j}
+    \frac{\partial\tilde{S}}{\partial f_j}&=-k_B\log f_j-a-b\epsilon_\lambda^{(j)}=0\\
+    f_j&=\exp\left(-\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\right)
+  \end{split}
+\end{align}
+となる.ここで(\ref{equ:N})式, (\ref{equ:E})式から$a$, $b$は
+\begin{align}
+  \sum_j \exp\left(-\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\right)&=N\\
+  \sum_j \epsilon_\lambda^{(j)}\exp\left(-\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\right)&=E
+\end{align}
+を満たすように定まる.
+\subsubsection*{(d)}
+(\ref{equ:f_j})からエントロピーは
+\begin{align}
+  \begin{split}
+    S&=-k_B\sum_j(f_j\log f_j-f_j)\\
+    &=k_B\sum_j f_j\left(\frac{a}{k_B}+\frac{b}{k_B}\epsilon_\lambda^{(j)}+1\right)\\
+    &=N(a+k_B)+Eb
+  \end{split}
+\end{align}
+ここで熱力学関係式から
+\begin{align}
+  \frac{1}{T}=\frac{\partial S}{\partial E}=b
+\end{align}
+また
+\begin{align}
+  \mu=-T\frac{\partial S}{\partial N}=-T(a+k_B)
+\end{align}
+ここで$\mu$の基準が自由に定められることから$\mu+k_BT$に基準を取り直すと
+\begin{align}
+  a=-\frac{\mu}{T}
+\end{align}
+以上から(\ref{equ:f_j})式は
+\begin{align}
+  f_j=\exp\left(-\frac{\epsilon_\lambda-\mu}{k_BT}\right)
+\end{align}

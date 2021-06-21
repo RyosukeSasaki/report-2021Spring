@@ -1,0 +1,48 @@
+\subsection*{(2)}
+$M_\lambda$個の準位のうち$N_\lambda$個に粒子が入るとすると,その状態数は
+\begin{align}
+  W_\lambda={}_{M_\lambda}{\rm C}_{N_\lambda}=\frac{M_\lambda!}{N_\lambda!(M_\lambda-N_\lambda)!}
+\end{align}
+したがってエントロピー$S$はStirlingの公式を用いて
+\begin{align}
+  \begin{split}
+    S&=k_B\log\prod_\lambda W_\lambda\\
+    &=k_B\sum_\lambda(M_\lambda(\log M_\lambda-1)-N_\lambda(\log N_\lambda-1)\\
+    &\qquad -(M_\lambda-N_\lambda)(\log(M_\lambda-N_\lambda)-1)\\
+    &=-k_B\sum_\lambda M_\lambda\left(\frac{N_\lambda}{M_\lambda}\log\frac{N_\lambda}{M_\lambda}+(1-\frac{N_\lambda}{M_\lambda})\log(1-\frac{N_\lambda}{M_\lambda})\right)\\
+    &=-k_B\sum_j\left(f_j\log f_j+(1-f_j)\log(1-f_j)\right)
+  \end{split}
+\end{align}
+ここで熱平衡状態においてエントロピーは最大化するので,ラグランジュの未定乗数法をもちいると
+\begin{align}
+  \tilde{S}=S-a\left(\sum_j f_j-N \right)-b\left(\sum_j f_j\epsilon_\lambda^{(j)}-E\right)
+\end{align}
+ここで両辺を$f_j$で偏微分すると
+\begin{align}
+  \begin{split}
+    \tilde{S}=k_B\left(-\log f_j+\log(1-f_j)\right)-a-b\epsilon_\lambda^{(j)}=0\\
+    \log\left(\frac{1-f_j}{f_j}\right)=\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\\
+    f_j=\frac{1}{\exp\left(\frac{a+b\epsilon_\lambda^{(j)}}{k_B}\right)+1}
+  \end{split}
+\end{align}
+となる.ここで熱力学関係式から
+\begin{align}
+  \begin{split}
+    \frac{1}{T}&=\frac{\partial S}{\partial E}=\sum_j\frac{\partial S}{\partial f_j}\frac{\partial f_j}{\partial E}\\
+    &=\sum_j-k_B(\log f_j-\log(1-f_j))\frac{\partial f_j}{\partial E}\\
+    &=\sum_jk_B\log\left(\frac{1-f_j}{f_j}\right)\frac{\partial f_j}{\partial E}\\
+    &=\sum_j(a+b\epsilon_\lambda^{(j)})\frac{\partial f_j}{\partial E}\\
+    &=a\frac{\partial}{\partial E}\left(\sum_jf_j\right)+b\frac{\partial}{\partial E}\left(\sum_jf_j\epsilon_j^{(j)}\right)\\
+    &=a\frac{\partial N}{\partial E}+b\frac{\partial E}{\partial E}=b
+  \end{split}
+\end{align}
+\begin{align}
+  \begin{split}
+    -\frac{\mu}{T}&=\frac{\partial S}{\partial N}=\sum_j\frac{\partial S}{\partial f_j}\frac{\partial f_j}{\partial N}\\
+    &=a\frac{\partial N}{\partial N}+b\frac{\partial E}{\partial N}=a
+  \end{split}
+\end{align}
+したがって(10)に代入すると
+\begin{align}
+  f_j=\frac{1}{\exp\left(\frac{\epsilon_\lambda-\mu}{k_BT}\right)+1}
+\end{align}
