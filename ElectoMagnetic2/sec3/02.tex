@@ -1,0 +1,82 @@
+\subsubsection*{(3-5)}
+\begin{align}
+  E=\sqrt{2}\sqrt{\frac{1.39\times10^3}{2.65\times10^{-3}}}=1.02\times10^{3}\ \si{\volt\metre^{-1}}
+\end{align}
+\begin{align}
+  \langle S\rangle=\frac{1}{2}\sqrt{\frac{\varepsilon_0}{\mu_0}}E^2=1.39\times10^3\ \si{\joule.\second^{-1}}
+\end{align}
+\begin{align}
+  \langle p\rangle=\frac{\langle S\rangle}{c}=4.64\times10^{-6}\ \si{\newton.\metre^{-2}}
+\end{align}
+\subsubsection*{(3-6)}
+太陽定数は地球表面に到達する太陽光の単位面積あたりのワット数である.したがって太陽が単位時間に放出する全エネルギー$E_1$は
+\begin{align}
+  E_1=4\pi(1.496\times10^11\ \si{\metre})^2\times1.37\times10^3\ \si{\watt.\metre^{-2}}=3.853\times10^{26}\ \si{\watt}
+\end{align}
+よって太陽の輻射強度$I$は
+\begin{align}
+  I=\frac{E_1\ \si{\watt}}{4\pi(6.960\times10^8\ \si{\metre})}=6.329\times10^7\ \si{\watt.\metre^{-2}}
+\end{align}
+以上から太陽表面の推定温度は
+\begin{align}
+  T=\left(\frac{I}{\sigma}\right)^{1/4}=5.78\times10^3\ \si{\kelvin}
+\end{align}
+太陽の光球温度は$6000\ \si{\kelvin}$程度であり,妥当な数字である.
+\subsubsection*{(3-7)}
+Stirlingの公式
+\begin{align}
+  \log N!=N(\log N-1)
+\end{align}
+を用いると
+\begin{align}
+  \begin{split}
+    \frac{S}{N}&=\frac{k_B}{N}\log\frac{(N+P)!}{N!P!}\\
+    &=\frac{k_B}{N}((N+P)(\log(N+P)-1)-N(\log N-1)-P(\log P-1))\\
+    &=\frac{k_B}{N}((N+P)\log(N+P)-(N+P)\log N-P\log P+P\log N)\\
+    &=k_B\left(\left(\frac{P}{N}+1\right)\log\left(\frac{P}{N}+1\right)-\frac{P}{N}\log\frac{P}{N}\right)\\
+    &=k_B\left(\left(\frac{U}{\varepsilon}+1\right)\log\left(\frac{U}{\varepsilon}+1\right)-\frac{U}{\varepsilon}\log\frac{U}{\varepsilon}\right)
+  \end{split}
+\end{align}
+\subsubsection*{(3-8)}
+\begin{align}
+  \begin{split}
+    \frac{1}{T}&=\frac{\partial}{\partial U}\left(\frac{S}{N}\right)\\
+    &=\frac{k_B}{\varepsilon}\left(\log\left(\frac{U}{\varepsilon}+1\right)-\log\frac{U}{\varepsilon}\right)\\
+    &=\frac{k_B}{\varepsilon}\log\frac{\frac{U}{\varepsilon}+1}{\frac{U}{\varepsilon}}
+  \end{split}
+\end{align}
+両辺指数を取り
+\begin{align}
+  \begin{split}
+    \frac{\frac{U}{\varepsilon}+1}{\frac{U}{\varepsilon}}&={\rm e}^{\varepsilon/k_BT}\\
+    U&=\frac{\varepsilon}{\exp(\varepsilon/k_BT)-1}
+  \end{split}
+\end{align}
+\subsubsection*{(3-9)}
+$\lambda$無限大,すなわち$\nu$無限小の極限では指数関数のマクローリン展開で1次までを取り
+\begin{align}
+  \begin{split}
+    \lim_{\nu\rightarrow 0} R'(\nu,T)&=\frac{8\pi h}{c^3}\frac{\nu^3}{\frac{h\nu}{k_BT}}\\
+    &=\frac{8\pi k_BT}{c^3}\nu^2
+  \end{split}
+\end{align}
+また$\lambda$無限小,すなわち$\nu$無限大ではマクローリン展開で5次までを取り
+\begin{align}
+  \begin{split}
+    R'(\nu,T)&=\frac{8\pi h}{c^3}\frac{\nu^3}{\frac{h\nu}{k_BT}+\frac{1}{2!}\left(\frac{h\nu}{k_BT}\right)^2+\frac{1}{3!}\left(\frac{h\nu}{k_BT}\right)^3+\frac{1}{4!}\left(\frac{h\nu}{k_BT}\right)^4+\frac{1}{5!}\left(\frac{h\nu}{k_BT}\right)^5}\\
+    &=\frac{8\pi h}{c^3}\frac{1}{\frac{h}{k_BT\nu^2}+\frac{1}{2}\frac{h^2}{k_B^2T^2\nu}+\frac{1}{6}\frac{h^3}{k_B^3T^3}+\frac{1}{24}\frac{h^4\nu}{k_B^4T^4}+\frac{1}{120}\frac{h^5\nu^2}{k_B^5T^5}}\\
+    &\rightarrow\frac{8\pi h}{c^3}\frac{1}{\frac{1}{6}\frac{h^3}{k_B^3T^3}+\frac{1}{24}\frac{h^4\nu}{k_B^4T^4}+\frac{1}{120}\frac{h^5\nu^2}{k_B^5T^5}}
+  \end{split}
+\end{align}
+ここで$\lambda\propto1/\nu$なので$h/k_BT=1$と無次元化して概形を示すと図のようになる.
+\mfig[width=10cm]{desmos-graph.png}{青：$R'$の概形, 赤：$\lambda$無限大での近似, 緑：$\lambda$無限小での近似}
+\subsubsection*{(3-10)}
+$a=8\pi h/c^3$, $b=h/k_BT$とおくと
+\begin{align}
+  \begin{split}
+    a\int^\infty_0\frac{\nu^3}{{\rm e}^{b\nu}-1}\ {\rm d}\nu&=\frac{a}{b^4}\int^\infty_0\frac{x^3}{{\rm e}^x-1}\ {\rm d}x\\
+    &=\frac{a}{b^4}\sum_{n=1}^\infty\frac{1}{n^4}\int_0^\infty t^3{\rm e}^{-t}\ {\rm d}t\\
+    &=\frac{a}{b^4}\frac{\pi^4}{15}=\frac{8\pi^5k_B^4}{15h^3c^3}T^4
+  \end{split}
+\end{align}
+となりStefan-Boltzmann則を満たす.
