@@ -1,0 +1,94 @@
+\subsection{金属の電気伝導}
+古典,あるいは量子モデルを用いてOhmの法則の説明を試みる.
+\subsubsection{Drudeモデル}
+Drudeモデルでは電気抵抗が自由電子と結晶格子の衝突によって生じると考える.
+自由電子を流体と見立て,格子との衝突により生じる抵抗力が電子の速度に比例すると考える.
+また電子は電場$\bm E$により加速されると考えると,運動方程式は
+\begin{align}
+  m\dot{\bm v}+\frac{m}{\tau}{\bm v}=-e{\bm E}
+\end{align}
+ここで$\tau$は緩和時間であり,電子が格子に衝突せずに直進できる平均時間である.
+この定常状態における速度は
+\begin{align}
+  v=-\frac{e\tau}{m}{\bm E}
+\end{align}
+したがって電子数密度$n$を用いると電流密度$\bm j$は
+\begin{align}
+  \label{equ:j=sE}
+  {\bm j}=-en{\bm v}=\frac{e^2\tau n}{m}{\bm E}=\sigma{\bm E}
+\end{align}
+となる.ここで$\sigma$は電気伝導率であり電気抵抗率$\rho$の逆数である.
+したがって(\ref{equ:j=sE})はオームの法則の形をとっている.
+\subsubsection{バンド理論}
+上で議論したDrudeモデルは節で後述するように問題がある.これを解決するのがバンド理論による説明である.
+
+結晶は一定の周期で同一の構造が繰り返すことから周期的境界条件下で考える.
+また簡単のため1次元で考える,すなわち全原子数が$N$のとき$n$番目の原子の位置$r_n$と原子軌道$\phi_n$は
+\begin{align}
+  \begin{split}
+    \label{equ:cyclic}
+    r_n=r_{n+N}\\
+    \phi_n=\phi_{n+N}
+  \end{split}
+\end{align}
+を満たす.また格子定数を$a$とすると
+\begin{align}
+  \phi_{n+1}-\phi_n=a
+\end{align}
+である.したがって$n$番目の原子周りの原子軌道は以下のように表される.
+\begin{align}
+  \phi_n=\phi(x-r_n)=\phi(x-na)
+\end{align}
+ここで格子定数が原子軌道の広がりと同程度であり,波動関数の間に重なりが生じると電子が隣り合う原子軌道間を飛び移ることができる.
+この飛び移りはトランスファー積分$b$を用いて以下のように表される.
+\begin{align}
+  \label{equ:band_Hn}
+  H\phi_n(x)=-b\left(\phi_{n+1}(x)+\phi_{n-1}(x)\right)
+\end{align}
+ここで波動関数$\psi(x,t)$が初期状態$t=0$において$\phi_n(x)$だとすると$\Delta t$後の波動関数の変化は
+\begin{align}
+  \begin{split}
+    \psi(x,\Delta t)&=\psi(x,0)+\Delta t\frac{\partial \psi(x,0)}{\partial t}\\
+    &=\phi_n(x)+\frac{i\Delta t}{\hbar}b\left(\phi_{n+1}(x)+\phi_{n-1}(x)\right)
+  \end{split}
+\end{align}
+となり,時間変化に伴いたしかに$\phi_n$に$\phi_{n+1}$, $\phi_{n-1}$の成分が波動関数に混ざってくることがわかる.
+
+ここで(\ref{equ:band_Hn})から固有値方程式を考える.
+(\ref{equ:band_Hn})の両辺に${\rm e}^{ikr_n}$を乗じ,
+$n$について和を取ると
+\begin{align}
+  \begin{split}
+    \label{equ:eigen_vector}
+    \sum_{n=1}^N{\rm e}^{ikr_n}(H\phi_n)&=-b\sum_{n=1}^N{\rm e}^{ikr_n}(\phi_{n+1}+\phi_{n-1})\\
+    H\sum_{n=1}^N{\rm e}^{ikr_n}\phi_n&=-b\sum_{n=1}^N({\rm e}^{ikr_{n-1}}+{\rm e}^{ikr_{n+1}})\phi_n\\
+    &=-2b\cos(ka)\sum_{n=1}^N{\rm e}^{ikr_n}\phi_n
+  \end{split}
+\end{align}
+となる.
+1行目から2行目の右辺の変形には(\ref{equ:cyclic})の条件を用いた.
+したがって固有状態を$\psi_k=\sum_{n=1}^N{\rm e}^{ikr_n}\phi_n$と置けば固有値は$-2b\cos(ka)$
+となることがわかる.この固有状態はBloch状態,固有値はエネルギーバンドと呼ばれ,これは波数$k$によって指定される.
+このことから結晶格子中での自由電子は波動的に振る舞うためDrudeモデルで仮定したような古典的な抵抗力は発生していないと考えられる.
+
+ここで$k\rightarrow k+2\pi/a$というシフトに対して明らかに固有値,固有状態は不変なので$k$の範囲として
+\begin{align}
+  -\frac{\pi}{a}<k\leq\frac{\pi}{a}
+\end{align}
+のみを考えれば十分である.この$k$の領域を第一ブルリアンゾーンと呼ぶ.
+実際には$k$は離散化しており,第一ブルリアンゾーンにおいて存在する状態の数を数えることができる.
+波数$k$の離散化条件を考える.
+(\ref{equ:eigen_vector})も各$\phi_n$と同様に周期的境界条件を満たすことから
+\begin{align}
+  \begin{split}
+    \psi_k(x+Na)&=\sum_{n=1}^N{\rm e}^{ikr_n}\phi_n(x+Na)\\
+    &=\sum_{n=1}^N{\rm e}^{ikr_n}\phi(x-(n-N)a)\\
+    &={\rm e}^{ikNa}\sum_{n=1}^N{\rm e}^{ikr_{n-N}}\phi_{n-N}(x)\\
+    &={\rm e}^{ikNa}\psi_k(x)\\
+  \end{split}
+\end{align}
+\begin{align}
+  \therefore\qquad kNa=2\pi m\qquad(m\in\mathbb{Z})
+\end{align}
+したがって第一ブルリアンゾーンにおいては$-N/2<m\leq N/2$の間の$N$個の状態が存在することになる.
+これは第一ブルリアンゾーンに$N$個の原子が存在することに整合する.
