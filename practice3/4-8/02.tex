@@ -1,0 +1,41 @@
+\subsubsection*{問題(2)}
+$N$個の互いに相互作用しないフェルミ粒子がこの調和ポテンシャルに閉じ込められているとしてフェルミエネルギー$\epsilon_F$を求めよ.
+また絶対零度における内部エネルギーを求めよ.\\
+\hrulefill
+\subsubsection*{解答}
+フェルミエネルギー$\epsilon_F$以下のエネルギー準位の数が$N$であることから
+\begin{align}
+  \begin{split}
+    \Omega(\epsilon_F)&=N\\
+    \epsilon_F&=\hbar\omega\sqrt[3]{6N}
+  \end{split}
+\end{align}
+である.また内部エネルギー$E$は
+\begin{align}
+  \begin{split}
+    E&=\int_{-\infty}^\infty\epsilon D(\epsilon) f(\epsilon){\rm d}\epsilon\\
+  \end{split}
+\end{align}
+ここで$\epsilon<0$において$D(\epsilon)=0$なので
+\begin{align}
+  E&=\frac{1}{2\hbar^3\omega^3}\int_0^\infty\epsilon^3\frac{1}{{\rm e}^{\beta(\epsilon-\mu)}+1}{\rm d}\epsilon  
+\end{align}
+またフェルミ分布関数は絶対零度$(\beta=\infty)$において
+\begin{align}
+  \begin{split}
+    \frac{1}{{\rm e}^{\beta(\epsilon-\mu)}+1}=
+    \begin{cases}
+      1&(\epsilon<\mu)\\
+      0&(\mu<\epsilon)
+    \end{cases}
+  \end{split}
+\end{align}
+となる.したがって
+\begin{align}
+  E=\frac{1}{2\hbar^3\omega^3}\int_0^\mu\epsilon^3{\rm d}\epsilon=\frac{\mu^4}{8\hbar^3\omega^3}
+\end{align}
+絶対零度において$\mu=\epsilon_F$より
+\begin{align}
+  E=\frac{\epsilon_F^4}{8\hbar^3\omega^3}
+\end{align}
+である.
