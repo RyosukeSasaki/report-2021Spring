@@ -88,22 +88,76 @@ $n$について和を取ると
   \end{split}
 \end{align}
 \begin{align}
+  \label{equ:k}
   \therefore\qquad kNa=2\pi m\qquad(m\in\mathbb{Z})
 \end{align}
 したがって第一ブルリアンゾーンにおいては$-N/2<m\leq N/2$の間の$N$個の状態が存在することになる.
 これは第一ブルリアンゾーンに$N$個の原子が存在することに整合する.
 \mfig[width=10cm]{fig/band1.png}{第一ブルリアンゾーンの概形}
 ここで電場$\bm E$によって電子の分布が図のように$x\rightarrow x+\Delta x$,波数が$k\rightarrow k+\Delta k$と変化したときの電流を考える.
-全電流$j$はスピン自由度が$2$あることを考慮すれば以下で与えられる.
+全電流$I$はスピン自由度が$2$あることを考慮し,存在する電子について和を取ることで以下のように与えられる.
 \begin{align}
-  j=2e\int
+  I=-2n_eSev(k)=-\frac{2e}{Na}\sum_{k:occupied}v(k)
+\end{align}
+ここで電子の総数$N_e$を用いて電子数密度は$n_e=N_e/V$となることから$n_eS=N_e/L=N_e/Na$となることを用いた.
+また(\ref{equ:k})式から$k$空間で電子ひとつが専有する長さは$2\pi/Na$であるので$k$に関する和を積分に置き換えると
+\begin{align}
+  I=-2e\int_{k:occupied}v(k)\frac{{\rm d}k}{2\pi}
+\end{align}
+ここで外部からの電場により図\ref{fig:fig/deltak.png}のように電子の分布が変化した場合を考えると
+\begin{align}
+  I=-\frac{e}{\pi}\int_{-\pi/2a+\Delta k}^{\pi/2a+\Delta k}v(k){\rm d}k
+\end{align}
+となる.ここで$\Delta x=v(k)\Delta t$である.また電子の速度は$\epsilon$の傾斜に比例することを仮定する.すなわち
+\begin{align}
+  v(k)=\frac{1}{\hbar}\frac{{\rm d}\epsilon(k)}{{\rm d}k}
+\end{align}
+が成り立つとする.すると
+\begin{align}
+  \begin{split}
+    I&=-\frac{e}{\hbar\pi}\int_{-\pi/2a+\Delta k}^{\pi/2a+\Delta k}\frac{{\rm d}\epsilon(k)}{{\rm d}k}{\rm d}k\\
+    &=-\frac{e}{\hbar\pi}\left(\epsilon\left(\frac{\pi}{2a}+\Delta k\right)-\epsilon\left(-\frac{\pi}{2a}+\Delta k\right)\right)
+  \end{split}
+\end{align}
+$\Delta k\rightarrow{\rm d}k$とすれば
+\begin{align}
+  \begin{split}
+    \label{equ:zendenryu}
+    I&=-\frac{2e}{\hbar\pi}\left[\frac{{\rm d}\epsilon}{{\rm d}k}\right]_{\pi/2a}{\rm d}k\\
+    &=-\frac{2e}{\pi}v\left(\frac{\pi}{2a}\right){\rm d}k
+  \end{split}
 \end{align}
 また,電子が電場から受け取ったエネルギーについて以下が成り立つ.
 \begin{align}
   -eE\Delta x=\epsilon(k+\Delta k)-\epsilon(k)=\frac{{\rm d}\epsilon(k)}{{\rm d}k}\Delta k
 \end{align}
-と変化したとする.ここで$\Delta x=v(k)\Delta t$である.また電子の速度は$\epsilon$の傾斜に比例する,すなわち
+ここで$\Delta x=v(k)\Delta t$なので
 \begin{align}
-  v(k)=\frac{1}{\hbar}\frac{{\rm d}\epsilon(k)}{{\rm d}k}
+    -eEv(k)\Delta t&=\hbar v(k)\Delta k
 \end{align}
-が成り立つ.
+$\Delta k\rightarrow {\rm d}k$とすれば
+\begin{align}
+  \frac{{\rm d}k}{{\rm d}t}=-\frac{eE}{\hbar}
+\end{align}
+これを(\ref{equ:zendenryu})に代入すれば
+\begin{align}
+  I=\frac{2e^2v(\pi/2a){\rm d}t}{\hbar\pi}E
+\end{align}
+となる.
+この表式によると電流が時間経過とともに増大していくことになり,これは電気抵抗が$0$であることを意味する.
+以上の議論から均一な結晶構造においては電気抵抗は$0$となることがわかった,
+しかし実際の結晶は不純物や欠陥,熱振動により均一ではなくなっている.
+この不均一さこそが電気抵抗の起源である.
+
+電子が散乱される機構に立ち入らず,その現象を記述しようとするとDrudeモデルと同様に緩和時間$\tau$を導入し,
+${\rm d}t=\tau$で電子が終端速度に達すると考えることができる.すなわち
+\begin{align}
+  I=\frac{2e^2v(\pi/2a)\tau}{\hbar\pi}E
+\end{align}
+であり電気伝導率$\sigma$は以下で与えられる.
+\begin{align}
+  \sigma=\frac{2e^2v(\pi/2a)\tau}{\hbar\pi}
+\end{align}
+ここで電気伝導率は$v(\pi/2a)$すなわちフェルミ準位にある電子の速度のみにより定まり,
+低い準位にいる電子は寄与しないことがわかる.
+\mfig[width=6cm]{fig/deltak.png}{電場による電子分布の変化}

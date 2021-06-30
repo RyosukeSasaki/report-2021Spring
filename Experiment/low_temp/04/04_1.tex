@@ -1,0 +1,26 @@
+\subsection{磁場-温度相図について}
+臨界磁場$H_C$の温度依存性は経験的に以下の式で与えられる.
+ここでは以下の関係で測定値をfittingすることで鉛試料1の磁場-温度相図を作成する.
+\begin{align}
+  \label{equ:souzu}
+  H_C(T)=H_0\left(1-\left(\frac{T}{T_C}\right)^2\right)
+\end{align}
+ここで$H_0$は絶対零度における臨界磁場,
+$T_C$はゼロ磁場での転移温度である.
+まず$T_C$を外挿により求める.図\ref{fig:graph/day4_2/Pb.tex}に図\ref{fig:graph/day2/Pb.tex}の$6$-$9\ \si{\kelvin}$を拡大した図を示す.
+ここで抵抗率が急激に変化し始める温度と変化し終わる温度はそれぞれ$7.196\ \si{\kelvin}$, $7.213\ \si{\kelvin}$である.
+したがってその平均を転移温度とすれば
+\begin{align}
+  T_C=7.205\ \si{\kelvin}
+\end{align}
+と求まる.以上から(\ref{equ:souzu})でfittingを行うと図\ref{fig:graph/day4_3/Pb1.tex}を得る.
+したがって$H_0$は以下のように求まった.
+\begin{align}
+  H_0=820.5\pm3.5\ \si{Oe}
+\end{align}
+一方で文献\cite{kittel}によると$H_0=803\ \si{Oe}$,相対誤差は$2.2\%$でありよく一致している.
+
+また図\ref{fig:graph/day4_3/Pb1.tex}をみると低温でのデータが不足していることがわかる.
+したがってより低温でのデータを測定することができれば,より正確な値を得られると考えられる.
+\gnu{鉛試料1の温度-抵抗率特性($6$-$9\ \si{\kelvin}$)}{graph/day4_2/Pb.tex}
+\gnu{超伝導体の磁場-温度相図}{graph/day4_3/Pb1.tex} %H=820.598 \pm 3.525
