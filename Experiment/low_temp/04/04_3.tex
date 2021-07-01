@@ -1,0 +1,61 @@
+\subsection{課題1：絶対零度での自由エネルギー差の算出}
+常伝導と超伝導の転移が自由エネルギー$F$によって記述できると考え,臨界磁場について考察する.
+超伝導体が磁場になされる仕事は
+\begin{align}
+  W=-\int_0^{B_C}{\bm M}\cdot{\rm d}{\bm B}
+\end{align}
+である.
+SI単位系において$M=B/\mu_0$となるので\cite{kittel}
+\begin{align}
+  W=\frac{1}{\mu_0}\int_0^{B_C}{\bm B}\cdot{\rm d}{\bm B}
+\end{align}
+これが超伝導体の自由エネルギー差に等しいことから
+\begin{align}
+  F_S(B_C)-F_S(0)=\frac{B_C^2}{2\mu_0}
+\end{align}
+臨界磁場においては常伝導の自由エネルギー$F_N$と$F_S$が等しいことから
+\begin{align}
+  F_N(B_C)=F_S(B_C)=F_S(0)+\frac{B_C^2}{2\mu_0}
+\end{align}
+ここで$F_N$は磁場に依らないことから$F_N(B_C)=F_N(0)$とできる.
+またSI単位系では$B_C=\mu_0H_C$なので
+\begin{align}
+  \Delta F=F_N(0)-F_S(0)=\frac{H_C^2}{2\mu_0}
+\end{align}
+であり,これが超伝導状態での安定化自由エネルギー密度である.
+4.1節で求めた$H_C$を用いて計算すると以下のように求まる.
+\begin{align}
+  \Delta F=2.68\times10^3\ \si{\joule.\metre^{-3}}
+\end{align}
+
+ここでゼロ磁場,常伝導状態での自由エネルギーの温度依存性は
+\begin{align}
+  F_N(T)=U_N(0)-\frac{1}{2}\gamma T^2
+\end{align}
+であり$F_S$と共に図示すると図\ref{fig:fig/a.png}のようになることがわかっている.
+この概形から絶対零度における自由エネルギーの差$\Delta F$と転移温度における常伝導状態の自由エネルギーの減少分$\gamma T_C^2/2$は近い値を持つと考えられる.
+ここで鉛の電子比熱係数$\gamma$の実測値は文献\cite{kittel}から
+\begin{align}
+  \gamma=2.98\ \si{\milli\joule.\mole^{-1}.\kelvin^{-2}}
+\end{align}
+である.また$T_C$として4.1節で求めた値を用いれば
+\begin{align}
+  \frac{1}{2}\gamma T^2=77.3\ \si{\milli\joule.\mole^{-1}}
+\end{align}
+また鉛の原子量,及び密度は文献\cite{rikanenpyo}から$207.2\ \si{\gram.\mole^{-1}}$, $11.34\ \si{\gram.\centi\metre^{-3}}$なので
+\begin{align}
+  77.3\div 207.2\times 11.32\ \frac{\si{\milli\joule}\cdot\si{\mole}\cdot\si{\gram}}{\si{\mole}\cdot\si{\gram}\cdot\si{\centi\metre^{-3}}}=4.23\ \si{\milli\joule.\centi\metre^{-3}}=4.23\times10^3\ \si{\joule.\metre^{-3}}
+\end{align}
+となり,おおよそコンパラオーダーである.
+
+上で求めた$\Delta F$は磁場で超伝導を破壊するためのエネルギーだった.
+一方で熱で超電導を破壊するために必要なエネルギー$\Delta E$は伝導電子密度$n$を用いて
+\begin{align}
+  \Delta E=nk_BT_C
+\end{align}
+になると考えられる.ここで鉛の伝導電子密度として$n=1.32\times10^{29}\ \si{\metre^{-3}}$を用いると
+\begin{align}
+  \Delta E=1.31\times10^7\ \si{\joule.\metre^{-3}}
+\end{align}
+となり$\Delta F$に比べて大きくなることがわかる.
+\mfig[width=6cm]{fig/a.png}{ゼロ磁場での常伝導,超伝導状態の自由エネルギー\cite{4nitime}}

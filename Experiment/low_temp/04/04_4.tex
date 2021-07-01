@@ -1,0 +1,99 @@
+\subsection{課題2：電気抵抗について}
+\subsubsection{緩和時間の算出}
+(\ref{equ:j=sE})から緩和時間は
+\begin{align}
+  \tau=\frac{m}{ne^2\rho}
+\end{align}
+である.ここで電子数密度$n$は一つの原子が一つの電子を供出すると考えると,アボガドロ数$N_A$,原子量$M$,密度$\rho_m$とすれば
+\begin{align}
+  n=\frac{N_A\rho_m}{M}
+\end{align}
+となる.ここで鉛,金それぞれの原子量,密度は文献から表\ref{tab:mitudo}のようになる.
+これと表\ref{tab:zanryu}から緩和時間$\tau_{\rm Pb}$, $\tau_{\rm Au}$を求める.
+しかし鉛試料1に関しては残留抵抗が負となっているので仮に$a\times10^{-11}$としてオーダーだけを見る.
+\begin{align}
+  \tau_{\rm Pb}=\frac{m}{\frac{N_A\times11.34\times10^6}{207.2}\times e^2\times a\times10^{-11}}=\frac{1.07}{a}\times10^{-10}
+\end{align}
+\begin{align}
+  \tau_{\rm Au}=\frac{m}{\frac{N_A\times19.30\times10^6}{197.0}\times e^2\times5.16\times10^{-10}}=1.17\times10^{-12}
+\end{align}
+となる.このことから鉛と金では緩和時間に差があると考えられる.
+\begin{table}[h]
+\caption{鉛,金の原子量,密度}
+\label{tab:mitudo}
+\centering
+\begin{tabular}{c|cc}
+\hline
+&原子量&密度 / $\si{\gram.\centi\metre^{-3}}$\\
+\hline \hline
+鉛&207.2&11.34\\
+金&197.0&19.30\\
+\hline
+\end{tabular}
+\end{table}
+\subsubsection{電気抵抗の温度依存性}
+電気抵抗はがフォノンの数密度に比例すると考え,フォノンの数密度を求める.
+フォノンの平均数を$\langle n_l\rangle$としてフォノンの数密度$n$は
+\begin{align}
+  n=\frac{1}{(Na)^3}\sum_{l=1}^N\langle n_l\rangle
+\end{align}
+ここで(\ref{equ:tikan})と同様に置換すると
+\begin{align}
+  \begin{split}
+    n&=\frac{1}{(2\pi)^3}\int\int\int\langle n_q\rangle{\rm d}V\\
+    &=\frac{1}{(2\pi)^3}\int_0^{q_D}\langle n_q\rangle4\pi q^2{\rm d}q
+  \end{split}
+\end{align}
+さらにフォノンの平均数としてプランク分布を仮定する.すなわち
+\begin{align}
+  \langle n_q\rangle=\frac{1}{{\rm e}^{\hbar\omega_q/k_BT}-1}
+\end{align}
+とすれば
+\begin{align}
+  n=\frac{4\pi}{(2\pi)^3}\int_0^{q_D}\frac{1}{{\rm e}^{\hbar\omega_q/k_BT}-1} q^2{\rm d}q
+\end{align}
+ここで$x=\hbar\omega_q/k_BT=\hbar cq/k_BT$, $\Theta=\hbar cq_D/k_B$と置換すれば
+\begin{align}
+  n=\frac{1}{2\pi^2}\left(\frac{k_BT}{\hbar c}\right)^3\int_0^{\Theta/T}\frac{x^2}{e^x-1}{\rm d}x
+\end{align}
+ここで高温領域($T\gg\Theta$)を考えると$e^x\simeq1+x$なので
+\begin{align}
+  n\propto T^3\int_0^{\Theta/T}x{\rm d}x\propto T
+\end{align}
+となることから高温領域では電気抵抗は$T$に比例するように振る舞うと考えられる.
+実際に図\ref{fig:graph/day3_2/Pb.tex}から図\ref{fig:graph/day3_2/AuFe.tex}では温度が高い領域では電気抵抗率が線形に増える様子が見て取れる.
+
+一方で低温領域($\Theta\gg T$)では$\Theta/T\rightarrow\infty$となるので,フォノン数密度は
+\begin{align}
+  n\propto T^3\int^\infty_0\frac{x^2}{e^x-1}{\rm d}x\propto T^3
+\end{align}
+となる.しかし,低温領域ではフォノン数密度に加えて,その波数の大きさを考慮する必要がある.
+波数の期待値は以下で与えられる
+\begin{align}
+  \langle q\rangle=\frac{\int^{q_D}_0q\cdot\langle n_q\rangle4\pi q^2{\rm d}q}{\int^{q_D}_0\cdot\langle n_q\rangle4\pi q^2{\rm d}q}\propto T
+\end{align}
+ここでフォノンの波数がフェルミエネルギーにある電子の波数$k_F$より十分小さいとき,衝突による波数の減少は以下のように近似される.\cite{text}
+\begin{align}
+  k_F(1-\cos\theta)\simeq k_F\frac{\theta^2}{2}\propto T^2
+\end{align}
+以上から低温での抵抗率の振る舞いは$T^3\cdot T^2=T^5$に比例すると考えられる.
+4.2節での解析では測定値の温度依存性は$n=3,4$で最尤となり,上記の議論で得た結果に必ずしも一致していない.
+\subsubsection{デバイ温度による結果の整理}
+鉛,金のデバイ温度は文献\cite{kittel}によると表\ref{tab:ThetaD}のようになる.
+これを用いて横軸$T/\Theta_D$, 縦軸$R(t)=(\rho(T)-\rho_0)/\rho(\Theta_D)$をプロットすると図\ref{fig:graph/day4_7/all.tex}のようになる.
+ただし$\rho(\Theta_D)$は3.2節で図示したグラフの直線部を最小二乗fitし,回帰直線から推定した.
+図\ref{fig:graph/day4_7/all.tex}をみると規格化した抵抗率は高温領域においてどちらも近い傾向を示していることがわかる.
+\begin{table}[h]
+\caption{デバイ温度}
+\label{tab:ThetaD}
+\centering
+\begin{tabular}{c|c}
+\hline
+&デバイ温度$\Theta_D$ / $\si{\kelvin}$\\
+\hline \hline
+鉛&105\\
+金&165\\
+\hline
+\end{tabular}
+\end{table}
+\gnu{規格化した金試料の抵抗率}{graph/day4_7/all.tex}

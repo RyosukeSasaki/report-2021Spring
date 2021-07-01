@@ -3,12 +3,16 @@
 \begin{align}
   \rho(T)=\rho_0+a_nT^n
 \end{align}
-ここで$\rho_0$は残留抵抗であり,不純物などに起因する.
+ここで$\rho_0$は残留抵抗率であり,不純物などに起因する.
 また$n$は整数である.ここでは鉛試料1及び金試料の常伝導状態における抵抗率を上の表式でfittingし,尤もらしい$n$を推定する.
 図\ref{fig:graph/day4_4/Pb.tex},図\ref{fig:graph/day4_5/Au.tex}に各試料を$n=2,3,4,5$でfitした曲線を示す.
+ただし鉛試料は超伝導状態の抵抗率が0となるように全体を定数倍して調整している.
 また表\ref{tab:an}にfittingにより得られた$a_n$の標準偏差を示す.
 表から鉛試料1では$n=3$,金試料では$n=4$が最尤であると考えられる.
 実際に図\ref{fig:graph/day4_4/Pb.tex},図\ref{fig:graph/day4_5/Au.tex}を見ると$n=3$, $n=4$で最も測定値と良く一致している.
+またそれぞれの試料に関する最尤fit曲線での残留抵抗率$\rho_0$を表\ref{tab:zanryu}に示す.
+これによると鉛試料1は調整を行ったにもかかわらず残留抵抗率が負になっている.
+これは残留抵抗率が小さすぎたため,装置固有のドリフトに埋もれてしまったと考えられる.
 \begin{table}[h]
 \caption{$a_n$の標準偏差($\%$)}
 \label{tab:an}
@@ -19,6 +23,19 @@ $n$&2&3&4&5\\
 \hline \hline
 鉛試料1&2.2&1.9&5.1&8.0\\
 金試料&6.8&3.0&0.54&3.2\\
+\hline
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\caption{残留抵抗$\rho_0$}
+\label{tab:zanryu}
+\centering
+\begin{tabular}{c|c}
+\hline
+&抵抗率$\rho_0$ / $\si{\ohm.\metre}$\\
+\hline \hline
+鉛試料1&$-2.24\times10^{-11}$\\
+金試料&$5.16\times10^{-10}$\\
 \hline
 \end{tabular}
 \end{table}
