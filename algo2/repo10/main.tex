@@ -1,0 +1,115 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+\usepackage{listings,jvlisting}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
+%ここまでソースコードの表示に関する設定
+
+\begin{document}
+\title{アルゴリズム2B 第10回レポート}
+\author{佐々木良輔}
+\date{}
+\maketitle
+\subsubsection*{(1)}
+今回入力ファイルとして,訪れたい温泉街のリストを作成した.表\ref{tab:nyuuryoku}にその内容を,またソースコード\ref{fuga}に入力ファイルを示す.
+1列目に都市番号,
+2列目に都市名,
+3, 4列目にその温泉街を含む都道府県の県庁所在地の緯度,経度を示している.
+\begin{table}[h]
+\caption{入力リストの内容}
+\label{tab:nyuuryoku}
+\centering
+\begin{tabular}{c|ccc}
+\hline
+都市番号&名称&緯度&経度\\
+\hline \hline
+0&箱根(神奈川)&35.4475073&139.6423446\\
+1&草津(群馬)&36.3906675&139.0604061\\
+2&熱海(静岡)&34.9771201&138.3830845\\
+3&道後(愛媛)&33.8416238&132.7656808\\
+4&松嶋(宮城)&38.2688373&140.8721\\
+5&高山(岐阜)&35.3912272&136.7222906\\
+6&伊勢島(三重)&34.7302829&136.5085883\\
+7&加賀(石川)&36.5946816&136.6255726\\
+8&宇奈月(富山)&36.6952907&137.2113383\\
+9&有馬(兵庫)&34.6912688&135.1830706\\
+\hline
+\end{tabular}
+\end{table}
+\clearpage
+\begin{lstlisting}[caption=input file,label=fuga]
+  10
+  0   Hakone      35.4475073  139.6423446
+  1   Kusatu      36.3906675  139.0604061
+  2   Atami       34.9771201  138.3830845
+  3   Dougo       33.8416238  132.7656808
+  4   Matsushima  38.2688373  140.8721
+  5   Takayama    35.3912272  136.7222906
+  6   Iseshima    34.7302829  136.5085883
+  7   Kaga        36.5946816  136.6255726
+  8   Unatsuki    36.6952907  137.2113383
+  9   Arima       34.6912688  135.1830706
+\end{lstlisting}
+\subsubsection*{(2)}
+以上の入力ファイルについて,
+BF法及びBB法で最短コスト経路を計算すると
+\begin{align}
+  箱根→熱海→道後→有馬→伊勢島→高山→加賀→宇奈月→草津→松嶋→箱根
+\end{align}
+の経路で最もコストが低くなるとわかった.これは箱根を起点に関西まで行き,
+その後北陸,東北を経て戻ってくるような一筆書きのルートになっており,尤もらしい結果である.
+また,このときのコストはどちらのアルゴリズムでも25.87と算出された.
+
+また計算量をEvaluatePath関数の呼び出し回数で近似すると,
+BF法, BB法それぞれでの計算量は362880, 1388でありBB法は計算量が遥かに削減できているとわかる.
+\end{document}
