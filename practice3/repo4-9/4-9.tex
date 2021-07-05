@@ -1,0 +1,145 @@
+\subsection*{4-9}
+\subsubsection*{(1)}
+全粒子数を$N$,準位$\nu$に存在する粒子の個数を$n_\nu$,その準位のエネルギーを$\varepsilon_\nu$とすると,大分配関数$\Xi$は
+\begin{align}
+  \begin{split}
+    \Xi&=\sum_{N=0}^{\infty}\sum_{N=\sum n_\nu}\prod_\nu {\rm e}^{-\beta(\epsilon_\nu-\mu)n_\nu}\\
+    &=\prod_\nu\sum_{n_\nu=0}^{\infty} {\rm e}^{-\beta(\epsilon_\nu-\mu)n_\nu}\\
+    &=\prod_\nu\frac{1}{1-{\rm e}^{-\beta(\varepsilon_\nu-\mu)}}\\
+  \end{split}
+\end{align}
+したがって熱力学ポテンシャルは
+\begin{align}
+  \begin{split}
+    \Omega&=-k_BT\log\Xi\\
+    &=-k_BT\log\prod_\nu\frac{1}{1-{\rm e}^{-\beta(\varepsilon_\nu-\mu)}}\\
+    &=-k_BT\sum_\nu\log\frac{1}{1-{\rm e}^{-\beta(\varepsilon_\nu-\mu)}}\\
+    &=-k_BT\sum_\nu\log\frac{{\rm e}^{\beta(\varepsilon_\nu-\mu)}}{{\rm e}^{\beta(\varepsilon_\nu-\mu)}-1}\\
+    &=-k_BT\sum_\nu\log(1+f_{BE}(\varepsilon_\nu))
+  \end{split}
+\end{align}
+\subsubsection*{(2)}
+エントロピーは$S=-\partial\Omega/\partial T$なので
+\begin{align}
+  \begin{split}
+    S&=-\frac{\partial\Omega}{\partial T}\\
+    &=k_B\sum_\nu\log(1+f_{BE}(\varepsilon_\nu))+k_BT\sum_\nu\frac{1}{1+f_{BE}(\varepsilon_\nu)}\frac{\partial f_{BE}(\varepsilon_\nu)}{\partial T}\\
+  \end{split}
+\end{align}
+ここで
+\begin{align}
+  \begin{split}
+    \frac{\partial f_{BE}(\varepsilon_\nu)}{\partial T}&=\frac{1}{{\rm e}^{\beta(\varepsilon_\nu-\mu)}-1}\frac{{\rm e}^{\beta(\varepsilon_\nu-\mu)}}{{\rm e}^{\beta(\varepsilon_\nu-\mu)}-1}\frac{\varepsilon_\nu-\mu}{k_BT^2}\\
+    &=f_{BE}(\varepsilon_\nu)(1+f_{BE}(\varepsilon_\nu))\frac{\varepsilon_\nu-\mu}{k_BT^2}
+  \end{split}
+\end{align}
+したがって
+\begin{align}
+  \begin{split}
+  S&=k_B\sum_\nu\log(1+f_{BE}(\varepsilon_\nu))+\frac{1}{T}\sum_\nu(\varepsilon_\nu-\mu)f_{BE}(\varepsilon_\nu)\\
+  \end{split}
+\end{align}
+ここで
+\begin{align}
+  \beta(\epsilon_\nu-\mu)=\log{\rm e}^{\beta(\epsilon_\nu-\mu)}=\log(1+f_{BE}(\varepsilon_\nu))-\log f_{BE}(\varepsilon_\nu)
+\end{align}
+より
+\begin{align}
+  \begin{split}
+    S&=k_B\sum_\nu\log(1+f_{BE}(\varepsilon_\nu))+k_B\sum_\nu\left(\log(1+f_{BE}(\varepsilon_\nu))-\log f_{BE}(\varepsilon_\nu)\right)f_{BE}(\varepsilon_\nu)\\
+    &=k_B\sum_\nu\left((1+f_{BE}(\varepsilon_\nu))\log (1+f_{BE}(\varepsilon_\nu))-f_{BE}(\varepsilon_\nu)\log f_{BE}(\varepsilon_\nu)\right)
+  \end{split}
+\end{align}
+\subsubsection*{(3)}
+${\bm k}$が密に存在し,その間隔が$\Delta k_x=\Delta k_y=\Delta k_z=2\pi/L$であるならば
+\begin{align}
+  \begin{split}
+    \sum_{\bm k}&=\frac{1}{\Delta k_x\Delta k_y\Delta k_z}\sum\Delta k_x\Delta k_y\Delta k_z\\
+    &=\left(\frac{L}{2\pi}\right)^3\int{\rm d}{\bm k}
+  \end{split}
+\end{align}
+という置換ができるので,熱力学ポテンシャルは
+\begin{align}
+  \begin{split}
+    \Omega&=k_BT\sum_{{\bm k}=0}^\infty\log\left(1-{\rm e}^{-\beta(\varepsilon_k-\mu)}\right)\\
+    &=k_BT\frac{V}{8\pi^3}\int{\rm d}{\bm k}\log\left(1-{\rm e}^{-\beta(\varepsilon_k-\mu)}\right)\\
+  \end{split}
+\end{align}
+被積分項は$k$にしか依らないので,角度方向の積分を実行して
+\begin{align}
+  \begin{split}
+    \Omega&=k_BT\frac{V}{8\pi^3}\int{\rm d}k\ 4\pi k^2\log\left(1-{\rm e}^{-\beta(\varepsilon_k-\mu)}\right)\\
+  \end{split}
+\end{align}
+ここで${\rm d}\varepsilon/{\rm d}k=\hbar^2k/m$, $k=\sqrt{2m\varepsilon}/\hbar$なので
+\begin{align}
+  \begin{split}
+    \Omega&=k_BT\frac{V}{2\pi^2}\frac{m\sqrt{2m}}{\hbar^3}\int_0^\infty{\rm d}\varepsilon\sqrt{\varepsilon}\log\left(1-{\rm e}^{-\beta(\varepsilon-\mu)}\right)\\
+  \end{split}
+\end{align}
+ここで部分積分を行うと
+\begin{align}
+  \begin{split}
+    &\int_0^\infty{\rm d}\epsilon\sqrt{\varepsilon}\log\left(1-{\rm e}^{-\beta(\varepsilon-\mu)}\right)\\
+    =&\left[\frac{2}{3}\varepsilon\sqrt{\varepsilon}\log\left(1-{\rm e}^{-\beta(\varepsilon-\mu)}\right)\right]_0^\infty-\int_0^\infty{\rm d}\varepsilon\frac{2}{3}\varepsilon\sqrt{\varepsilon}\frac{-{\rm e}^{-\beta(\varepsilon-\mu)}(-\beta)}{1-{\rm e}^{-\beta(\varepsilon-\mu)}}\\
+    =&-\frac{2\beta}{3}\int_0^\infty{\rm d}\varepsilon\sqrt{\varepsilon}f_{BE}(\varepsilon)\varepsilon
+  \end{split}
+\end{align}
+なので
+\begin{align}
+  \Omega=-\frac{2}{3}\frac{V}{2\pi^2}\frac{m\sqrt{2m}}{\hbar^3}\int_0^\infty{\rm d}\varepsilon\sqrt{\varepsilon}f_{BE}(\varepsilon)\varepsilon
+\end{align}
+ここで積分を再び級数に戻すと
+\begin{align}
+  \Omega=-\frac{2}{3}\sum_{\bm k}\varepsilon_{\bm k}f_{BE}(\varepsilon_{\bm k})=-\frac{2}{3}E
+\end{align}
+$\Omega=-pV$なので
+\begin{align}
+  pV=\frac{2}{3}E
+\end{align}
+\subsubsection*{(4)}
+(11)式をマクローリン展開し,2次までを拾うと
+\begin{align}
+  \begin{split}
+    \Omega&=-k_BT\frac{V}{2\pi^2}\frac{m\sqrt{2m}}{\hbar^3}\int^\infty_0{\rm d}\varepsilon\sqrt{\varepsilon}\sum_{n=1}^\infty\frac{1}{n}{\rm e}^{-n\beta(\varepsilon-\mu)}\\
+    &=-k_BT\frac{V}{2\pi^2}\frac{m\sqrt{2m}}{\hbar^3}\left(\int_0^\infty{\rm d}\varepsilon\sqrt{\varepsilon}{\rm e}^{-\beta(\varepsilon-\mu)}+\frac{1}{2}\int_0^\infty{\rm d}\varepsilon\sqrt{\varepsilon}{\rm e}^{-2\beta(\varepsilon-\mu)}\right)
+  \end{split}
+\end{align}
+ここで
+\begin{align}
+  \begin{split}
+    \int_0^\infty{\rm d}x\sqrt{x}{\rm e}^{-a(x-b)}={\rm e}^{ab}\frac{1}{a}\int_0^\infty{\rm d}y\sqrt{\frac{y}{a}}{\rm e}^{-y}=\frac{{\rm e}^{ab}}{a\sqrt{a}}\Gamma\left(\frac{3}{2}\right)=\frac{{\rm e}^{ab}}{a\sqrt{a}}\frac{\sqrt{\pi}}{2}
+  \end{split}
+\end{align}
+を用いれば
+\begin{align}
+  \begin{split}
+    \Omega&=-k_BT\frac{V}{2\pi^2}\frac{m\sqrt{2m}}{\hbar^3}\frac{{\rm e}^{\beta\mu}}{\beta\sqrt{\beta}}\frac{\sqrt{\pi}}{2}\left(1+\frac{{\rm e}^{\beta\mu}}{4\sqrt{2}}\right)\\
+    &=-(k_BT)^{5/2}\frac{m\sqrt{2m}}{4\pi^2\hbar^3}V\sqrt{\pi}{\rm e}^{\beta\mu}\left(1+\frac{1}{2^{5/2}}{\rm e}^{\beta\mu}\right)
+  \end{split}
+\end{align}
+となる.ここで$N=-\partial\Omega/\partial\mu$なので
+\begin{align}
+  \begin{split}
+    N&=(k_BT)^{5/2}\frac{m\sqrt{2m}}{4\pi^2\hbar^3}V\sqrt{\pi}\beta{\rm e}^{\beta\mu}\left(1+\frac{2}{2^{5/2}}{\rm e}^{\beta\mu}\right)\\
+    \therefore&\qquad{\rm e}^{\beta\mu}=(k_BT)^{-5/2}\frac{4\pi^2\hbar^3}{m\sqrt{2m}}\frac{1}{V\sqrt{\pi}\beta}\left(1+\frac{2}{2^{5/2}}{\rm e}^{\beta\mu}\right)^{-1}N
+  \end{split}
+\end{align}
+したがって
+\begin{align}
+  \Omega=-Nk_BT\left(1+\frac{1}{2^{5/2}}{\rm e}^{\beta\mu}\right)\left(1+\frac{2}{2^{5/2}}{\rm e}^{\beta\mu}\right)^{-1}
+\end{align}
+ここで${\rm e}^{\beta\mu}\ll 1$から
+\begin{align}
+  \begin{split}
+    \Omega&\simeq-Nk_BT\left(1+\frac{1}{2^{5/2}}{\rm e}^{\beta\mu}\right)\left(1-\frac{2}{2^{5/2}}{\rm e}^{\beta\mu}\right)\\
+    &\simeq-Nk_BT\left(1-\frac{1}{2^{5/2}}{\rm e}^{\beta\mu}\right)
+  \end{split}
+\end{align}
+ここに再び(19)式を代入して${\rm e}^{\beta\mu}$の2次以降を無視すると
+\begin{align}
+  \begin{split}
+    \Omega&=-Nk_BT\left(1-\frac{1}{2^{5/2}}(k_BT)^{-5/2}\frac{4\pi^2\hbar^3}{m\sqrt{2m}}\frac{1}{V\sqrt{\pi}\beta}\left(1+\frac{2}{2^{5/2}}{\rm e}^{\beta\mu}\right)^{-1}N\right)\\
+    &\simeq-Nk_BT\left(1-\frac{\pi^{3/2}N}{2V}\left(\frac{\hbar^2}{mk_BT}\right)^{3/2}\right)
+  \end{split}
+\end{align}
