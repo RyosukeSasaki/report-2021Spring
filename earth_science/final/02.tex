@@ -12,3 +12,56 @@
 これにより全層対流の時の温度勾配は図(b)のように球殻内部での温度がほぼ一様であったのに比べて,
 2層対流では間に遷移層,すなわち温度勾配が急な箇所が発生すると考えられる.
 \mfig[width=6cm]{fig/3-3.png}{全層対流と2層対流の場合の温度勾配\cite{kawakatu}}
+\subsubsection*{(4-1)}
+$n=0$のLegendre陪関数は定数であり0次成分の磁気ポテンシャルに由来する磁場は一方向を向いた磁場になる.
+これは磁気単極子成分であり,現実には存在しないことから$n=0$の成分は含まれない.
+\subsubsection*{(4-2)}
+磁気ポテンシャルは以下のように表される.
+\begin{align}
+  V=a\left(\left(\frac{a}{r}\right)^2g_1^0\cos\theta+\left(\frac{a}{r}\right)^3g_2^0\frac{1}{2}(3\cos^2\theta-1)\right)
+\end{align}
+したがって磁束密度の各成分は以下のように表される.
+\begin{align}
+  B_r=-\frac{\partial V}{\partial r}=2\frac{a^3}{r^3}g_1^0\cos\theta+\frac{3}{2}\frac{a^4}{r^4}g_2^0(3\cos^2\theta-1)
+\end{align}
+\begin{align}
+  B_\theta=-\frac{1}{r}\frac{\partial V}{\partial \theta}=\frac{a^3}{r^3}g_1^0\sin\theta-3\frac{a^4}{r^4}g_2^0\cos\theta\sin\theta
+\end{align}
+\begin{align}
+  B_\varphi=0
+\end{align}
+ここで地表面においては$a/r=1$である.以上から北極点($\theta=0,\varphi=0$),南極点($\theta=0\pi,\varphi=0$)における磁場$\bm B_N$と$\bm B_S$は極座標において以下のようになる.
+\begin{align}
+  {\bm B_N}=\left(\begin{array}{c}
+    2g_1^0+3g_2^0\\0\\0
+  \end{array}\right)=\left(\begin{array}{c}
+    -603.8\\0\\0
+  \end{array}\right)\ \si{\nano\tesla}
+\end{align}
+\begin{align}
+  {\bm B_S}=\left(\begin{array}{c}
+    -2g_1^0+3g_2^0\\0\\0
+  \end{array}\right)=\left(\begin{array}{c}
+    156.2\\0\\0
+  \end{array}\right)\ \si{\nano\tesla}
+\end{align}
+\subsubsection*{(4-3)}
+(4-2)の結果から地軸上において水星の地磁気は動径方向成分のみを持ち,角度成分を持たないことがわかる.
+このことから磁気モーメントは地軸に平行になる.磁気双極子が十分狭い範囲に集中しているならば,地表面での磁気双極子による磁束密度は以下のように表される.
+\begin{align}
+  B=\frac{{\bm m}\cdot{\bm r}}{4\pi r^3}
+\end{align}
+したがって
+\begin{align}
+  B\propto\frac{\cos\theta}{r^2}
+\end{align}
+である.ここで図のように座標を設定すれば
+\begin{align}
+  \begin{split}
+    603.8:156.2&=\frac{1}{x^2}:\frac{1}{(a-x)^2}\\
+    x&=822.6\ \si{\kilo\metre}
+  \end{split}
+\end{align}
+したがって磁気双極子は北極点から地軸上で$822.6\ \si{\kilo\metre}$離れた位置に存在することになる.
+よって,水星の地磁気は北極側に大きく偏っていることがわかる.
+\mfig[width=8cm]{fig/4-3.png}{地軸上の座標の設定}
