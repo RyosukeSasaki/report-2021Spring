@@ -1,1 +1,44 @@
 \subsubsection*{(5-1)}
+\begin{align}
+  \nabla\times(\overline{\bm v}\times\overline{\bm B})=\nabla\times\left(
+  \begin{array}{c}
+    0\\\Omega x\overline{B}_x\\0
+  \end{array}
+  \right)=\left(
+  \begin{array}{c}
+    0\\0\\\Omega \overline{B}_x
+  \end{array}
+  \right)
+\end{align}
+なのでインダクション方程式の$x,z$成分はそれぞれ
+\begin{align}
+  \frac{\partial \overline{B}_x}{\partial t}=\alpha\frac{\partial\overline{B}_z}{\partial y}+\eta\nabla^2\overline{\bm B}
+\end{align}
+\begin{align}
+  \frac{\partial \overline{B}_z}{\partial t}=\Omega\overline{B}_x-\alpha\frac{\partial\overline{B}_x}{\partial y}+\eta\nabla^2\overline{\bm B}
+\end{align}
+と表される.
+\subsubsection*{(5-2)}
+$\alpha$効果による$\overline{B}_z$の生成が無視できるとき(20)式の右辺第2項は無視できる.したがって(19)式, (20)式はそれぞれ
+\begin{align}
+  p\hat{B}_x=ik\alpha\hat{B}_z-\eta k^2\hat{B}_x
+\end{align}
+\begin{align}
+  p\hat{B}_z=\Omega\hat{B}_x-\eta k^2\hat{B}_z
+\end{align}
+これを連立すると
+\begin{align}
+  p^2+2p\eta k^2+\eta^2k^4&=ik\alpha\Omega\nonumber\\
+  p&=\eta k^2\pm{\rm e}^{i\pi/4}\sqrt{k\alpha\Omega}
+\end{align}
+となる.
+\subsubsection*{(5-3)}
+${\rm e}^{i\pi/4}=(1+i)/\sqrt{2}$なので$p$の実部は
+\begin{align}
+  \Re (p)=\eta k^2\pm\sqrt{\frac{k\alpha\Omega}{2}}
+\end{align}
+である.自励ダイナモとなるためには$p$の実部が正である必要があるので,その条件は
+\begin{align}
+  \eta k^2\pm\sqrt{\frac{k\alpha\Omega}{2}}>0
+\end{align}
+である.
