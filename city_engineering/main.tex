@@ -1,8 +1,6 @@
 \documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
 \bibliographystyle{jplain}
 
-\usepackage{url}
-
 \usepackage{graphicx}
 \usepackage{gnuplot-lua-tikz}
 \usepackage{pgfplots}
@@ -10,6 +8,11 @@
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage{bm}
 \usepackage{siunitx}
+
+\usepackage[dvipdfmx]{hyperref}
+\usepackage{pxjahyper}
+
+\hypersetup{urlcolor=cyan,}
 
 \makeatletter
 \def\fgcaption{\def\@captype{figure}\caption}
@@ -40,5 +43,7 @@
 \author{61908697 佐々木良輔}
 \date{}
 \maketitle
+\input{01.tex}\clearpage
+\input{02.tex}
 \bibliography{ref.bib}
 \end{document}

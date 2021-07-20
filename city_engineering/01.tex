@@ -1,0 +1,30 @@
+\subsection*{(1)インターネットトラフィックの分析}
+ここでは1997年1月から2020年11月までの日本国内のインターネットトラフィックの推移をいくつかの微分方程式の解曲線でfittingした.
+トラフィックデータには総務省情報通信データベースから取得した一日のピークトラフィックの月間平均（\url{https://www.soumu.go.jp/johotsusintokei/field/data/gt010108.xls}）を用いた.
+また解曲線のfittingにはgnuplotの非線形最小二乗法機能を用いた.
+ここでは回帰曲線として直線,指数曲線,ゴンペルツ曲線,ロジスティクス曲線を用いた.
+以下に回帰曲線の関数を示す.ただしgnuplotは時間をUNIX時間で表すため,
+$x$軸の原点は1970年1月1日になっている.
+また図\ref{fig:graph/traffic97_20.tex}から図\ref{fig:graph/traffic97_50.tex}に予測範囲を変えたfitting結果を示す.
+\begin{align*}
+  y_{線形}(x)&=6.04\times10^{-6}x-6.35\times10^3\\
+  y_{指数}(x)&=8.10\times10^{-4}{\rm e}^{1.00\times10^{-8}x}\\
+  y_{ゴンペルツ}(x)&=1.16\times10^{11}{\rm e}^{-7.50\times10^{-8}{\rm e}^{-1.23\times10^{-9}x}}\\
+  y_{ロジスティクス}(x)&=\frac{1.53\times10^7}{1+202\times{\rm e}^{-1.00\times10^{-8}(x-1.83\times10^9)}}
+\end{align*}
+図\ref{fig:graph/traffic97_20.tex}を見ると1997年から2020年の範囲では直線を除いてどの曲線もよく一致している.
+また図\ref{fig:graph/traffic97_30.tex}でも同様に一致している.
+更に予測範囲を1997年から2050年まで伸ばした図\ref{fig:graph/traffic97_50.tex}でようやく僅かにそれぞれの曲線で差が現れている.
+2030年までのfittingでそれぞれの曲線が一致していることについて$x\ll1$であると仮定すると指数曲線,ゴンペルツ曲線,ロジスティクス曲線はそれぞれ
+\begin{align*}
+  a{\rm e}^{bx}&\propto 1+bx\\
+  a{\rm e}^{-b{\rm e}^{-cx}}&\simeq a{\rm e}^{-b(1-cx)}\propto 1+abx\\
+  \frac{a}{1+b{\rm e}^{-cx}}&\simeq a((1+a)-abx)^{-1}\propto1+\frac{ab}{1+a}x
+\end{align*}
+と近似できる.つまり,時間が十分経過していない範囲においてこれらの曲線は近しい振る舞いをするとわかる.
+すなわちインターネットトラフィックの増加は指数曲線,ゴンペルツ曲線,ロジスティクス曲線のいずれのモデルを適用しても成長の初期であり,今後遥かに成長することが予測される.
+また図\ref{fig:graph/traffic97_50.tex}から2036年頃には$10^6\ \si{Gbps}$,
+2040年から2043年頃には$10^7\ \si{Gbps}$を上回ると予測され,さらなる回線の拡充が必要である.
+\gnu{fitting結果(1997年1月から2020年11月)}{graph/traffic97_20.tex}
+\gnu{fitting結果(1997年1月から2030年12月)}{graph/traffic97_30.tex}
+\gnu{fitting結果(1997年1月から2050年12月)}{graph/traffic97_50.tex}
