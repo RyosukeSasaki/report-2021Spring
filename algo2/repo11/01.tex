@@ -1,1 +1,46 @@
-\subsection*{問}
+\subsection*{問3 最小二乗法の拡張}
+最小二乗法は測定で得られた離散的なデータを関数で近似するために用いられる.
+ここでは特に近似を行う関数形が$m$次多項式の場合を考える.
+すなわち関数は
+\begin{align}
+  g(x)=\sum_{k=0}^{m} a_kx^k=a_0+a_1x+\cdots+a_mx^m
+\end{align}
+という形で表される.ここで$n$組の離散データの組が$(x_i,y_i)$で与えられるとき
+最小二乗法ではこれらのデータと$g(x)$の残差の二乗和$E$が最小となるように$a_k$を定める.
+すなわち目的関数は以下で与えられる.ただし$a_0,\ldots,a_m$を$a_k$と略記している.
+\begin{align}
+  {\rm minimize}: E(a_k)=\sum_{i=0}^{n-1}(y_i-g(x_i))^2
+\end{align}
+ここで$a_k$について$E(a_k)$が唯一極小値を持つことを仮定すると$E(a_k)$が最小となる条件は
+\begin{align}
+  \begin{split}
+    \frac{\partial E}{\partial a_k}&=\frac{\partial}{\partial a_k}\sum_{i=0}^{n-1}(y_i-(a_0+\cdots+a_kx_i^k+\cdots+a_mx_i^m))^2\\
+    &=2\sum_{i=0}^{n-1}(y_i-g(x_i))(-x_i^k)=0
+  \end{split}
+\end{align}
+すなわち
+\begin{align}
+  \sum_{i=0}^{n-1}(a_0x_i^k+a_1x_i^{k+1}+\cdots+a_mx_i^{k+m})=\sum_{i=0}^{n-1}y_ix_i^k
+\end{align}
+となる.
+$k=0,\ldots,m$までを並べて行列とすると
+\begin{align}
+  \left(
+    \begin{array}{cccc}
+      n&\overline{x}&\cdots&\overline{x^m}\\
+      \overline{x}&\overline{x^2}&\cdots&\overline{x^{m+1}}\\
+      \vdots&\vdots&\vdots&\vdots\\
+      \overline{x^m}&\overline{x^{m+1}}&\cdots&\overline{x^{2m}}
+    \end{array}
+  \right)
+  \left(
+    \begin{array}{c}
+      a_0\\a_1\\\vdots\\a_m      
+    \end{array}
+  \right)=\left(
+    \begin{array}{c}
+      \overline{y}\\\overline{xy}\\\vdots\\\overline{x^my}
+    \end{array}
+  \right)
+\end{align}
+ここで$\overline{x^ky}=\sum_{i=0}^{n-1}x^k_iy_i$である.以上から(5)式の連立方程式を解くことで$E(a_k)$を最小化する$a_k$が得られる.
