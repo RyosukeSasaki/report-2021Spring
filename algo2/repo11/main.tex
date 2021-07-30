@@ -2,6 +2,25 @@
 \bibliographystyle{jplain}
 
 \usepackage{url}
+\usepackage{listings,jvlisting}
+\lstset{
+  basicstyle={\ttfamily},
+  identifierstyle={\small},
+  commentstyle={\smallitshape},
+  keywordstyle={\small\bfseries},
+  ndkeywordstyle={\small},
+  stringstyle={\small\ttfamily},
+  frame={tb},
+  breaklines=true,
+  columns=[l]{fullflexible},
+  numbers=left,
+  xrightmargin=0zw,
+  xleftmargin=3zw,
+  numberstyle={\scriptsize},
+  stepnumber=1,
+  numbersep=1zw,
+  lineskip=-0.5ex
+}
 
 \usepackage{graphicx}
 \usepackage{gnuplot-lua-tikz}
@@ -40,7 +59,7 @@
 \author{61908697 佐々木良輔}
 \date{}
 \maketitle
-\input{01.tex}
-\input{02.tex}
+\input{01.tex}\clearpage
 \bibliography{ref.bib}
+\input{02.tex}
 \end{document}
