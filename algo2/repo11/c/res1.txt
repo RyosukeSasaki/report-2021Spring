@@ -1,0 +1,24 @@
+a0: 9.840299
+a1: 5.016303
+initialize:88
+calculation:3
+
+a0: 9.840299
+a1: 5.016303
+initialize:79
+calculation:3
+
+a0: 9.840299
+a1: 5.016303
+initialize:80
+calculation:3
+
+a0: 9.840299
+a1: 5.016303
+initialize:89
+calculation:3
+
+a0: 9.840299
+a1: 5.016303
+initialize:78
+calculation:2

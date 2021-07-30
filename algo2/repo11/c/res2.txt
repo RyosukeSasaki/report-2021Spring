@@ -1,0 +1,29 @@
+a0: 9.926462
+a1: 3.039280
+a2: 0.988512
+initialize:132
+calculation:3
+
+a0: 9.926462
+a1: 3.039280
+a2: 0.988512
+initialize:161
+calculation:4
+
+a0: 9.926462
+a1: 3.039280
+a2: 0.988512
+initialize:131
+calculation:3
+
+a0: 9.926462
+a1: 3.039280
+a2: 0.988512
+initialize:132
+calculation:3
+
+a0: 9.926462
+a1: 3.039280
+a2: 0.988512
+initialize:133
+calculation:3

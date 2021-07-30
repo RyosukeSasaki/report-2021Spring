@@ -1,0 +1,34 @@
+a0: 9.812453
+a1: 5.137341
+a2: 0.212433
+a3: 1.192026
+initialize:201
+calculation:3
+
+a0: 9.812453
+a1: 5.137341
+a2: 0.212433
+a3: 1.192026
+initialize:195
+calculation:4
+
+a0: 9.812453
+a1: 5.137341
+a2: 0.212433
+a3: 1.192026
+initialize:205
+calculation:4
+
+a0: 9.812453
+a1: 5.137341
+a2: 0.212433
+a3: 1.192026
+initialize:198
+calculation:3
+
+a0: 9.812453
+a1: 5.137341
+a2: 0.212433
+a3: 1.192026
+initialize:224
+calculation:4

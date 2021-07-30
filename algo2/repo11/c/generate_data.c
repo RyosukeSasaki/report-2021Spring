@@ -4,9 +4,9 @@
 #define START -4.0
 #define END 6.0
 #define INTERVAL 0.1
-#define N 1
+#define N 5
 
-double Uniform( void ){
+double Uniform(void){
 	return ((double)rand()+1.0)/((double)RAND_MAX+2.0);
 }
 
@@ -16,7 +16,7 @@ double rand_normal(double mu, double sigma){
 }
 
 double func(double x) {
-    return 5*x + 10 + rand_normal(0, 1);
+    return rand_normal(0, 1) + 10 + 5*x + pow(x, 2)*0.1 + pow(x, 3)*0.6 + pow(x, 4)*1 + pow(x, 5)*1.3;
 }
 
 int main(int argc, char *argv[])

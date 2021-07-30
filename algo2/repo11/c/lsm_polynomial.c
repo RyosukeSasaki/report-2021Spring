@@ -120,9 +120,9 @@ int main(int argc, char *argv[])
     gauss_elimination_method(DegreeOfPolynomial + 1, factor_matrix, x);
     end_calc = clock();
     disp_vector_x(DegreeOfPolynomial + 1, x);
-    printf("initialize:%f\ncalculation:%f",
-    (double)(end_initial - start_initial) / CLOCKS_PER_SEC,
-    (double)(end_calc - start_calc) / CLOCKS_PER_SEC);
+    printf("initialize:%ld\ncalculation:%ld",
+    (end_initial - start_initial),
+    (end_calc - start_calc));
 
     Clear();
     exit(EXIT_SUCCESS);
