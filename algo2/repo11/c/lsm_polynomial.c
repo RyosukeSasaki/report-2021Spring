@@ -70,11 +70,11 @@ int main(int argc, char *argv[])
     char command;
     if (argc != 2) {
         printf("Usage: %s <filename>\n", argv[0]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     if ((fp = fopen(argv[1], "r")) == NULL) {
         printf("Cannot open file (%s) \n", argv[1]);
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     /* Read the file to get the number of (x,y) pairs (N) 
     and the degree of approximate polynomial (m) */
@@ -83,25 +83,25 @@ int main(int argc, char *argv[])
     /* Memory allocation for the (x,y) pairs */
     if ((array_x = malloc(sizeof(double) * NumOfData)) == NULL) {
         printf("Cannot allocate memory \n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     if ((array_y = malloc(sizeof(double) * NumOfData)) == NULL) {
         printf("Cannot allocate memory \n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     if ((factor_matrix = malloc(sizeof(double *) * (DegreeOfPolynomial + 1))) == NULL) {
         printf("Cannot allocate memory \n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     for (i = 0; i < (DegreeOfPolynomial + 1); i++) {
         if ((factor_matrix[i] = malloc(sizeof(double) * (DegreeOfPolynomial + 2))) == NULL) {
             printf("Cannot allocate memory \n");
-            exit(1);
+            exit(EXIT_FAILURE);
         }
     }
     if ((x = malloc(sizeof(double) * (DegreeOfPolynomial + 1))) == NULL) {
         printf("Cannot allocate memory \n");
-        exit(1);
+        exit(EXIT_FAILURE);
     }
     /* Read the (x,y) pairs */
     i = 0;
@@ -110,10 +110,20 @@ int main(int argc, char *argv[])
         i++;
     }
     fclose(fp);
+
+    clock_t start_initial, end_initial;
+    clock_t start_calc, end_calc;
+    start_initial = clock();
     init_factor_matrix(DegreeOfPolynomial + 1);
-    //disp_factor_matrix(DegreeOfPolynomial + 1, factor_matrix);
+    end_initial = clock();
+    start_calc = clock();
     gauss_elimination_method(DegreeOfPolynomial + 1, factor_matrix, x);
+    end_calc = clock();
     disp_vector_x(DegreeOfPolynomial + 1, x);
+    printf("initialize:%f\ncalculation:%f",
+    (double)(end_initial - start_initial) / CLOCKS_PER_SEC,
+    (double)(end_calc - start_calc) / CLOCKS_PER_SEC);
 
     Clear();
+    exit(EXIT_SUCCESS);
 }
