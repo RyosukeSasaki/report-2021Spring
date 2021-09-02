@@ -1,0 +1,82 @@
+\documentclass[uplatex,a4j,11pt,dvipdfmx]{jsarticle}
+\bibliographystyle{jplain}
+
+\usepackage{url}
+
+\usepackage{graphicx}
+\usepackage{gnuplot-lua-tikz}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{bm}
+\usepackage{siunitx}
+
+\makeatletter
+\def\fgcaption{\def\@captype{figure}\caption}
+\makeatother
+\newcommand{\setsections}[3]{
+\setcounter{section}{#1}
+\setcounter{subsection}{#2}
+\setcounter{subsubsection}{#3}
+}
+\newcommand{\mfig}[3][width=15cm]{
+\begin{center}
+\includegraphics[#1]{#2}
+\fgcaption{#3 \label{fig:#2}}
+\end{center}
+}
+\newcommand{\gnu}[2]{
+\begin{figure}[hptb]
+\begin{center}
+\input{#2}
+\caption{#1}
+\label{fig:#2}
+\end{center}
+\end{figure}
+}
+\newcommand{\llr}{\langle\langle}
+\newcommand{\rrr}{\rangle\rangle}
+
+\begin{document}
+\title{計算モデル論 レポート}
+\author{佐々木良輔}
+\date{}
+\maketitle
+\section*{課題1}
+\subsection*{乗算関数$\llr mult\rrr$について}
+乗算$m\times n$は$0+m+m+\cdots+m$と加算を$n$回繰り返すことで実現できる.
+したがって授業スライド2のp47で$\llr add\rrr$を$\llr succ\rrr$繰り返しで定義したことの類推から
+\begin{align*}
+  \llr mult\rrr=:\lambda m.\lambda n.\bigg(n\ \Big(\llr add\rrr\ m\Big)\bigg)\ \llr 0\rrr
+\end{align*}
+で定義されると考えられる.\cite{utokyo}\cite{jugyo3}ここで$\llr add\rrr$は加算関数であり$\llr add\rrr\ \llr m\rrr\ \llr n\rrr=\llr m+n\rrr$である.実際に自然数に対して適用すると
+\begin{align*}
+  &\llr mult\rrr\ \llr m\rrr\ \llr n\rrr\\
+  &\rightarrow_\beta \Bigg(\bigg(\lambda m.\Big(\lambda n.\Big(n\ \Big(\llr add\rrr\ m\Big)\Big)\ \llr 0\rrr\Big)\ \llr m\rrr\bigg)\ \llr n\rrr\Bigg)\\
+  &\rightarrow_\beta \llr n\rrr\ \Big(\llr add\rrr\ \llr m\rrr\Big)\ \llr 0\rrr\\
+  &\rightarrow_\beta \Bigg(\lambda x.\bigg(\lambda y.\Big(\underbrace{x(x\cdots(x(x}_{n個}\ y))\cdots)\Big)\bigg)\ \Big(\llr add\rrr\ \llr m\rrr\Big)\Bigg)\ \llr 0\rrr\\
+  &\rightarrow_\beta \underbrace{\llr add\rrr\ \llr m\rrr\ \Bigg(\llr add\rrr\ \llr m\rrr\cdots\bigg(\llr add\rrr\ \llr m\rrr\ \Big(\llr add\rrr\ \llr m\rrr}_{n個}\ \llr 0\rrr\Big)\bigg)\Bigg)\\
+  &\rightarrow_\beta \llr add\rrr\ \llr m\rrr\ \bigg(\llr add\rrr\ \llr m\rrr\cdots\Big(\llr add\rrr\ \llr m\rrr\ \llr m\rrr\Big)\bigg)\\
+  &\rightarrow_\beta \llr add\rrr\ \llr m\rrr\ \Big(\llr add\rrr\ \llr m\rrr\cdots\llr 2m\rrr\Big)\\
+  &\rightarrow_\beta \llr add\rrr\ \llr m\rrr\ \llr m\times(n-1)\rrr\\
+  &\rightarrow_\beta\llr m\times n\rrr
+\end{align*}
+となり,確かに乗算が行われている.
+\subsection*{冪乗関数$\llr pow\rrr$について}
+乗算が加算の繰り返しで実現したのと同様に冪乗$m^n$も$1\times m\times\cdots\times m$と乗算を$n$回繰り返すことで実現できる.
+したがって乗算関数と同様に定義すれば
+\begin{align*}
+  \llr pow\rrr=:\lambda m.\lambda n.\bigg(n\ \Big(\llr mult\rrr\ m\Big)\bigg)\ \llr 1\rrr
+\end{align*}
+で定義されると考えられる.\cite{utokyo}実際に自然数に対して適用すると,乗算関数の場合と同様の$\beta$変換を行うことで
+\begin{align*}
+  &\llr pow\rrr\ \llr m\rrr\ \llr n\rrr\\
+  &\rightarrow_\beta \underbrace{\llr mult\rrr\ \llr m\rrr\ \Bigg(\llr mult\rrr\ \llr m\rrr\cdots\bigg(\llr mult\rrr\ \llr m\rrr\ \Big(\llr mult\rrr\ \llr m\rrr}_{n個}\ \llr 1\rrr\Big)\bigg)\Bigg)\\
+  &\rightarrow_\beta \llr mult\rrr\ \llr m\rrr\ \bigg(\llr mult\rrr\ \llr m\rrr\cdots\Big(\llr mult\rrr\ \llr m\rrr\ \llr m\rrr\Big)\bigg)\\
+  &\rightarrow_\beta \llr mult\rrr\ \llr m\rrr\ \Big(\llr mult\rrr\ \llr m\rrr\cdots\llr m^2\rrr\Big)\\
+  &\rightarrow_\beta \llr mult\rrr\ \llr m\rrr\ \llr m^{n-1}\rrr\\
+  &\rightarrow_\beta\llr m^n\rrr
+\end{align*}
+となり,確かに冪乗が行われている.
+\bibliography{ref.bib}
+\end{document}
